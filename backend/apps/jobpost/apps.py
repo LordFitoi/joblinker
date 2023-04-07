@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class JobpostConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.jobpost'
+    name = 'backend.apps.jobpost'

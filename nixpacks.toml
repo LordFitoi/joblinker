@@ -1,7 +1,6 @@
 [phases.setup]
 nixPkgs = [
     'python310',
-    'nodejs',
     'postgresql',
     'gcc'
 ]

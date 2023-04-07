@@ -1,5 +1,5 @@
 from django.db import models
-from apps.utils import AbstractBaseModel
+from backend.apps.utils import AbstractBaseModel
 
 
 class WebsiteOrigin(AbstractBaseModel):
