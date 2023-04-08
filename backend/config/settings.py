@@ -135,3 +135,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Nuxt app settings
+NUXT_OUTPUT_DIR = "assets/"
+TEMPLATES['DIRS'] += [str(APP_DIR / f"{NUXT_OUTPUT_DIR}/public")]
+STATICFILES_DIRS += [str(APP_DIR / f"{NUXT_OUTPUT_DIR}/public/static")]
