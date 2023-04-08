@@ -1,8 +1,9 @@
 [phases.setup]
 nixPkgs = [
     'python310',
+    'nodejs',
     'postgresql',
-    'gcc'
+    'gcc',
 ]
 
 [phases.install]
@@ -10,10 +11,12 @@ cmds = [
     'python -m venv /opt/venv',
     '. /opt/venv/bin/activate',
     'pip install -r requirements.txt',
+    'npm --prefix frontend/ install',
 ]
 
 [phases.build]
 cmds = [
+    'npm --prefix frontend/ run generate',
     'python manage.py collectstatic',
     'python manage.py migrate'
 ]

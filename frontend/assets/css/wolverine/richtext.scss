@@ -1,0 +1,79 @@
+.ckeditor--caller + .cke_browser_webkit {
+    flex-grow: 1;
+    border: none;
+
+    .cke_inner {
+        background-color: transparent;
+
+        .cke_top {
+            padding: 0;
+            border: none;
+            background-color: transparent;
+            margin-bottom: 12px;
+
+            .cke_toolgroup {
+                display: flex;
+                margin: 0;
+                padding: 0;
+                gap: 4px;
+            }
+
+            a {
+                width: 32px;
+                height: 32px;
+                border-radius: 6px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0;
+                transition: background-color 100ms ease;
+
+                span {
+                    transition: filter 100ms ease;
+
+                    filter:
+                        brightness(0)
+                        saturate(100%)
+                        invert(66%)
+                        sepia(12%)
+                        saturate(385%)
+                        hue-rotate(179deg)
+                        brightness(97%)
+                        contrast(85%);
+                }
+
+                &:hover {
+                    border: none;
+                    background-color: $color-gray-200;
+                }
+                &:active {
+                    background-color: $color-gray-300;
+                }
+                &.cke_button_on {
+                    border: none;
+                    background-color: $color-primary-100;
+
+                    span {
+                        filter:
+                            brightness(0)
+                            saturate(100%)
+                            invert(26%)
+                            sepia(74%)
+                            saturate(3136%)
+                            hue-rotate(248deg)
+                            brightness(81%)
+                            contrast(88%);
+                    }
+                }
+            }
+
+        }
+
+        .cke_contents {
+            background: #FFFFFF;
+            border: 1px solid $color-gray-300;
+            box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+            border-radius: 8px;
+        }
+    }
+}

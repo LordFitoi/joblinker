@@ -1,0 +1,48 @@
+// VARIABLES
+// ---------------------------------
+
+// COLORS:
+$color-base-white: #FFFFFF;
+
+$color-gray-50: #F9FAFB;
+$color-gray-100: #F2F4F7;
+$color-gray-200: #EAECF0;
+$color-gray-300: #D0D5DD;
+$color-gray-400: #98A2B3;
+$color-gray-500: #667085;
+$color-gray-600: #475467;
+$color-gray-700: #344054;
+$color-gray-800: #333333;
+$color-gray-900: #101828;
+
+$color-primary-50: #F9F5FF;
+$color-primary-100: #F4EBFF;
+$color-primary-200: #E9D7FE;
+$color-primary-300: #D6BBFB;
+$color-primary-500: #9E77ED;
+$color-primary-600: #7F56D9;
+$color-primary-700: #6941C6;
+
+$color-success-50: #ECFDF3;
+$color-success-500: #12B76A;
+$color-success-700: #027A48;
+
+$color-error-25: #FFFBFA;
+$color-error-50: #FEF3F2;
+$color-error-100: #FEE4E2;
+$color-error-300: #FDA29B;
+$color-error-600: #D92D20;
+$color-error-700: #B42318;
+
+// FILTERS:
+$filter-base-white: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(163deg) brightness(100%) contrast(103%);
+$filter-primary-700: brightness(0) saturate(100%) invert(30%) sepia(45%) saturate(7409%) hue-rotate(250deg) brightness(83%) contrast(84%);
+$filter-gray-300: invert(83%) sepia(4%) saturate(346%) hue-rotate(178deg) brightness(101%) contrast(96%);
+$filter-gray-500: brightness(0) saturate(100%) invert(44%) sepia(24%) saturate(350%) hue-rotate(182deg) brightness(92%) contrast(87%);
+$filter-success-700: brightness(0) saturate(100%) invert(29%) sepia(73%) saturate(921%) hue-rotate(116deg) brightness(98%) contrast(98%);
+$filter-error-700: invert(25%) sepia(85%) saturate(2579%) hue-rotate(349deg) brightness(71%) contrast(100%);
+// BORDER RADIUS:
+$border-radius-md: 8px;
+
+
+$breakpoint-tablet: 740px;

@@ -1,0 +1,131 @@
+.table--container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: $color-base-white;
+    border: 1px solid $color-gray-200;
+    border-radius: 8px;
+    box-shadow:
+        0px 1px 3px rgba(16, 24, 40, 0.1),
+        0px 1px 2px rgba(16, 24, 40, 0.06);
+    overflow: hidden;
+    min-height: 504px;
+
+    @for $i from 1 through 6 {
+        &.columns-#{$i} > .table--head,
+        &.columns-#{$i} > .table--body {
+            grid-template-columns: repeat($i, minmax(0, 1fr));
+        }
+    }
+
+    .table--head, .table--body {
+        display: grid;
+
+        & > div {
+            align-items: center;
+            padding-left: 24px;
+            overflow: hidden;
+            display: flex;
+            height: 72px;
+            gap: 12px;
+
+            &:last-child {
+                padding-right: 24px;
+            }
+        }
+    }
+
+    .table--head {
+        background-color: $color-gray-50;
+        border-bottom: 1px solid $color-gray-200;
+        color: $color-gray-500;
+        font-size: 12px;
+
+        .clickable {
+            gap: 4px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            img {
+                width: 12px;
+                height: 12px;
+                display: none;
+                filter: $filter-gray-500;
+            }
+
+            &:hover img {
+                display: block;
+            }
+        }
+
+        & > div {
+            height: 44px;
+        }
+    }
+
+    .table--body {
+        font-weight: 500;
+        font-size: 14px;
+        color: $color-gray-900;
+
+        p {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: $color-gray-500;
+            white-space: nowrap;
+            font-weight: 400;
+
+            &.title {
+                color: $color-gray-900;
+            }
+        }
+
+
+        a {
+            overflow: hidden;
+            font-weight: 700;
+            color: $color-primary-500;
+            text-decoration: none;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &.hover:hover {
+            background-color: $color-primary-50;
+            transition: background-color 100ms ease;
+
+            p, p.title { color: $color-primary-700; }
+            a { color: $color-primary-600; }
+
+            .button--secondary.blank {
+                background-color: transparent;
+                img { filter: $filter-primary-700; }
+
+                &:hover {
+                    background-color: $color-primary-100;
+                }
+            }
+        }
+
+    }
+    .table--body + .table--body {
+        border-top: 1px solid $color-gray-200;
+    }
+
+    .table--footer {
+        display: flex;
+        padding: 16px 24px;
+        border-top: 1px solid $color-gray-200;
+        align-items: center;
+        position: relative;
+        margin-top: auto;
+
+        .page-counter {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
