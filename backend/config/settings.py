@@ -138,6 +138,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Nuxt app settings
-NUXT_OUTPUT_DIR = "assets/"
-TEMPLATES['DIRS'] += [str(APP_DIR / f"{NUXT_OUTPUT_DIR}/public")]
-STATICFILES_DIRS += [str(APP_DIR / f"{NUXT_OUTPUT_DIR}/public/static")]
+NUXT_OUTPUT_DIR = "../assets/"
+TEMPLATES[0]['DIRS'] += [str(BASE_DIR / f"{NUXT_OUTPUT_DIR}/public")]
+STATICFILES_DIRS += [str(BASE_DIR / f"{NUXT_OUTPUT_DIR}/public/static")]
