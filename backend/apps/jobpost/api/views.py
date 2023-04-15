@@ -1,6 +1,7 @@
 
 from collections import OrderedDict
 
+from rest_framework import filters
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import AllowAny
@@ -37,5 +38,5 @@ class JobPostViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
     queryset = JobPost.objects.all()
     model = JobPost
     search_fields = ("title", "description")
-
+    filter_backends = [filters.SearchFilter]
 

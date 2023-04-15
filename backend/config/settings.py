@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # 3rd party apps
     'rest_framework',
     'corsheaders',
+    'django_filters',
 
     # Local apps
     'backend.apps.jobpost',
@@ -122,12 +123,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
-
-CSRF_TRUSTED_ORIGINS = [
-    'https://joblinker-production.up.railway.app'
-]
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
