@@ -20,7 +20,7 @@ APP_DIR = BASE_DIR / 'apps'
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r^jx-g()jydkq%j&=*)1=dx(k%!j%i&7*-8cq#yrgn+hvj==%h'
+SECRET_KEY = SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-r^jx-g()jydkq%j&=*)1=dx(k%!j%i&7*-8cq#yrgn+hvj==%h')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,11 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 3rd party apps
+    'rest_framework',
+    'corsheaders',
+
     # Local apps
     'backend.apps.jobpost',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -141,3 +146,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 NUXT_OUTPUT_DIR = "../static/"
 TEMPLATES[0]['DIRS'] += [str(BASE_DIR / f"{NUXT_OUTPUT_DIR}/public")]
 STATICFILES_DIRS += [str(BASE_DIR / f"{NUXT_OUTPUT_DIR}/public/static")]
+
+# Rest framework settings
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:3000",
+]

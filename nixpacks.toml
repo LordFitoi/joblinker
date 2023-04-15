@@ -22,4 +22,4 @@ cmds = [
 ]
 
 [start]
-cmd = 'gunicorn backend.config.wsgi'
+cmd = 'gunicorn backend.config.production'
