@@ -7,7 +7,7 @@ export function Client(contentType='application/json') {
         baseURL: API.BASE,
         headers: {
             'Content-Type': contentType,
-            'X-CSRFToken':  CSRF_TOKEN ? CSRF_TOKEN.value : null
+            'X-CSRFToken':  CSRF_TOKEN ? CSRF_TOKEN.value : null,
         }
     })
 }
@@ -73,6 +73,10 @@ export class ApiSchema {
         this.client = Client(contentType);
         this.store = store;
         this.path = path;
+
+        if (SETTINGS.DEV_MODE) {
+            this.path = `http://127.0.0.1:8000/${this.path}`;
+        }
     }
     setQueryParams(queryParams={}) {
         let params = new URLSearchParams(queryParams);
