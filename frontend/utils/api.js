@@ -73,6 +73,7 @@ export class ApiSchema {
         this.client = Client(contentType);
         this.store = store;
         this.path = path;
+        this.isComplete = false;
 
         if (SETTINGS.DEV_MODE) {
             this.path = `http://127.0.0.1:8000/${this.path}`;
@@ -89,8 +90,10 @@ export class ApiSchema {
     }
     fetch(queryParams={}) {
         let path = this.setQueryParams(queryParams);
+        this.isComplete = false;
 
         return this.client.get(path).then(response => {
+            this.isComplete = true;
             this.store.objects = response.data;
             this.callStoreMethod('onFetch', response);
         })
@@ -121,8 +124,11 @@ export class PaginatedApiSchema extends ApiSchema {
 
     fetch(searchEntry=null) {
         let path = this.paginator.setQueryParams(this.path, searchEntry);
+        this.isComplete = false;
 
         return this.client.get(path).then(response => {
+            this.isComplete = true;
+            console.log(this.isComplete);
             this.paginator.processResponse(response);
             this.store.objects = this.paginator.results;
             this.callStoreMethod('onFetch', response);

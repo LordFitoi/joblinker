@@ -1,17 +1,18 @@
 <template>
     <main>
         <div class="container search">
-            <FormInput
-                type="text"
-                icon="/assets/icons/search-lg.svg">
-            </FormInput>
-            <button class="button--primary">Search</button>
+            <Searchbar ref="search" :schema="store.schema"></Searchbar>
+            <button @click="$refs.search.onSearch" class="button--primary">Search</button>
         </div>
         <div class="search-grid">
-            <div class="container">
-                <!-- <PlaceholderJobpost v-for="_ in 10" :key="_"></PlaceholderJobpost> -->
-                <Jobpost v-for="object in store.objects" :key="object" :data="object"></Jobpost>
+            <div class="container" v-if="!store.schema?.isComplete">
+                <PlaceholderJobpost v-for="_ in 10" :key="_"></PlaceholderJobpost>
             </div>
+            <ClientOnly v-else>
+                <div class="container">
+                    <Jobpost v-for="object in store.objects" :key="object" :data="object"></Jobpost>
+                </div>
+            </ClientOnly>
             <aside class="container"></aside>
         </div>
     </main>

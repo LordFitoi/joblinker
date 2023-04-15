@@ -4,23 +4,22 @@
             {{ label }}
             <label tabindex="-1" class="input">
                 <img v-if="icon" :src="getImage()">
-                <input
-                    :type="type"
-                    :placeholder="placeholder"
-                    :value="modelValue"
-                    @change="onInput($event)"
-                    @blur="onBlur()">
+                <input :type="type" :placeholder="placeholder">
             </label>
-            <p class="error--label" v-if="validator.$error">
-                {{ validator.$errors[0].$message }}
-            </p>
-
             <template #fallback>
                 {{ label }}
                 <label tabindex="-1" class="input">
                     <img v-if="icon" :src="getImage()">
-                    <input :type="type" :placeholder="placeholder">
+                    <input
+                        :type="type"
+                        :placeholder="placeholder"
+                        :value="modelValue"
+                        @input="onInput($event)"
+                        @blur="onBlur()">
                 </label>
+                <p class="error--label" v-if="validator.$error">
+                    {{ validator.$errors[0].$message }}
+                </p>
             </template>
         </ClientOnly>
     </div>
