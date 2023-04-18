@@ -76,7 +76,7 @@ export class ApiSchema {
         this.isComplete = false;
 
         if (SETTINGS.DEV_MODE) {
-            this.path = `http://127.0.0.1:8000/${this.path}`;
+            this.path = `http://127.0.0.1:8000/api/${this.path}`;
         }
     }
     setQueryParams(queryParams={}) {
@@ -128,7 +128,7 @@ export class PaginatedApiSchema extends ApiSchema {
 
         return this.client.get(path).then(response => {
             this.isComplete = true;
-            console.log(this.isComplete);
+
             this.paginator.processResponse(response);
             this.store.objects = this.paginator.results;
             this.callStoreMethod('onFetch', response);

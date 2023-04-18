@@ -9,7 +9,7 @@ export default defineStore('ExampleStore', {
     },
     actions: {
         onInit() {
-            this.schema = new PaginatedApiSchema(this, 'api/jobposts/');
+            this.schema = new PaginatedApiSchema(this, API.JOBPOSTS);
             this.schema.fetch();
         }
     }

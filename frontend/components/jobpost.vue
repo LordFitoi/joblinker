@@ -1,5 +1,5 @@
 <template>
-    <div class="jobpost--item">
+    <a class="jobpost--item" :href="data.origin_url">
         <div class="company--logo"></div>
         <div>
             <h3> {{ data.title }}</h3>
@@ -10,7 +10,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </a>
 </template>
 
 <script>

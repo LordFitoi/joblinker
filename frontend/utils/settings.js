@@ -27,4 +27,5 @@ export const API = {
     BASE: '/api/',
     USER: 'users/me/',
     USERS: 'users/',
+    JOBPOSTS: 'jobposts/',
 };

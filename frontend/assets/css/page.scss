@@ -91,6 +91,7 @@
             width: 100%;
             padding: 16px;
             transition: background-color 200ms ease;
+            text-decoration: none;
 
             &:nth-child(2n) {
                 background-color: $color-gray-50;
