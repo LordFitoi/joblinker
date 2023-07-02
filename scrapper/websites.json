@@ -1,0 +1,17 @@
+[
+    {
+        "url": "https://himalayas.app/jobs",
+        "link": "//ul[@id='card-group']/li[@data-action='click->card#goToPage']/@data-path",
+        "next_page": "//a[@data-action='click->instantsearch#changePage'][contains(@class, 'btn')][@rel='next']/@href",
+        "jobpost": {
+            "title": "//h1/text()",
+            "description": "//div[@class='trix-content']",
+            "origin_url": "//meta[@property='og:url']/@content",
+            "company_link": "//span/a[contains(@href, 'companies')]/@href"
+        },
+        "company": {
+            "name": "//h1//span/text()",
+            "website": "//span[contains(text(), 'Visit')]/../@href"
+        }
+    }
+]
