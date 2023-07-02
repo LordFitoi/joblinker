@@ -11,7 +11,8 @@
         },
         "company": {
             "name": "//h1//span/text()",
-            "website": "//span[contains(text(), 'Visit')]/../@href"
+            "website": "//span[contains(text(), 'Visit')]/../@href",
+            "logo_url": "//section//div[contains(@class, 'avatar-logo')]/img[contains(@title, 'logo')]/@src"
         }
     }
 ]

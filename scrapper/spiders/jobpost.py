@@ -28,6 +28,7 @@ class JobpostSpider(scrapy.Spider):
         })
       
         yield {
+            "logo_url": response.xpath(company_config['logo_url']).get(),
             "company": company,
             "jobpost": jobpost,
             "weborigin": weborigin

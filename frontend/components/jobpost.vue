@@ -1,6 +1,8 @@
 <template>
     <a class="jobpost--item" :href="data.origin_url">
-        <div class="company--logo"></div>
+        <div class="company--logo">
+            <img :src="data.logo" alt="">
+        </div>
         <div>
             <h3> {{ data.title }}</h3>
             <p>{{ data.description }}</p>
