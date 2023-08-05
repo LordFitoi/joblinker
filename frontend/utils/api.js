@@ -18,6 +18,7 @@ export  class Paginator {
         this.nextPage = null;
         this.previousPage = null;
         this.results = [];
+        this.itemsCount = 0;
         this.searchParams = new URLSearchParams();
     }
     setQueryParams(url, searchEntry=null) {
@@ -53,6 +54,7 @@ export  class Paginator {
         this.nextPage = Number(this.extractPageNumber(response.data.next));
         this.previousPage = Number(this.extractPageNumber(response.data.previous));
         this.totalPages = response.data.total_pages;
+        this.itemsCount = response.data.count;
     }
     getPageText() {
             let page = 1;

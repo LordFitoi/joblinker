@@ -1,16 +1,26 @@
 <template>
     <main ref="top">
-        <div class="container search">
-            <Searchbar ref="search" :schema="store.schema"></Searchbar>
-            <button @click="$refs.search.onSearch" class="button--primary">Search</button>
-        </div>
         <div class="search-grid">
+            <ClientOnly>
+                <div class="search-results">
+                    {{ paginator.itemsCount }} Results found
+                    <span v-if="paginator.searchParams.get('search')">
+                        - "{{ paginator.searchParams.get("search") }}"
+                    </span>
+                </div>
+            </ClientOnly>
             <div class="container" v-if="!store.schema?.isComplete">
                 <PlaceholderJobpost v-for="_ in 10" :key="_"></PlaceholderJobpost>
             </div>
+     
             <ClientOnly v-else>
                 <div class="container">
                     <Jobpost v-for="object in store.objects" :key="object" :data="object"></Jobpost>
+
+                    <div class="no-results" v-if="!store.objects.length">
+                        <img src="~/assets/icons/search-lg.svg">
+                        No results found...
+                    </div>
 
                     <div class="table--footer">
                         <button class="button--secondary"
@@ -29,8 +39,6 @@
                     </div>
                 </div>
             </ClientOnly>
-            
-            <aside class="container"></aside>
         </div>
     </main>
 </template>

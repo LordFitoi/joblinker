@@ -4,7 +4,7 @@
     display: flex;
     overflow-y: auto;
     background-color: $color-gray-50;
-    padding: 16px;
+    flex-direction: column;
 
     main {
         display: grid;
@@ -77,12 +77,12 @@
         }
     }
 
-    @media (min-width: $breakpoint-tablet) {
-        .search-grid {
-            grid-template-columns: 1fr 240px;
-            gap: 16px;
-        }
-    }
+    // @media (min-width: $breakpoint-tablet) {
+    //     .search-grid {
+    //         grid-template-columns: 1fr 240px;
+    //         gap: 16px;
+    //     }
+    // }
 
     
 }
