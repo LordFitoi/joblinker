@@ -1,6 +1,5 @@
 export const SETTINGS = {
     DEV_MODE: process.env.NODE_ENV == "development",
-    PAGINATION_MAX_ITEMS_COUNT: 100,
     CKEDITOR_CONFIG: {
         height: 154,
         removePlugins: [

@@ -1,0 +1,16 @@
+.container {
+    @include container-base;
+
+    &.search {
+        height: max-content;
+        min-height: 0;
+        flex-direction: row;
+        gap: 16px;
+        padding: 8px;
+
+        .input--container {
+            flex-grow: 1;
+        }
+
+    }        
+}

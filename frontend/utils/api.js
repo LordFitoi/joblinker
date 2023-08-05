@@ -50,9 +50,9 @@ export  class Paginator {
     }
     processResponse(response) {
         this.results = response.data.results;
-        this.nextPage = this.extractPageNumber(response.data.next);
-        this.previousPage = this.extractPageNumber(response.data.previous);
-        this.totalPages = Math.max(response.data.count / SETTINGS.PAGINATION_MAX_ITEMS_COUNT, 1);
+        this.nextPage = Number(this.extractPageNumber(response.data.next));
+        this.previousPage = Number(this.extractPageNumber(response.data.previous));
+        this.totalPages = response.data.total_pages;
     }
     getPageText() {
             let page = 1;
@@ -120,6 +120,18 @@ export class PaginatedApiSchema extends ApiSchema {
     constructor(store, path, contentType='application/json') {
         super(store, path, contentType);
         this.paginator = new Paginator();
+    }
+    
+    previousPage() {
+        this.paginator.toPreviousPage(() => {
+            this.fetch();
+        });
+    }
+
+    nextPage() {
+        this.paginator.toNextPage(() => {
+            this.fetch();
+        });
     }
 
     fetch(searchEntry=null) {

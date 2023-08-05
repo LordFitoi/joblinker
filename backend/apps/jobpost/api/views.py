@@ -13,7 +13,7 @@ from backend.apps.jobpost.models import JobPost
 
 
 class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 20
+    page_size = 50
     max_page_size = 100
     page_size_query_param = "page_size"
 
