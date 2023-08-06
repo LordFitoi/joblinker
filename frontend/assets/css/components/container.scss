@@ -11,6 +11,11 @@
         .input--container {
             flex-grow: 1;
         }
-
-    }        
+    }
+    
+    @media (max-width: $breakpoint-desktop) {
+        box-shadow: none;
+        border: none;
+        border-radius: 0%;
+    }
 }
