@@ -1,5 +1,7 @@
 .container {
     @include container-base;
+    box-shadow: none;
+    border-color: $color-gray-300;
 
     &.search {
         height: max-content;
@@ -14,7 +16,6 @@
     }
     
     @media (max-width: $breakpoint-desktop) {
-        box-shadow: none;
         border: none;
         border-radius: 0%;
     }

@@ -1,7 +1,6 @@
 header {
     padding: 24px 0;
-    margin-bottom: 32px;
-    max-width: 980px;
+    max-width: $breakpoint-desktop;
     margin-left: auto;
     margin-right: auto;
     gap: 16px;

@@ -2,7 +2,7 @@
     <div class="jobpost--item">
         <div class="company--logo"></div>
         <div class="placeholder">
-            <h3>.</h3>
+            <h2>.</h2>
             <p>.</p>
             <p>.</p>
             <div class="tags">

@@ -4,8 +4,13 @@
     gap: 8px;
     width: 100%;
     padding: 16px;
-    transition: background-color 200ms ease;
+    transition: background-color 300ms ease;
     text-decoration: none;
+    border-top: 1px solid $color-gray-200;
+
+    &:nth-child(1) {
+        border-top: none;
+    }
 
     &:nth-child(2n) {
         background-color: $color-gray-50;
@@ -19,15 +24,29 @@
         }
 
         .placeholder {
-            h1, h3, h4, p, .tag {
+            h1, h2, h4, p, .tag {
                 background-color: $color-primary-200;
+                color: transparent !important;
+            }
+
+        }
+        :not(.placeholder) {
+            h1, h2, h4, p, .tag {
+                color: $color-primary-700;
             }
         }
     }
 
+    :not(.placeholder) {
+        h1, h2, h4, p, .tag {
+            transition: color 300ms ease;
+        }
+    }
+
     .placeholder {
-        h1, h3, h4, p, .tag {
+        h1, h2, h4, p, .tag {
             transition: background-color 200ms ease;
+            color: transparent;
         }
     }
 
@@ -36,14 +55,16 @@
         height: 42px;
         background-color: $color-gray-200;
         border-radius: 50%;
-
+        overflow: hidden;
         transition: background-color 200ms ease;
+        
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
     }
+
     .tags {
         display: flex;
         margin-top: 16px;

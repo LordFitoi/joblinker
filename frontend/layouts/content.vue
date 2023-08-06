@@ -4,12 +4,12 @@
             <NuxtLink to="/">
                 <img class="logo" src="~/assets/icons/placeholder_logo.svg">
             </NuxtLink>
-            <div class="container search">
-                <Searchbar ref="search" :schema="store.schema"></Searchbar>
-                <button @click="$refs.search.onSearch" class="button--primary">Search</button>
-            </div>
         </header>
-        <slot></slot>
+        <main class="background">
+            <div class="content">
+                <slot></slot>
+            </div>
+        </main>
         <LayoutFooter />
     </div>
 </template>

@@ -1,7 +1,10 @@
 <template>
-    <main ref="top">
+    <main class="main-container" ref="top">
         <div class="search-grid">
-            <ClientOnly>
+            <div class="search-results" v-if="!store.schema?.isComplete">
+                Loading...
+            </div>
+            <ClientOnly v-else>
                 <div class="search-results">
                     {{ paginator.itemsCount }} Results found
                     <span v-if="paginator.searchParams.get('search')">
@@ -9,10 +12,19 @@
                     </span>
                 </div>
             </ClientOnly>
+         
+
             <div class="container" v-if="!store.schema?.isComplete">
                 <PlaceholderJobpost v-for="_ in 10" :key="_"></PlaceholderJobpost>
+
+                <div class="table--footer">
+                    <div class="button--secondary">Previous</div>
+                    <p class="page-counter">
+                        Page 1 of 1
+                    </p>
+                    <div class="button--secondary ml-auto">Next</div>
+                </div>
             </div>
-     
             <ClientOnly v-else>
                 <div class="container">
                     <Jobpost v-for="object in store.objects" :key="object" :data="object"></Jobpost>
