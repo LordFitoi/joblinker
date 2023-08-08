@@ -1,9 +1,7 @@
 <template>
     <div class="page--container">
         <header>
-            <NuxtLink to="/">
-                <img class="logo" src="~/assets/icons/placeholder_logo.svg">
-            </NuxtLink>
+            <LayoutLogo />
         </header>
         <main class="background">
             <div class="content">

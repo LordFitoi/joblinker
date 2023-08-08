@@ -1,9 +1,7 @@
 <template>
     <div class="page--container">
         <header>
-            <NuxtLink to="/">
-                <img class="logo" src="~/assets/icons/placeholder_logo.svg">
-            </NuxtLink>
+            <LayoutLogo />
             <div class="container search">
                 <Searchbar ref="search" :schema="store.schema"></Searchbar>
                 <button @click="$refs.search.onSearch" class="button--primary">Search</button>
