@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 BASE_DIR = Path(__file__).resolve().parent.parent
 APP_DIR = BASE_DIR / 'apps'
 
@@ -20,12 +21,19 @@ APP_DIR = BASE_DIR / 'apps'
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-r^jx-g()jydkq%j&=*)1=dx(k%!j%i&7*-8cq#yrgn+hvj==%h')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-r^jx-g()jydkq%j&=*)1=dx(k%!j%i&7*-8cq#yrgn+hvj==%h')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+
+# SECURITY
+# ------------------------------------------------------------------------------
+SESSION_COOKIE_HTTPONLY = True
+CSRF_COOKIE_HTTPONLY = True
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = "DENY"
 
 
 # Application definition
@@ -129,11 +137,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [str(BASE_DIR / 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 MEDIA_URL = "media/"
-MEDIA_ROOT = str(APP_DIR / "media")
+
+STORAGE_DIR = ROOT_DIR / "storage"
+STATIC_ROOT = str(BASE_DIR / "staticfiles")
+
+MEDIA_ROOT = str(STORAGE_DIR / "media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -144,7 +153,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Nuxt app settings
 NUXT_OUTPUT_DIR = "../static/"
 TEMPLATES[0]['DIRS'] += [str(BASE_DIR / f"{NUXT_OUTPUT_DIR}/public")]
-STATICFILES_DIRS += [str(BASE_DIR / f"{NUXT_OUTPUT_DIR}/public/static")]
+STATICFILES_DIRS = [str(BASE_DIR / f"{NUXT_OUTPUT_DIR}/public/static")]
 
 # Rest framework settings
 REST_FRAMEWORK = {

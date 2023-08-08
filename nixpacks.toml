@@ -17,7 +17,7 @@ cmds = [
 [phases.build]
 cmds = [
     'npm --prefix frontend/ run generate',
-    'python manage.py collectstatic',
+    'python manage.py collectstatic --no-input',
     'python manage.py migrate'
 ]
 
