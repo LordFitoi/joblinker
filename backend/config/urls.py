@@ -17,8 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
-from django.conf.urls.static import static
 from django.conf import settings
+from backend.apps.utils import serve_media
 
 
 urlpatterns = [
@@ -26,5 +26,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path("api/", include("backend.config.api")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+    path(f"{settings.MEDIA_URL[1:]}<str:media_name>", serve_media)
+]
