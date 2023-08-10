@@ -141,8 +141,13 @@ MEDIA_URL = "media/"
 
 STORAGE_DIR = ROOT_DIR / "storage"
 STATIC_ROOT = str(BASE_DIR / "staticfiles")
-
 MEDIA_ROOT = str(STORAGE_DIR / "media")
+
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
