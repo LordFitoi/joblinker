@@ -13,7 +13,6 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 BASE_DIR = Path(__file__).resolve().parent.parent
 APP_DIR = BASE_DIR / 'apps'
 
@@ -139,9 +138,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = "media/"
 
-STORAGE_DIR = ROOT_DIR / "storage"
 STATIC_ROOT = str(BASE_DIR / "staticfiles")
-MEDIA_ROOT = str(STORAGE_DIR / "media")
+MEDIA_ROOT = str(BASE_DIR / "media")
 
 STORAGES = {
     "default": {
