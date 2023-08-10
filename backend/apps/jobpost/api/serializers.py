@@ -28,8 +28,12 @@ class JobPostSerializer(serializers.HyperlinkedModelSerializer):
 
     def to_representation(self, instance):
         request = self.context['request']
+
         data = super().to_representation(instance)
         data['description'] = self.format(data['description'])
-        data['logo'] = f"{request.scheme}://{request.META['HTTP_HOST']}{instance.company.logo.url}"
+        data['logo'] = None
+        
+        if instance.company.logo:
+            data['logo'] = f"{request.scheme}://{request.META['HTTP_HOST']}{ instance.company.logo.url}"
 
         return data
