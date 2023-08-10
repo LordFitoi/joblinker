@@ -45,10 +45,10 @@ class RecolectorSpider(scrapy.Spider, ParseMixins):
                 )
             )
 
-        if next_page:
-            yield response.follow(
-                next_page,
-                callback=self.parse,
-                cb_kwargs=dict(website=website)
-            )
+        # if next_page:
+        #     yield response.follow(
+        #         next_page,
+        #         callback=self.parse,
+        #         cb_kwargs=dict(website=website)
+        #     )
 

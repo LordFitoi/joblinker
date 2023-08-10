@@ -139,7 +139,7 @@ STATIC_URL = 'static/'
 MEDIA_URL = "media/"
 
 STATIC_ROOT = str(BASE_DIR / "staticfiles")
-MEDIA_ROOT = str(BASE_DIR / "media")
+MEDIA_ROOT = os.environ.get("RAILWAY_VOLUME_MOUNT_PATH", str(BASE_DIR / "media"))
 
 STORAGES = {
     "default": {
