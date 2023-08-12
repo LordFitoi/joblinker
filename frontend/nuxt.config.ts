@@ -16,6 +16,7 @@ export default defineNuxtConfig({
                 ],
             },
         ],
+        'nuxt-gtag'
     ],
     app: {
         buildAssetsDir: "/static/",
@@ -30,4 +31,7 @@ export default defineNuxtConfig({
             dir: `./../${config.outputDir}`,
         }
     },
+    gtag: {
+        id: config.env.GTAG
+    }
 })
