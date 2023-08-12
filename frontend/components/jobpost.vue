@@ -1,8 +1,8 @@
 <template>
     <a class="jobpost--item" :href="data.origin_url">
         <div class="company--logo">
-            <img v-if="fallback" src="~/assets/icons/logo.svg" class="fallback">
-            <img v-else :src="data.logo" alt="" @error="fallback=true">
+            <img v-if="fallback" src="~/assets/icons/logo.svg" class="fallback" alt="">
+            <img v-else :src="data.logo" @error="fallback=true" alt="">
         </div>
         <div>
             <h2>{{ data.title }}</h2>

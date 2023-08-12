@@ -3,13 +3,13 @@
         <ClientOnly>
             {{ label }}
             <label tabindex="-1" class="input">
-                <img v-if="icon" :src="getImage()">
+                <img v-if="icon" :src="getImage()" alt="" role="img">
                 <input :type="type" :placeholder="placeholder">
             </label>
             <template #fallback>
                 {{ label }}
                 <label tabindex="-1" class="input">
-                    <img v-if="icon" :src="getImage()">
+                    <img v-if="icon" :src="getImage()" alt="" role="img">
                     <input
                         :type="type"
                         :placeholder="placeholder"
