@@ -20,12 +20,14 @@ CORS_ALLOWED_ORIGINS = []
 CORS_ALLOW_CREDENTIALS = True
 ALLOWED_HOSTS = [
     "joblinker-production.up.railway.app",
+    "www.joblinker.site",
     "joblinker.site"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://joblinker-production.up.railway.app",
-    "www.joblinker.site"
+    "www.joblinker.site",
+    "joblinker.site"
 ]
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")

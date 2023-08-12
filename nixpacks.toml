@@ -22,4 +22,4 @@ cmds = [
 ]
 
 [start]
-cmd = 'python manage.py crawl; gunicorn backend.config.wsgi'
+cmd = 'gunicorn backend.config.wsgi'
