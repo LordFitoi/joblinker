@@ -2,7 +2,7 @@
     <div>
         <h1>Privacy Policy</h1>
         <p>
-            Welcome to www.joli.com Privacy Policy. This document outlines how we handle and protect user information on our website. We prioritize the security of your data. When you provide personal information that can identify you, we ensure it's used only according to this policy. Be aware that this policy might change over time. We advise you to review this page periodically to stay informed about any updates.
+            Welcome to www.joblinker.site Privacy Policy. This document outlines how we handle and protect user information on our website. We prioritize the security of your data. When you provide personal information that can identify you, we ensure it's used only according to this policy. Be aware that this policy might change over time. We advise you to review this page periodically to stay informed about any updates.
         </p>
         <h2>Information We Collect</h2>
         <p>
@@ -35,7 +35,7 @@
         </p>
         <h2>Changes to Privacy Policy</h2>
         <p>
-            www.joli.com reserves the right to modify this Privacy Policy anytime. Stay updated by visiting this page periodically.
+            www.joblinker.site reserves the right to modify this Privacy Policy anytime. Stay updated by visiting this page periodically.
         </p>
     </div>
 </template>
