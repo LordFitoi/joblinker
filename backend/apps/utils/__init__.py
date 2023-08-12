@@ -1,7 +1,7 @@
-import uuid
+import uuid, os
 from django.conf import settings
 from django.db import models
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 
 class AbstractBaseModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -13,5 +13,11 @@ class AbstractBaseModel(models.Model):
 
 
 def serve_media(_, media_name):
-    media_file = open(f"{settings.MEDIA_ROOT}/{media_name}", "rb").read()
-    return HttpResponse(media_file, content_type="image")
+
+    path = f"{settings.MEDIA_ROOT}/{media_name}"
+
+    if os.path.exists(path):
+        media_file = open(path, "rb").read()
+        return HttpResponse(media_file, content_type="image")
+    
+    return HttpResponseNotFound()

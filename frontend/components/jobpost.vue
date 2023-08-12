@@ -1,7 +1,8 @@
 <template>
     <a class="jobpost--item" :href="data.origin_url">
         <div class="company--logo">
-            <img :src="data.logo" alt="">
+            <img v-if="fallback" src="~/assets/icons/logo.svg" class="fallback">
+            <img v-else :src="data.logo" alt="" @error="fallback=true">
         </div>
         <div>
             <h2>{{ data.title }}</h2>
@@ -21,6 +22,11 @@ export default {
         data: {
             type: Object,
             required: true
+        }
+    },
+    data() {
+        return {
+            fallback: false
         }
     }
 }
