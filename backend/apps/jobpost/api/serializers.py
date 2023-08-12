@@ -1,11 +1,22 @@
 import re
 from rest_framework import serializers
 from django.utils.html import strip_tags
-from ..models import JobPost
+from ..models import JobPost, Company
+
+
+
+class CompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Company
+        fields = [
+            'name',
+            'logo'
+        ]
 
 
 class JobPostSerializer(serializers.HyperlinkedModelSerializer):
     categories = serializers.StringRelatedField(many=True)
+    company = CompanySerializer(read_only=True)
 
     class Meta:
         model = JobPost
@@ -15,6 +26,7 @@ class JobPostSerializer(serializers.HyperlinkedModelSerializer):
             'origin_url',
             'release_date',
             'categories',
+            'company'
         ]
 
     def truncate(self, text, length=200):
@@ -27,13 +39,8 @@ class JobPostSerializer(serializers.HyperlinkedModelSerializer):
         return self.truncate(strip_tags(text).strip())
 
     def to_representation(self, instance):
-        request = self.context['request']
-
         data = super().to_representation(instance)
         data['description'] = self.format(data['description'])
-        data['logo'] = None
-        
-        if instance.company.logo:
-            data['logo'] = f"{request.scheme}://{request.META['HTTP_HOST']}{ instance.company.logo.url}"
 
         return data
+
