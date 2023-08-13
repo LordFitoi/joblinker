@@ -11,7 +11,9 @@
                 <cite v-text="backend.render('object.website')"></cite>
             </div>
         </a>
-        <div class="description" v-html="backend.render('object.description')"></div>
+
+        <h2>About <span v-text="backend.render('object.name')"></span></h2>
+        <div class="description" v-text="backend.render('object.description | safe')"></div>
 
         <h2>Related jobs</h2>
         <div class="container">

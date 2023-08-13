@@ -1,11 +1,25 @@
 @import '../wolverine/variables.scss';
 
-main {
+.page--container main {
+    h2 {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+    h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+        font-weight: 400;
+        
+        strong {
+            font-weight: 400;
+        }
+    }
+
     a.company-heading {
         display: flex;
         gap: 16px;
         align-items: center;
-        margin-bottom: 24px;
+        margin-bottom: 64px;
         text-decoration: none;
 
         .inner {
@@ -28,5 +42,15 @@ main {
 
     .description {
         margin-bottom: 32px;
+
+        p + p {
+            margin-top: 16px;
+        }
+        p + h3 {
+            margin-top: 24px;
+        }
+        ul {
+            padding-left: 24px;
+        }
     }
 }

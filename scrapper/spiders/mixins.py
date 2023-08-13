@@ -8,7 +8,8 @@ class ParseMixins:
 
         company = CompanyItem(**{
             "name": response.xpath(company_config["name"]).get().strip(),
-            "website": f"https://{urlparse(response.xpath(company_config['website']).get()).netloc}"
+            "website": f"https://{urlparse(response.xpath(company_config['website']).get()).netloc}",
+            "description": response.xpath(company_config["description"]).get()
         })
 
         yield {

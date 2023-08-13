@@ -18,6 +18,7 @@ class CompanyItem(scrapy.Item):
     name = scrapy.Field()
     origin = scrapy.Field()
     website = scrapy.Field()
+    description = scrapy.Field()
 
 
 class WebOriginItem(scrapy.Item):
