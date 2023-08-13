@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-const config = JSON.parse(fs.readFileSync('config.json', 'utf-8'))
+const config = JSON.parse(fs.readFileSync('config.json', 'utf-8'));
 
 export default defineNuxtConfig({
     ssr: true,
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
                 {
                     hid: 'description',
                     name: 'description',
-                    content: "Discover your next career opportunity with Joblinker.site! Explore a wide range of job listings and connect with employers effortlessly. Find your dream job with ease and take the next step towards a fulfilling career today"
+                    content: "Discover your next career opportunity with joblinker.site! Explore a wide range of job listings and connect with employers effortlessly. Find your dream job with ease and take the next step towards a fulfilling career today"
                 }
             ],
             link: [
@@ -43,7 +43,7 @@ export default defineNuxtConfig({
     },
     css: ['~/assets/css/styles.scss'],
     experimental: {
-        payloadExtraction: false
+        payloadExtraction: false,
     },
     nitro: {
         output: {
@@ -53,5 +53,11 @@ export default defineNuxtConfig({
     gtag: {
         id: config.env.GTAG
     },
+
+    generate: {
+        routes: [
+            '/companies/company.html'
+        ]
+    }
     
 })
