@@ -59,50 +59,29 @@
             }
         }
 
-        .placeholder {
-            h1, h2, h4, span, cite, p, .tag {
-                background-color: $color-primary-200;
-                color: transparent !important;
-            }
-
-        }
+    
         :not(.placeholder) {
             h1, h2, h4, span, cite, p, .tag {
                 color: $color-primary-700;
             }
         }
     }
-
+    &.placeholder:hover {
+        h1, h2, h4, span, cite, p, .tag {
+            background-color: $color-primary-200;
+            color: transparent !important;
+        }
+    }
     :not(.placeholder) {
         h1, h2, h4, span, cite, p, .tag {
             transition: color 300ms ease;
         }
     }
 
-    .placeholder {
+    &.placeholder {
         h1, h2, h4, span, cite, p, .tag {
             transition: background-color 200ms ease;
-            color: transparent;
-        }
-    }
-
-    .company--logo {
-        width: 42px;
-        height: 42px;
-        background-color: $color-gray-200;
-        border-radius: 50%;
-        overflow: hidden;
-        transition: background-color 200ms ease;
-        
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-
-            &.fallback {
-                filter: grayscale(1) brightness(0) $filter-gray-500;
-                transition: filter 300ms ease;
-            }
+            color: transparent !important;
         }
     }
 

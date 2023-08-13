@@ -3,7 +3,7 @@
         <div v-if="metaVisible" class="meta">
             <div class="company--logo">
                 <img v-if="fallback" src="~/assets/icons/logo.svg" class="fallback" alt="">
-                <img v-else :src="data.company.logo" @error="fallback=true" alt="">
+                <img v-else :src="data.company.logo" @error="fallback=true" :alt="`${data.company.name} logo`">
             </div>
             <div class="inner">
                 <span>{{ data.company.name }}</span>
