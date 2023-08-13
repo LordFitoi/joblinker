@@ -1,5 +1,6 @@
 from django.db import models
 from backend.apps.utils import AbstractBaseModel
+from django_extensions.db.models import AutoSlugField
 
 
 class WebsiteOrigin(AbstractBaseModel):
@@ -17,7 +18,7 @@ class Category(AbstractBaseModel):
 
     def __str__(self):
         return self.name
-    
+
 
 class Location(AbstractBaseModel):
     name = models.CharField(max_length=100)
@@ -33,6 +34,7 @@ class Company(AbstractBaseModel):
     description = models.TextField(blank=True, null=True)
     origin = models.ForeignKey(WebsiteOrigin, on_delete=models.CASCADE, blank=True, null=True)
     location = models.ForeignKey(Location, on_delete=models.CASCADE, blank=True, null=True)
+    slug = AutoSlugField(populate_from=['name'])
 
     def __str__(self):
         return self.name
@@ -65,6 +67,7 @@ class JobPost(AbstractBaseModel):
     end_salary = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     is_remote = models.BooleanField(default=False)
     release_date = models.DateTimeField(blank=True, null=True)
+    slug = AutoSlugField(populate_from=['title', 'id'])
 
     def __str__(self):
         return f"{self.title} - {self.company.name}" 

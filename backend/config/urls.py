@@ -19,12 +19,15 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 from django.conf import settings
 from backend.apps.utils import serve_media
-
+from backend.apps.jobpost.views import CompanyDetailView
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name="index.html")),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path("api/", include("backend.config.api")),
+    path('companies/<str:company_slug>', CompanyDetailView.as_view()),
+    path('privacy/', TemplateView.as_view(template_name="privacy/index.html")),
+
     path(f"{settings.MEDIA_URL[1:]}<str:media_name>", serve_media)
 ]
