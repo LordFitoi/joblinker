@@ -1,63 +1,74 @@
 <template>
-    <main class="main-container" ref="top">
-        <div class="search-grid">
-            <div class="search-results" v-if="!store.schema?.isComplete">
-                Loading...
+    <NuxtLayout name="default">
+        <template #header>
+            <div class="container search">
+                <Searchbar ref="search" :schema="store.schema"></Searchbar>
+                <button @click="$refs.search.onSearch" class="button--primary">Search</button>
             </div>
-            <ClientOnly v-else>
-                <div class="search-results">
-                    {{ paginator.itemsCount }} Results found
-                    <span v-if="paginator.searchParams.get('search')">
-                        - "{{ paginator.searchParams.get("search") }}"
-                    </span>
-                </div>
-            </ClientOnly>
-         
-            <div class="container" v-if="!store.schema?.isComplete">
-                <PlaceholderJobpost v-for="_ in 10" :key="_"></PlaceholderJobpost>
+        </template>
 
-                <div class="table--footer">
-                    <div class="button--secondary">Previous</div>
-                    <p class="page-counter">
-                        Page 1 of 1
-                    </p>
-                    <div class="button--secondary ml-auto">Next</div>
+        <main class="main-container" ref="top">
+            <div class="search-grid">
+                <div class="search-results" v-if="!store.schema?.isComplete">
+                    Loading...
                 </div>
-            </div>
-            <ClientOnly v-else>
-                <div class="container">
-                    <Jobpost v-for="object in store.objects" :key="object" :data="object"></Jobpost>
-
-                    <div class="no-results" v-if="!store.objects.length">
-                        <img src="~/assets/icons/search-lg.svg">
-                        No results found...
+                <ClientOnly v-else>
+                    <div class="search-results">
+                        {{ paginator.itemsCount }} Results found
+                        <span v-if="paginator.searchParams.get('search')">
+                            - "{{ paginator.searchParams.get("search") }}"
+                        </span>
                     </div>
-
+                </ClientOnly>
+             
+                <div class="container" v-if="!store.schema?.isComplete">
+                    <PlaceholderJobpost v-for="_ in 10" :key="_"></PlaceholderJobpost>
+    
                     <div class="table--footer">
-                        <button class="button--secondary"
-                            @click="onPrevious()"
-                            :disabled="!paginator.previousPage">
-                            Previous
-                        </button>
+                        <div class="button--secondary">Previous</div>
                         <p class="page-counter">
-                            {{ paginator.getPageText() }}
+                            Page 1 of 1
                         </p>
-                        <button class="button--secondary ml-auto"
-                            @click="onNext()"
-                            :disabled="!paginator.nextPage">
-                            Next
-                        </button>
+                        <div class="button--secondary ml-auto">Next</div>
                     </div>
                 </div>
-            </ClientOnly>
-        </div>
-    </main>
+                <ClientOnly v-else>
+                    <div class="container">
+                        <Jobpost v-for="object in store.objects" :key="object" :data="object"></Jobpost>
+    
+                        <div class="no-results" v-if="!store.objects.length">
+                            <img src="~/assets/icons/search-lg.svg">
+                            No results found...
+                        </div>
+    
+                        <div class="table--footer">
+                            <button class="button--secondary"
+                                @click="onPrevious()"
+                                :disabled="!paginator.previousPage">
+                                Previous
+                            </button>
+                            <p class="page-counter">
+                                {{ paginator.getPageText() }}
+                            </p>
+                            <button class="button--secondary ml-auto"
+                                @click="onNext()"
+                                :disabled="!paginator.nextPage">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </ClientOnly>
+            </div>
+        </main>
+    </NuxtLayout>
 </template>
 <script>
 import Store from '~~/stores/jobpost.js';
 
 export default {
     setup() {
+        definePageMeta({ layout: false });
+
         return {
             store: Store()
         }
