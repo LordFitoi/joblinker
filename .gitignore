@@ -133,3 +133,5 @@ static/
 staticfiles/
 
 media/
+
+.DS_Store
