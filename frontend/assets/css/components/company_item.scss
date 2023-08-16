@@ -1,6 +1,6 @@
-.jobpost--item {
-    display: flex;
-    flex-direction: column;
+.company--item {
+    display: grid;
+    grid-template-columns: max-content 1fr;
     gap: 16px;
     width: 100%;
     padding: 16px;

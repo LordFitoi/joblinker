@@ -3,6 +3,7 @@
         v-model="entry"
         icon="/assets/icons/search-lg.svg"
         @keydown.enter="onSearch()"
+        :placeholder="placeholder"
     >
     </FormInput>
 </template>
@@ -13,6 +14,10 @@ export default {
         schema: {
             type: Object,
             required: false
+        },
+        placeholder: {
+            type: String,
+            default: "Search your prompt."
         }
     },
     data() {

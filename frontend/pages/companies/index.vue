@@ -2,7 +2,10 @@
     <NuxtLayout name="default">
         <template #header>
             <div class="container search">
-                <Searchbar ref="search" :schema="store.schema"></Searchbar>
+                <Searchbar
+                    ref="search" :schema="store.schema"
+                    placeholder="Search company by title, description or career"
+                />
                 <button @click="$refs.search.onSearch" class="button--primary">Search</button>
             </div>
         </template>
@@ -20,9 +23,9 @@
                         </span>
                     </div>
                 </ClientOnly>
-             
+                
                 <div class="container" v-if="!store.schema?.isComplete">
-                    <PlaceholderJobpost v-for="_ in 10" :key="_"></PlaceholderJobpost>
+                    <PlaceholderCompany v-for="_ in 10" :key="_"></PlaceholderCompany>
     
                     <div class="table--footer">
                         <div class="button--secondary">Previous</div>

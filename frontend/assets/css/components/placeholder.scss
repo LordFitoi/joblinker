@@ -28,7 +28,8 @@
         h1 + p { margin-top: $general-spacing-xs; }
     }
 
-    &.jobpost--item {
+    &.jobpost--item,
+    &.company--item {
         h2 { height: $general-spacing-md; }
         p { height: $general-spacing-xs; }
 

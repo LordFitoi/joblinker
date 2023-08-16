@@ -2,7 +2,10 @@
     <NuxtLayout name="default">
         <template #header>
             <div class="container search">
-                <Searchbar ref="search" :schema="store.schema"></Searchbar>
+                <Searchbar 
+                    ref="search" :schema="store.schema"
+                    placeholder="Search job by title, description or career"
+                />
                 <button @click="$refs.search.onSearch" class="button--primary">Search</button>
             </div>
         </template>
