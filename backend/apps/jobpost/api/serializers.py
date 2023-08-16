@@ -10,10 +10,11 @@ class FormatMixins:
         return f"{text[:length - 3]}..." if len(text) > length else text[:length] 
     
     def format(self, text):
-        text = re.sub('</?strong>', '', text)
-        text = re.sub('<h[1-9]>[^<]+</h[1-9]>', '', text)
-        
-        return self.truncate(strip_tags(text).strip())
+        if isinstance(text, str):
+            text = re.sub('</?strong>', '', text)
+            text = re.sub('<h[1-9]>[^<]+</h[1-9]>', '', text)
+            
+            return self.truncate(strip_tags(text).strip())
 
 
 class CompanySerializer(serializers.ModelSerializer):
