@@ -43,8 +43,25 @@ $filter-gray-300: invert(83%) sepia(4%) saturate(346%) hue-rotate(178deg) bright
 $filter-gray-500: brightness(0) saturate(100%) invert(44%) sepia(24%) saturate(350%) hue-rotate(182deg) brightness(92%) contrast(87%);
 $filter-success-700: brightness(0) saturate(100%) invert(29%) sepia(73%) saturate(921%) hue-rotate(116deg) brightness(98%) contrast(98%);
 $filter-error-700: invert(25%) sepia(85%) saturate(2579%) hue-rotate(349deg) brightness(71%) contrast(100%);
+
 // BORDER RADIUS:
 $border-radius-md: 8px;
 
-
+// BREAKPOINTS
 $breakpoint-tablet: 740px;
+
+// SPACING:
+$general-spacing-xs: 8px;
+$general-spacing-sm: 16px;
+$general-spacing-md: 24px;
+$general-spacing-lg: 32px;
+$general-spacing-xl: 64px;
+
+// TYPOGRAPHY:
+$general-font-xs-1: 12px;
+$general-font-xs-2: 14px;
+$general-font-sm: 16px;
+$general-font-md: 18px;
+$general-font-lg: 20px;
+$general-font-xl-1: 24px;
+$general-font-xl-2: 30px;

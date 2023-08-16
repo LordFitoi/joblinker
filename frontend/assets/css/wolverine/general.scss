@@ -1,0 +1,43 @@
+p, a, .description {
+    font-size: $general-font-xs-2;
+    color: $color-gray-500;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+.placeholder {
+    h1, h2, h3, h4, p, span, cite, .cite, .description {
+        width: 100%;
+        background-color: $color-gray-200;
+        border-radius: 4px;
+        color: transparent !important;
+    }
+    p { height: 14px; }
+    p + p { margin-top: 4px; }
+    .tag {
+        width: 60px;
+        height: 20px;
+        background-color: $color-gray-200;
+        border-radius: 12px;
+        color: transparent !important;
+    }
+}
+
+.placeholder {
+    .company-heading {
+        .cite {
+            height: 12px;
+            margin-top: 8px;
+            font-size: 12px;
+        }
+    }
+    
+    .description {
+        height: 150px;
+    }
+}

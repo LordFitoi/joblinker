@@ -27,4 +27,5 @@ export const API = {
     USER: 'users/me/',
     USERS: 'users/',
     JOBPOSTS: 'jobposts/',
+    COMPANIES: 'companies/',
 };

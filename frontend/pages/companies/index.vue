@@ -1,5 +1,6 @@
 <template>
     <main class="main-container" ref="top">
+        
         <div class="search-grid">
             <div class="search-results" v-if="!store.schema?.isComplete">
                 Loading...
@@ -26,7 +27,7 @@
             </div>
             <ClientOnly v-else>
                 <div class="container">
-                    <Jobpost v-for="object in store.objects" :key="object" :data="object"></Jobpost>
+                    <Company v-for="object in store.objects" :key="object" :data="object"></Company>
 
                     <div class="no-results" v-if="!store.objects.length">
                         <img src="~/assets/icons/search-lg.svg">
@@ -53,8 +54,11 @@
         </div>
     </main>
 </template>
+
 <script>
-import Store from '~~/stores/jobpost.js';
+import Store from '~~/stores/company.js';
+
+definePageMeta({ layout: "companies" });
 
 export default {
     setup() {

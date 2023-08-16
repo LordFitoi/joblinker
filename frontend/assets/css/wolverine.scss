@@ -1,6 +1,7 @@
 @import "./wolverine/variables.scss";
 @import "./wolverine/mixins.scss";
 @import "./wolverine/utils.scss";
+@import "./wolverine/general.scss";
 @import "./wolverine/inputs.scss";
 @import "./wolverine/dropdowns.scss";
 @import "./wolverine/upload_area.scss";
@@ -16,3 +17,5 @@
 @import "./components/styles.scss";
 
 @import "./logo.scss";
+
+@import "./pages/company.scss"

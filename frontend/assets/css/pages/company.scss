@@ -15,7 +15,7 @@
         }
     }
 
-    a.company-heading {
+    .company-heading {
         display: flex;
         gap: 16px;
         align-items: center;
@@ -23,6 +23,8 @@
         text-decoration: none;
 
         .inner {
+            flex-grow: 0.5;
+
             h1 {
                 margin-bottom: 0px;
             }

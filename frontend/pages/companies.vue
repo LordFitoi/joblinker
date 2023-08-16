@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <NuxtPage />
-    </div>
+    <NuxtPage></NuxtPage>
 </template>
 <script>
 definePageMeta({ layout: "content" });

@@ -1,9 +1,9 @@
 header {
-    padding: 24px 0;
+    padding: $general-spacing-md 0;
     max-width: $breakpoint-desktop;
     margin-left: auto;
     margin-right: auto;
-    gap: 16px;
+    gap: $general-spacing-sm;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -17,13 +17,19 @@ header {
         padding: 0;
     }
 
+    .links {
+        display: flex;
+        align-items: center;
+        gap: $general-spacing-sm;
+    }
+
     @media (max-width: $breakpoint-desktop) {
         flex-direction: column;
 
         .container.search {
             max-width: none;
             width: 100%;
-            padding: 16px;
+            padding: $general-spacing-sm;
         }
     }
 }

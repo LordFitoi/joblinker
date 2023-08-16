@@ -68,23 +68,7 @@
         }
 
 
-        .placeholder {
-            h1, h2, h3, h4, p, span, cite {
-                width: 100%;
-                background-color: $color-gray-200;
-                border-radius: 4px;
-                color: transparent;
-            }
-            p { height: 14px; }
-            p + p { margin-top: 4px; }
-            .tag {
-                width: 60px;
-                height: 20px;
-                background-color: $color-gray-200;
-                border-radius: 12px;
-                color: transparent;
-            }
-        }
+        
     }
 
 

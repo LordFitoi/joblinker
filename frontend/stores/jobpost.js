@@ -1,6 +1,6 @@
 import { PaginatedApiSchema } from "~~/utils/api";
 
-export default defineStore('ExampleStore', {
+export default defineStore('JobPostStore', {
     state() {
         return {
             objects: [],

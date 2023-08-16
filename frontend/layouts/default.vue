@@ -1,7 +1,11 @@
 <template>
     <div class="page--container">
         <header>
-            <LayoutLogo />
+            <div class="links">
+                <LayoutLogo />
+                <NuxtLink to="/">Jobs</NuxtLink>
+                <NuxtLink to="/companies">Companies</NuxtLink>
+            </div>
             <div class="container search">
                 <Searchbar ref="search" :schema="store.schema"></Searchbar>
                 <button @click="$refs.search.onSearch" class="button--primary">Search</button>

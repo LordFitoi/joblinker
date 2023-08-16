@@ -6,17 +6,17 @@
                 <NuxtLink to="/">Jobs</NuxtLink>
                 <NuxtLink to="/companies">Companies</NuxtLink>
             </div>
-        </header>
-        <main class="background">
-            <div class="content">
-                <slot></slot>
+            <div class="container search">
+                <Searchbar ref="search" :schema="store.schema"></Searchbar>
+                <button @click="$refs.search.onSearch" class="button--primary">Search</button>
             </div>
-        </main>
+        </header>
+        <slot></slot>
         <LayoutFooter />
     </div>
 </template>
 <script>
-import Store from '~~/stores/jobpost.js';
+import Store from '~~/stores/company.js';
 
 export default {
     setup() {
