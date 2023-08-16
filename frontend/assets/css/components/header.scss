@@ -18,9 +18,14 @@ header {
     }
 
     .links {
+        flex-grow: 1;
         display: flex;
         align-items: center;
         gap: $general-spacing-sm;
+        padding-right: $general-spacing-sm;
+
+        a { font-size: $general-font-xs-1; }
+        a:nth-child(1) { margin-right: auto; }
     }
 
     @media (max-width: $breakpoint-desktop) {
@@ -30,6 +35,11 @@ header {
             max-width: none;
             width: 100%;
             padding: $general-spacing-sm;
+        }
+
+        .links {
+            width: 100%;
+            padding-left: $general-spacing-sm;
         }
     }
 }

@@ -1,18 +1,6 @@
 <template>
-    <div>
-        <div class="placeholder" v-if="!store.schema?.isComplete">
-            <div class="company-heading">
-                <div class="company--logo big">.</div>
-                <div class="inner">
-                    <h1>.</h1>
-                    <div class="cite">.</div>
-                </div>
-            </div>
-
-            <h2>.</h2>
-            <div class="description">.</div>
-            <h2>.</h2>
-        </div>
+    <div class="company--page">
+        <PlaceholderCompanyDetail  v-if="!store.schema?.isComplete" />
         <ClientOnly v-else>
             <a class="company-heading" :href="object.website">
                 <div class="company--logo big">
@@ -31,6 +19,18 @@
     
             <h2>Related jobs</h2>
         </ClientOnly>
+
+        <div class="container" >
+            <PlaceholderJobpost v-for="_ in 5" :key="_"></PlaceholderJobpost>
+
+            <div class="table--footer">
+                <div class="button--secondary">Previous</div>
+                <p class="page-counter">
+                    Page 1 of 1
+                </p>
+                <div class="button--secondary ml-auto">Next</div>
+            </div>
+        </div>
 
     </div>
 </template>

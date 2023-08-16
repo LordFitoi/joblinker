@@ -38,39 +38,12 @@
             margin-top: 32px;
         }
 
-        h1 {
-            font-weight: 500;
-            font-size: 30px;
-            color: $color-gray-900;
-            margin-bottom: 24px;
-        }
-        h2 {
-            font-weight: 500;
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: $color-gray-900;
-        }
-        h4 {
-            font-weight: 500;
-            font-size: 14px;
-            color: $color-gray-700;
-        }
-        p {
-            font-weight: 400;
-            font-size: 14px;
-            color: $color-gray-500;
-        }
-
         hr.divider {
             border-color: $color-gray-200;
             border-style: solid;
             border-bottom: none;
         }
-
-
-        
     }
-
 
     aside.container {
         height: max-content;

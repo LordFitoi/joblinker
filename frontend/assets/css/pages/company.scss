@@ -1,13 +1,13 @@
 @import '../wolverine/variables.scss';
 
-.page--container main {
+.page--container main .company--page {
     h2 {
-        font-size: 24px;
-        margin-bottom: 16px;
+        font-size: $general-font-lg;
+        margin-bottom: $general-spacing-sm;
     }
     h3 {
-        font-size: 18px;
-        margin-bottom: 8px;
+        font-size: $general-font-md;
+        margin-bottom: $general-spacing-xs;
         font-weight: 400;
         
         strong {
@@ -45,14 +45,8 @@
     .description {
         margin-bottom: 32px;
 
-        p + p {
-            margin-top: 16px;
-        }
-        p + h3 {
-            margin-top: 24px;
-        }
-        ul {
-            padding-left: 24px;
-        }
+        p + p { margin-top: 16px; }
+        p + h3 { margin-top: 24px; }
+        ul { padding-left: 24px; }
     }
 }

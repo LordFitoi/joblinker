@@ -1,0 +1,49 @@
+p, a, .description {
+    font-size: $general-font-xs-2;
+    color: $color-gray-500;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    color: $color-gray-900;
+    margin-bottom: $general-spacing-sm;
+    line-height: 1.2;
+}
+
+h1 { font-size: $general-font-xl-2; }
+h2 { font-size: $general-font-lg; }
+h3 { font-size: $general-font-md; }
+h4 { font-size:  $general-font-sm; }
+h5 { font-size:  $general-font-xs-1; }
+h6 { font-size:  $general-font-xs-2; }
+p {
+    font-weight: 300;
+    font-size:  $general-font-xs-1;
+    color: $color-gray-500;
+    line-height: 1.5;
+}
+
+.input {
+    input[type=url],
+    input[type=text],
+    input[type=date],
+    input[type=datetime-local],
+    input[type=time],
+    input[type=number],
+    input[type=email] {
+        font-size: $general-font-xs-1;
+        font-weight: 300;
+    }
+}
+
+.button--primary {
+    font-size: $general-font-xs-1;
+    font-weight: 300;
+}

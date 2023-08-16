@@ -1,0 +1,58 @@
+.placeholder {
+    h1, h2, h3, h4, h5, h6, p, span {
+        width: 100%;
+        background-color: $color-gray-200;
+        border-radius: 4px;
+        color: transparent !important;
+    }
+    p { height: 14px; }
+    p + p { margin-top: $general-spacing-xs; }
+
+    .tag {
+        width: 60px;
+        height: 20px;
+        background-color: $color-gray-200;
+        border-radius: 12px;
+        color: transparent !important;
+    }
+
+    &.company-details {
+        h1 { height: $general-spacing-lg; }
+        h2 { height: $general-spacing-md; }
+        p { height: $general-spacing-xs; }
+
+        > h2 { width: 30%; }
+        > p:nth-child(3) { width: 70%; }
+        > p:nth-child(5) { width: 50%; margin-bottom: $general-spacing-xl-2; }
+
+        h1 + p { margin-top: $general-spacing-xs; }
+    }
+
+    &.jobpost--item {
+        h2 { height: $general-spacing-md; }
+        p { height: $general-spacing-xs; }
+
+
+
+        .meta .inner {
+            span:nth-child(1) {
+                height: $general-spacing-sm;
+                margin-bottom: $general-spacing-xs;
+                width: 30%;
+            }
+            span:nth-child(2) {
+                height: $general-spacing-xs;
+                width: 50%;
+            }
+        }
+
+
+        :not(.meta) {
+            h2 { width: 30%; }
+            p:nth-child(2) { width: 70%; }
+            p:nth-child(4) { width: 50%; }
+        }
+
+    }
+    
+}

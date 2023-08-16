@@ -1,18 +1,21 @@
 <template>
-    <div class="jobpost--item placeholder">
+    <div class="placeholder jobpost--item">
         <div class="meta">
-            <div class="company--logo"></div>
+            <div class="company--logo" />
             <div class="inner">
-                <span>.</span>
+                <span />
+                <span />
             </div>
         </div>
         <div>
-            <h2>.</h2>
-            <p>.</p>
+            <h2 />
+            <p />
+            <p />
+            <p />
             <div class="tags">
-                <div class="tag">.</div>
-                <div class="tag">.</div>
-                <div class="tag">.</div>
+                <div class="tag" />
+                <div class="tag" />
+                <div class="tag" />
             </div>
         </div>
     </div>

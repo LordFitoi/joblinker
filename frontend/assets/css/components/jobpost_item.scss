@@ -40,6 +40,11 @@
 
     }
 
+    h2 {
+        font-size: $general-font-md;
+        margin-bottom: $general-spacing-xs;
+    }
+
     &:nth-child(1) {
         border-top: none;
     }
