@@ -11,6 +11,7 @@
         </template>
 
         <main class="main-container" ref="top">
+            <h1 class="text-center">Companies</h1>
             <div class="search-grid">
                 <div class="search-results" v-if="!store.schema?.isComplete">
                     Loading...
