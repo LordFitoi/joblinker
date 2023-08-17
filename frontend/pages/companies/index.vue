@@ -26,14 +26,6 @@
                 
                 <div class="container" v-if="!store.schema?.isComplete">
                     <PlaceholderCompany v-for="_ in 10" :key="_"></PlaceholderCompany>
-    
-                    <div class="table--footer">
-                        <div class="button--secondary">Previous</div>
-                        <p class="page-counter">
-                            Page 1 of 1
-                        </p>
-                        <div class="button--secondary ml-auto">Next</div>
-                    </div>
                 </div>
                 <ClientOnly v-else>
                     <div class="container">
@@ -72,8 +64,6 @@ import Store from '~~/stores/company.js';
 
 export default {
     setup() {
-        definePageMeta({ layout: false });
-
         return {
             store: Store()
         }

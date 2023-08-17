@@ -8,8 +8,12 @@ export default defineStore('JobPostStore', {
         }
     },
     actions: {
-        onInit() {
+        onInit(companySlug=null) {
             this.schema = new PaginatedApiSchema(this, API.JOBPOSTS);
+
+            if (companySlug) {
+                this.schema.paginator.searchParams.set("company", companySlug);
+            }
             this.schema.fetch();
         }
     }

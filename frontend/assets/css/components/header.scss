@@ -3,7 +3,7 @@ header {
     max-width: $breakpoint-desktop;
     margin-left: auto;
     margin-right: auto;
-    gap: $general-spacing-sm;
+    gap: $general-spacing-md;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -22,7 +22,6 @@ header {
         display: flex;
         align-items: center;
         gap: $general-spacing-sm;
-        padding-right: $general-spacing-sm;
 
         a { font-size: $general-font-xs-1; }
         a:nth-child(1) { margin-right: auto; }
@@ -40,6 +39,7 @@ header {
         .links {
             width: 100%;
             padding-left: $general-spacing-sm;
+            padding-right: $general-spacing-sm;
         }
     }
 }

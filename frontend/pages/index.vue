@@ -26,14 +26,6 @@
              
                 <div class="container" v-if="!store.schema?.isComplete">
                     <PlaceholderJobpost v-for="_ in 10" :key="_"></PlaceholderJobpost>
-    
-                    <div class="table--footer">
-                        <div class="button--secondary">Previous</div>
-                        <p class="page-counter">
-                            Page 1 of 1
-                        </p>
-                        <div class="button--secondary ml-auto">Next</div>
-                    </div>
                 </div>
                 <ClientOnly v-else>
                     <div class="container">
@@ -65,13 +57,12 @@
         </main>
     </NuxtLayout>
 </template>
+
 <script>
 import Store from '~~/stores/jobpost.js';
 
 export default {
     setup() {
-        definePageMeta({ layout: false });
-
         return {
             store: Store()
         }

@@ -1,44 +1,43 @@
 <template>
-    <div>
-        <h1>Privacy Policy</h1>
-        <p>
-            Welcome to www.joblinker.site Privacy Policy. This document outlines how we handle and protect user information on our website. We prioritize the security of your data. When you provide personal information that can identify you, we ensure it's used only according to this policy. Be aware that this policy might change over time. We advise you to review this page periodically to stay informed about any updates.
-        </p>
-        <h2>Information We Collect</h2>
-        <p>
-            We may gather personal details like your name, contact information (such as email), and demographic data. In specific cases, we might need additional information to process orders, deliveries, or billing.
-        </p>
-        <h2>How We Use Your Information</h2>
-        <p>
-            We utilize your information to offer exceptional service, maintain user records, process orders (if applicable), and enhance our products and services. Periodically, we may send emails containing special offers, new products, or relevant advertisements that could benefit you. You can opt out of these emails anytime.
-        </p>
-        <p>
-            We're dedicated to securing your information. Our advanced systems are frequently updated to prevent unauthorized access.
-        </p>
-        <h2>Cookies</h2>
-        <p>
-            Cookies are small files that seek permission to be stored on your computer. They help track web traffic, enabling smoother visits to the same website. Cookies also enable personalized service.
-        </p>
-        <p>
-            Our website uses cookies to identify visited pages and their frequency. This info is solely used for statistical analysis and is permanently deleted later. You can remove cookies from your computer. However, they enhance website functionality. Cookies don't access your information unless you provide it directly. You can accept or decline cookies, but most browsers accept them for better web service. You can adjust your browser settings to reject cookies, but this might affect some services.
-        </p>
-        <h2>Third-Party Links</h2>
-        <p>
-            Our site may contain links to other interesting websites. Once you leave our page, we can't control the linked site's privacy and data protection. Check their privacy policies to ensure agreement.
-        </p>
-        <h2>Managing Your Information</h2>
-        <p>
-            You can limit the collection or use of personal information provided on our site. When filling out forms, like user registration, you can choose to receive email information or not. If you subscribed to newsletters or ads, you can unsubscribe anytime.
-        </p>
-        <p>
-            We won't sell, transfer, or distribute collected personal information without your consent, except when legally required.
-        </p>
-        <h2>Changes to Privacy Policy</h2>
-        <p>
-            www.joblinker.site reserves the right to modify this Privacy Policy anytime. Stay updated by visiting this page periodically.
-        </p>
-    </div>
+    <NuxtLayout name="content">
+        <div>
+            <h1>Privacy Policy</h1>
+            <p>
+                Welcome to www.joblinker.site Privacy Policy. This document outlines how we handle and protect user information on our website. We prioritize the security of your data. When you provide personal information that can identify you, we ensure it's used only according to this policy. Be aware that this policy might change over time. We advise you to review this page periodically to stay informed about any updates.
+            </p>
+            <h2>Information We Collect</h2>
+            <p>
+                We may gather personal details like your name, contact information (such as email), and demographic data. In specific cases, we might need additional information to process orders, deliveries, or billing.
+            </p>
+            <h2>How We Use Your Information</h2>
+            <p>
+                We utilize your information to offer exceptional service, maintain user records, process orders (if applicable), and enhance our products and services. Periodically, we may send emails containing special offers, new products, or relevant advertisements that could benefit you. You can opt out of these emails anytime.
+            </p>
+            <p>
+                We're dedicated to securing your information. Our advanced systems are frequently updated to prevent unauthorized access.
+            </p>
+            <h2>Cookies</h2>
+            <p>
+                Cookies are small files that seek permission to be stored on your computer. They help track web traffic, enabling smoother visits to the same website. Cookies also enable personalized service.
+            </p>
+            <p>
+                Our website uses cookies to identify visited pages and their frequency. This info is solely used for statistical analysis and is permanently deleted later. You can remove cookies from your computer. However, they enhance website functionality. Cookies don't access your information unless you provide it directly. You can accept or decline cookies, but most browsers accept them for better web service. You can adjust your browser settings to reject cookies, but this might affect some services.
+            </p>
+            <h2>Third-Party Links</h2>
+            <p>
+                Our site may contain links to other interesting websites. Once you leave our page, we can't control the linked site's privacy and data protection. Check their privacy policies to ensure agreement.
+            </p>
+            <h2>Managing Your Information</h2>
+            <p>
+                You can limit the collection or use of personal information provided on our site. When filling out forms, like user registration, you can choose to receive email information or not. If you subscribed to newsletters or ads, you can unsubscribe anytime.
+            </p>
+            <p>
+                We won't sell, transfer, or distribute collected personal information without your consent, except when legally required.
+            </p>
+            <h2>Changes to Privacy Policy</h2>
+            <p>
+                www.joblinker.site reserves the right to modify this Privacy Policy anytime. Stay updated by visiting this page periodically.
+            </p>
+        </div>
+    </NuxtLayout>
 </template>
-<script>
-definePageMeta({ layout: "content" });
-</script>

@@ -13,7 +13,7 @@
         <div>
             <h2>{{ data.title }}</h2>
             <p>{{ data.description }}</p>
-            <div class="tags">
+            <div class="tags" v-if="data.categories.length">
                 <div class="tag badge" v-for="category in data.categories" :key="category">
                     {{ category }}
                 </div>

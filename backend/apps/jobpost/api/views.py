@@ -13,7 +13,7 @@ from backend.apps.jobpost.models import Company, JobPost
 
 
 class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 50
+    page_size = 10
     max_page_size = 100
     page_size_query_param = 'page_size'
 
@@ -42,6 +42,14 @@ class JobPostViewSet(BaseListViewSet):
     queryset = JobPost.objects.all()
     model = JobPost
     search_fields = ('title', 'description')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        if company_slug := self.request.query_params.get('company'):
+            return queryset.filter(company__slug=company_slug)
+        
+        return queryset
 
 
 class CompanyViewSet(BaseListViewSet):
