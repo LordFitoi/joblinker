@@ -1,49 +1,29 @@
-import scrapy, json
-from pathlib import Path
+import scrapy
 from urllib.parse import urlparse
-from .mixins import ParseMixins
-from ..items import WebOriginItem
-from .recolector import RecolectorSpider
-
-BASE_DIR = Path(__file__).resolve().parent.parent
+from .adapters import ADAPTERS
 
 
-class ValidatorSpider(scrapy.Spider, ParseMixins):
-    name = "validator"
-    jobpost_urls = {}
-    recolector = RecolectorSpider
+class ValidatorSpider(scrapy.Spider):
+    name="validator"
+    objects = {}
 
     def start_requests(self):
-        with open(BASE_DIR / "websites.json", "r") as jsonfile:
-            data = json.loads(jsonfile.read())
+        for url, adapter in ADAPTERS.items():
+            objects = self.objects.get(urlparse(url).netloc, None)
 
-            for website in data:
-                jobpost_url = self.jobpost_urls.get(urlparse(website['url']).netloc, None)
-                
-                yield scrapy.Request(
-                    website["url"],
-                    callback=self.parse,
-                    cb_kwargs=dict(
-                        website=website,
-                        jobpost_url=jobpost_url
-                    )
-                )
+            if not objects:
+                continue
 
-    def parse(self, response, website, jobpost_url):
-        weborigin = WebOriginItem(**{
-            "name": urlparse(response.url).hostname,
-            "website": f"https://{urlparse(response.url).hostname}"
-        })
-
-        if jobpost_url:
-            yield response.follow(
-                jobpost_url,
-                callback=self.parse_job,
+            yield scrapy.Request(
+                url,
+                callback=self.parse,
                 cb_kwargs=dict(
-                    weborigin=weborigin,
-                    website=website
+                    adapter=adapter,
+                    objects=objects
                 )
             )
 
-        else:
-            yield { "weborigin": weborigin }
+
+    def parse(self, _, adapter, objects):
+        for request in adapter.validate(objects):
+            yield request

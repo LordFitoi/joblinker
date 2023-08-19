@@ -1,6 +1,8 @@
-[
-    {
-        "url": "https://himalayas.app/jobs",
+from scrapper.spiders.adapters.base import BaseAdapter
+
+
+class HimalayasAdapter(BaseAdapter):
+    selectors = {
         "link": "//ul[@id='card-group']/li[@data-action='click->card#goToPage']/@data-path",
         "next_page": "//a[@data-action='click->instantsearch#changePage'][contains(@class, 'btn')][@rel='next']/@href",
         "jobpost": {
@@ -13,7 +15,8 @@
             "name": "//h1//span/text()",
             "website": "//span[contains(text(), 'Visit')]/../@href",
             "logo_url": "//section//div[contains(@class, 'avatar-logo')]/img[contains(@title, 'logo')]/@src",
+            "origin_url": "//meta[@property='og:url']/@content",
             "description": "//div[@class='trix-content']"
         }
     }
-]
+    
