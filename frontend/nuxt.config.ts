@@ -37,7 +37,7 @@ export default defineNuxtConfig({
                 }
             ],
             link: [
-                { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }
+                { rel: 'icon', type: 'image/x-icon', href: '/static/favicon.svg' }
             ]
         },
     },
@@ -59,6 +59,5 @@ export default defineNuxtConfig({
         routes: [
             '/companies/company.html'
         ]
-    }
-    
+    },
 })
