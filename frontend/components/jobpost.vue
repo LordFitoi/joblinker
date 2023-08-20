@@ -1,5 +1,5 @@
 <template>
-    <a class="jobpost--item" :href="data.origin_url">
+    <a class="jobpost--item" :href="backend.addUrlReference(data.origin_url)">
         <div v-if="metaVisible" class="meta">
             <div class="company--logo">
                 <img v-if="fallback" src="~/assets/icons/logo.svg" class="fallback" alt="">
