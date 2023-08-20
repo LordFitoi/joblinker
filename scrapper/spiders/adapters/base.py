@@ -1,17 +1,24 @@
 
-import scrapy
+import scrapy, re
 from urllib.parse import urlparse
+from django.utils.html import strip_tags
 from scrapper.items import CompanyItem, JobpostItem, WebOriginItem
-
 
 class BaseAdapter:
     is_active = True
     selectors = {}
 
+    def format(self, text):
+        text = strip_tags(text)
+        text = re.sub("\n", " ", text)
+        text = re.sub("\s+", " ", text)
+
+        return text.strip()
+    
     def get_weborigin(self, response):
         return WebOriginItem(**{
             'name': urlparse(response.url).hostname,
-            'website':  f'https://{urlparse(response.url).hostname}'
+            'website': f'https://{urlparse(response.url).hostname}'
         })
     
     def get_jobpost(self, response):
@@ -80,9 +87,10 @@ class BaseAdapter:
 
         self.is_active = all([
             company.name == crawled_company['name'],
-            company.description == crawled_company['description']
+            company.origin_url == crawled_company['origin_url'],
+            strip_tags(company.description) == strip_tags(crawled_company['description'])
         ])
-    
+        
     def validate_jobpost(self, response, jobpost):
         if not self.is_active:
             return True
@@ -91,7 +99,8 @@ class BaseAdapter:
 
         self.is_active = all([
             jobpost.title == crawled_jobpost['title'],
-            jobpost.description == crawled_jobpost['description']
+            jobpost.origin_url == crawled_jobpost['origin_url'],
+            self.format(jobpost.description) == self.format(crawled_jobpost['description'])
         ])
 
     def validate(self, objects):

@@ -13,7 +13,6 @@ from django.core.files import File
 from itemadapter import ItemAdapter
 from tempfile import NamedTemporaryFile
 from .spiders.recolector import RecolectorSpider
-from .spiders.validator import ValidatorSpider
 
 
 class RecolectorPipeline:
@@ -52,33 +51,3 @@ class RecolectorPipeline:
 
         return item
     
-
-class ValidatorPipeline:
-    @sync_to_async
-    def set_origin_active_state(self, origin, state):
-        origin.active = state
-        origin.save()
-
-    @sync_to_async
-    def create_origin(self, item):
-        adapter = ItemAdapter(item)
-        return WebsiteOrigin.objects.get_or_create(**adapter)
-   
-    @sync_to_async
-    def get_object(self, object, item):
-        adapter = ItemAdapter(item)
-        return object.objects.get(**adapter)
-   
-    async def process_item(self, item, spider):
-        weborigin, is_weborigin_new = await self.create_origin(item["weborigin"])
-        if not isinstance(spider, ValidatorSpider) or is_weborigin_new:
-            return item
-
-        try:
-            item["jobpost"]["company"] = await self.get_object(Company, item["company"])
-            await self.get_object(JobPost, item["jobpost"])
-        
-        except (JobPost.DoesNotExist, Company.DoesNotExist):
-            spider.recolector.inactive_urls.append(weborigin.website)
-        
-        return item
