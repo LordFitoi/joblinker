@@ -23,7 +23,6 @@ class ValidatorSpider(scrapy.Spider):
                 )
             )
 
-
     def parse(self, _, adapter, objects):
         for request in adapter.validate(objects):
             yield request

@@ -4,7 +4,8 @@ from .adapters import ADAPTERS
 
 class RecolectorSpider(scrapy.Spider):
     name="recolector"
-
+    record=None
+    
     def start_requests(self):
         for url, adapter in ADAPTERS.items():
 

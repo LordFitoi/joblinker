@@ -3,6 +3,7 @@ from urllib.parse import urlparse
 from django.utils.html import strip_tags
 from scrapper.items import CompanyItem, JobpostItem, WebOriginItem
 
+
 class BaseAdapter:
     """
     Base class for adapters to scrape job-related data from websites.

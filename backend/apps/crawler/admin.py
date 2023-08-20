@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import CrawlerRecord
 
-# Register your models here.
+
+@admin.register(CrawlerRecord)
+class CrawlerRecordAdmin(admin.ModelAdmin):
+    list_display = ("id", "jobposts", "companies", "created_at")

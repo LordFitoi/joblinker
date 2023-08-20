@@ -16,6 +16,8 @@ from .spiders.recolector import RecolectorSpider
 
 
 class RecolectorPipeline:
+    record = None
+
     @sync_to_async
     def save_image(self, object_field, url):
         if not object_field:
@@ -29,19 +31,27 @@ class RecolectorPipeline:
             object_field.save(name, File(img_temp), save=True)
 
     @sync_to_async
-    def create_object(self, object, item):
+    def create_object(self, object, item, count_label=None):
         adapter = ItemAdapter(item)
+        item, is_new = object.objects.get_or_create(**adapter)
+
+        if is_new and count_label:
+            self.record.add_count(count_label)
+        
         return object.objects.get_or_create(**adapter)[0]
     
     async def process_item(self, item, spider):
         if not isinstance(spider, RecolectorSpider):
             return item
+        
+        if not self.record:
+            self.record = spider.record
 
         weborigin = await self.create_object(WebsiteOrigin, item["weborigin"])
         item["company"]["origin"] = item["jobpost"]["origin"] = weborigin
-        item["jobpost"]["company"] = await self.create_object(Company, item["company"])
-
-        await self.create_object(JobPost, item["jobpost"])
+        item["jobpost"]["company"] = await self.create_object(Company, item["company"], "companies")
+        
+        await self.create_object(JobPost, item["jobpost"], "jobposts")
         await self.save_image(item["jobpost"]["company"].logo, item["logo_url"])
-
+        
         return item
