@@ -29,11 +29,6 @@ class RecolectorPipeline:
             object_field.save(name, File(img_temp), save=True)
 
     @sync_to_async
-    def get_origin(self, item):
-        adapter = ItemAdapter(item)
-        return WebsiteOrigin.objects.get(**adapter)
-
-    @sync_to_async
     def create_object(self, object, item):
         adapter = ItemAdapter(item)
         return object.objects.get_or_create(**adapter)[0]
@@ -42,7 +37,7 @@ class RecolectorPipeline:
         if not isinstance(spider, RecolectorSpider):
             return item
 
-        weborigin = await self.get_origin(item["weborigin"])
+        weborigin = await self.create_object(WebsiteOrigin, item["weborigin"])
         item["company"]["origin"] = item["jobpost"]["origin"] = weborigin
         item["jobpost"]["company"] = await self.create_object(Company, item["company"])
 
@@ -50,4 +45,3 @@ class RecolectorPipeline:
         await self.save_image(item["jobpost"]["company"].logo, item["logo_url"])
 
         return item
-    

@@ -8,7 +8,6 @@ class RecolectorSpider(scrapy.Spider):
     def start_requests(self):
         for url, adapter in ADAPTERS.items():
 
-            print(adapter.is_active, adapter,"Tu RECOLECTOR")
             if not adapter.is_active:
                 continue
 
