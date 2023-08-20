@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
     # Local apps
     'backend.apps.jobpost',
+    'backend.apps.crawler',
 ]
 
 MIDDLEWARE = [
