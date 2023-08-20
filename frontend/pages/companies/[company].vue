@@ -18,9 +18,8 @@
                 <h2>About</h2>
                 <div class="description" v-html="object.description"></div>
         
-                <h2>Related jobs</h2>
             </ClientOnly>
-    
+            <h2>Related jobs</h2>
             <div class="container" v-if="!store.jobpost.schema?.isComplete">
                 <PlaceholderJobpost v-for="_ in 5" :key="_"></PlaceholderJobpost>
             </div>
