@@ -3,7 +3,7 @@
         <div class="company--page">
             <PlaceholderCompanyDetail v-if="!store.company.schema?.isComplete" />
             <ClientOnly v-else>
-                <a class="company-heading" :href="object.website">
+                <a class="company-heading" :href="backend.addUrlReference(object.website)">
                     <div class="company--logo big">
                         <img v-if="fallback" src="~/assets/icons/logo.svg" class="fallback" alt="">
                         <img v-else :src="object.logo"  @error="fallback=true" :alt="`${object.name} logo`">
