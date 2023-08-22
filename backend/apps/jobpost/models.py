@@ -54,6 +54,9 @@ class JobPost(AbstractBaseModel):
         DELETED = "Deleted"
         EXPIRED = "Expired"
 
+    class Meta:
+        ordering = ["release_date", "-created_at"]
+
     title = models.CharField(max_length=256)
     description = models.TextField(blank=True, null=True)
     categories = models.ManyToManyField(Category, blank=True)
@@ -71,4 +74,6 @@ class JobPost(AbstractBaseModel):
     slug = AutoSlugField(populate_from=['title', 'id'])
 
     def __str__(self):
-        return f"{self.title} - {self.company.name}" 
+        return f"{self.title} - {self.company.name}"
+
+    
