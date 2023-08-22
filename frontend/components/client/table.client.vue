@@ -2,7 +2,7 @@
     <div class="table--container">
         <div class="table--head">
             <div v-for="column in columns" :key="column" class="clickable" @click="onSort(store.objects, column[1])">
-                {{ column[0] }} <img :class="{'rotate-180': lastSortDirection=='asc' && lastSortProperty==column[1]}" src="~/assets/icons/arrow.svg">
+                %{{ column[0] }} <img :class="{'rotate-180': lastSortDirection=='asc' && lastSortProperty==column[1]}" src="~/assets/icons/arrow.svg">
             </div>
         </div>
         <div class="table--body" v-for="object in store.objects" :key="object">
@@ -16,7 +16,7 @@
                 Previous
             </button>
             <p class="page-counter">
-                {{ paginator.getPageText() }}
+                %{{ paginator.getPageText() }}
             </p>
             <button class="button--secondary ml-auto"
                 @click="onNext()"

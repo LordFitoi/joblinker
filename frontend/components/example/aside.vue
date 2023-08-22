@@ -1,6 +1,6 @@
 <template>
     <LayoutAside>
-        <h2 id="company-name" v-text="backend.render('{{ view.kwargs.company|capfirst }}', 'Codetiger')"></h2>
+        <h2 id="company-name" v-text="backend.render('%{{ view.kwargs.company|capfirst }}', 'Codetiger')"></h2>
         <LayoutSearchbar></LayoutSearchbar>
         <ClientOnly>
             <div class="options--container">

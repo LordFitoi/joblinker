@@ -1,13 +1,13 @@
 <template>
     <div class="input--container">
         <ClientOnly>
-            {{ label }}
+            %{{ label }}
             <label tabindex="-1" class="input">
                 <img v-if="icon" :src="getImage()" alt="" role="img">
                 <input :type="type" :placeholder="placeholder">
             </label>
             <template #fallback>
-                {{ label }}
+                %{{ label }}
                 <label tabindex="-1" class="input">
                     <img v-if="icon" :src="getImage()" alt="" role="img">
                     <input
@@ -18,7 +18,7 @@
                         @blur="onBlur()">
                 </label>
                 <p class="error--label" v-if="validator.$error">
-                    {{ validator.$errors[0].$message }}
+                    %{{ validator.$errors[0].$message }}
                 </p>
             </template>
         </ClientOnly>

@@ -1,25 +1,25 @@
 <template>
     <div class="input--container">
         <ClientOnly>
-            {{ label }}
+            %{{ label }}
             <label ref="input" tabindex="-1" class="input dropdown">
                 <img v-if="icon" :src="getImage()">
-                <p v-if="value">{{ value.innerText }}</p>
-                <p class="placeholder" v-else>{{ placeholder }}</p>
+                <p v-if="value">%{{ value.innerText }}</p>
+                <p class="placeholder" v-else>%{{ placeholder }}</p>
                 <img class="arrow" src="~/assets/icons/chevron-down.svg">
                 <div class="dropdown--container" @click="onInput($event)">
                     <slot></slot>
                 </div>
             </label>
             <p class="error--label" v-if="validator.$error">
-                {{ validator.$errors[0].$message }}
+                %{{ validator.$errors[0].$message }}
             </p>
             
             <template #fallback>
-                {{ label }}
+                %{{ label }}
                 <label ref="input" tabindex="-1" class="input dropdown">
                     <img v-if="icon" :src="getImage()">
-                    <p class="placeholder">{{ placeholder }}</p>
+                    <p class="placeholder">%{{ placeholder }}</p>
                     <img class="arrow" src="~/assets/icons/chevron-down.svg">
                 </label>
             </template>

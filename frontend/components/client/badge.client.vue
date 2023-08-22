@@ -1,7 +1,7 @@
 <template>
     <div class="badge" :class="current.class">
         <img :src="icon">
-        <span>{{ state }}</span>
+        <span>%{{ state }}</span>
     </div>
 </template>
 <script>

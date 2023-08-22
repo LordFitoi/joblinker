@@ -1,8 +1,8 @@
 <template>
     <div class="slideout--menu" :class="{ 'active': isVisible }">
         <div class="heading">
-            <h3>{{ title }}</h3>
-            <h4>{{ subtitle }}</h4>
+            <h3>%{{ title }}</h3>
+            <h4>%{{ subtitle }}</h4>
             <img @click="toggleVisibility()" src="~/assets/icons/x-close.svg" class="close--button">
         </div>
         <div class="content">
