@@ -50,10 +50,14 @@ export default defineNuxtConfig({
     css: ['~/assets/css/styles.scss'],
     experimental: {
         payloadExtraction: false,
+        componentIslands: true
     },
     nitro: {
         output: {
             dir: `./../${config.outputDir}`,
+        },
+        prerender: {
+            crawlLinks: false
         }
     },
     gtag: {
@@ -66,4 +70,9 @@ export default defineNuxtConfig({
             '/companies/company.html'
         ]
     },
+    vue: {
+        compilerOptions: {
+            delimiters: ['%{{', '}}']
+        }
+    }
 })
