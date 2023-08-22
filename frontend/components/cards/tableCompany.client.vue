@@ -4,7 +4,7 @@
             <CardsCompanyPlaceholder v-for="_ in 10" :key="_"></CardsCompanyPlaceholder>
         </div>
         <div class="container" v-else>
-            <Company v-for="object in store.objects" :key="object" :data="object"></Company>
+            <CardsCompany v-for="object in store.objects" :key="object" :data="object"></CardsCompany>
 
             <div class="no-results" v-if="!store.objects.length">
                 <img src="~/assets/icons/search-lg.svg">
