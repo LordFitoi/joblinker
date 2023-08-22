@@ -1,6 +1,6 @@
 <template>
     <div class="page--container">
-        <header>
+        <header id="header">
             <div class="links">
                 <LayoutLogo />
                 <NuxtLink to="/">Jobs</NuxtLink>
