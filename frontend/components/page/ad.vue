@@ -19,9 +19,8 @@ export default {
     },
     computed: {
         src() {
-            return process.env.NODE_ENV === 'production'
-                ? `//wizardunstablecommissioner.com/watchnew?key=${this.adKey}`
-                : null;
+            return process.env.NODE_ENV === 'development' ? null
+                : `//wizardunstablecommissioner.com/watchnew?key=${this.adKey}`
         }
     }
 }
