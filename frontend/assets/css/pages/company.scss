@@ -49,4 +49,7 @@
         p + h3 { margin-top: 24px; }
         ul { padding-left: 24px; }
     }
+    .container {
+        min-height: unset;
+    }
 }
