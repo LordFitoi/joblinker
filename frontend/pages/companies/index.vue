@@ -10,7 +10,7 @@
             </div>
         </template>
 
-        <main class="main-container" ref="top">
+        <main class="main-container">
             <h1 class="text-center">Companies</h1>
             <div class="search-grid">
                 <div class="search-results" v-if="!store.schema?.isComplete">
@@ -18,42 +18,14 @@
                 </div>
                 <ClientOnly v-else>
                     <div class="search-results">
-                        {{ paginator.itemsCount }} Results found
+                        %{{ paginator.itemsCount }} Results found
                         <span v-if="paginator.searchParams.get('search')">
-                            - "{{ paginator.searchParams.get("search") }}"
+                            - "%{{ paginator.searchParams.get("search") }}"
                         </span>
                     </div>
                 </ClientOnly>
                 
-                <div class="container" v-if="!store.schema?.isComplete">
-                    <PlaceholderCompany v-for="_ in 10" :key="_"></PlaceholderCompany>
-                </div>
-                <ClientOnly v-else>
-                    <div class="container">
-                        <Company v-for="object in store.objects" :key="object" :data="object"></Company>
-    
-                        <div class="no-results" v-if="!store.objects.length">
-                            <img src="~/assets/icons/search-lg.svg">
-                            No results found...
-                        </div>
-    
-                        <div class="table--footer">
-                            <button class="button--secondary"
-                                @click="onPrevious()"
-                                :disabled="!paginator.previousPage">
-                                Previous
-                            </button>
-                            <p class="page-counter">
-                                {{ paginator.getPageText() }}
-                            </p>
-                            <button class="button--secondary ml-auto"
-                                @click="onNext()"
-                                :disabled="!paginator.nextPage">
-                                Next
-                            </button>
-                        </div>
-                    </div>
-                </ClientOnly>
+                <CardsTableCompany />
             </div>
         </main>
     </NuxtLayout>
@@ -75,16 +47,6 @@ export default {
     computed: {
         paginator() {
             return this.store.schema.paginator;
-        }
-    },
-    methods: {
-        onPrevious() {
-            this.store.schema.previousPage();
-            this.$refs.top.scrollIntoView({ behavior: 'smooth' });
-        },
-        onNext() {
-            this.store.schema.nextPage();
-            this.$refs.top.scrollIntoView({ behavior: 'smooth' });
         }
     }
 }

@@ -30,9 +30,9 @@
                 ['Status', 'status']
             ]"
         >
-            <div><p class="title">{{ format.date(props.object.payment_date) }}</p></div>
-            <div><p>{{ format.amount(props.object.amount) }}</p></div>
-            <div><p>{{ format.date(props.object.payment_date) }}</p></div>
+            <div><p class="title">%{{ format.date(props.object.payment_date) }}</p></div>
+            <div><p>%{{ format.amount(props.object.amount) }}</p></div>
+            <div><p>%{{ format.date(props.object.payment_date) }}</p></div>
             <div><ClientBadge :state="props.object.status"></ClientBadge></div>
         </ClientTable>
         <ExampleForm ref="form" :user="user" :store="store"></ExampleForm>

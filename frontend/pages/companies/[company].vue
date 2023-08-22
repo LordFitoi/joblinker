@@ -10,18 +10,17 @@
                     </div>
         
                     <div class="inner">
-                        <h1>{{ object.name }}</h1>
-                        <cite>{{ object.website }}</cite>
+                        <h1>%{{ object.name }}</h1>
+                        <cite>%{{ object.website }}</cite>
                     </div>
                 </a>
     
                 <h2>About</h2>
                 <div class="description" v-html="object.description"></div>
-        
             </ClientOnly>
             <h2>Related jobs</h2>
             <div class="container" v-if="!store.jobpost.schema?.isComplete">
-                <PlaceholderJobpost v-for="_ in 5" :key="_"></PlaceholderJobpost>
+                <CardsJobpostPlaceholder v-for="_ in 10" :key="_"></CardsJobpostPlaceholder>
             </div>
             <ClientOnly v-else>
                 <div class="container no-min-height">
@@ -39,7 +38,7 @@
                             Previous
                         </button>
                         <p class="page-counter">
-                            {{ paginator.getPageText() }}
+                            %{{ paginator.getPageText() }}
                         </p>
                         <button class="button--secondary ml-auto"
                             @click="onNext()"
