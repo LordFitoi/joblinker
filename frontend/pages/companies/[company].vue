@@ -1,87 +1,22 @@
 <template>
-    <NuxtLayout name="content">
-        <div class="company--page">
-            <PlaceholderCompanyDetail v-if="!store.company.schema?.isComplete" />
-            <ClientOnly v-else>
-                <a class="company-heading" :href="backend.addUrlReference(object.website)">
-                    <div class="company--logo big">
-                        <img v-if="fallback" src="~/assets/icons/logo.svg" class="fallback" alt="">
-                        <img v-else :src="object.logo"  @error="fallback=true" :alt="`${object.name} logo`">
-                    </div>
-        
-                    <div class="inner">
-                        <h1>%{{ object.name }}</h1>
-                        <cite>%{{ object.website }}</cite>
-                    </div>
-                </a>
+    <NuxtLayout name="content" class="company--page">
+        <PageCompanyDetails :company="route.params.company" />
     
-                <h2>About</h2>
-                <div class="description" v-html="object.description"></div>
-            </ClientOnly>
-            <h2>Related jobs</h2>
-            <div class="container" v-if="!store.jobpost.schema?.isComplete">
-                <CardsJobpostPlaceholder v-for="_ in 10" :key="_"></CardsJobpostPlaceholder>
-            </div>
-            <ClientOnly v-else>
-                <div class="container no-min-height">
-                    <Jobpost v-for="object in store.jobpost.objects" :key="object" :data="object"></Jobpost>
+        <PageAd adKey="b041a54588d9c42a335ae5bb9b246885" width="728" height="90" class="horizontal margin-bottom"/>
     
-                    <div class="no-results" v-if="!store.jobpost.objects.length">
-                        <img src="~/assets/icons/search-lg.svg">
-                        No results found...
-                    </div>
-    
-                    <div class="table--footer" v-if="paginator.totalPages > 1">
-                        <button class="button--secondary"
-                            @click="onPrevious()"
-                            :disabled="!paginator.previousPage">
-                            Previous
-                        </button>
-                        <p class="page-counter">
-                            %{{ paginator.getPageText() }}
-                        </p>
-                        <button class="button--secondary ml-auto"
-                            @click="onNext()"
-                            :disabled="!paginator.nextPage">
-                            Next
-                        </button>
-                    </div>
-                </div>
-            </ClientOnly>
-        </div>
+        <h2>Related jobs</h2>
+        <CardsTableJobpost :company="route.params.company" />
     </NuxtLayout>
 </template>
 <script>
-import companyStore from '~~/stores/company.js';
-import jobpostStore from '~~/stores/jobpost.js';
-
 export default {
+    meta: {
+        script: [{ src: "~/assets/ads.js" }],
+    },
     setup() {
         return {
-            store: {
-                company: companyStore(),
-                jobpost: jobpostStore()
-            },
             route: useRoute()
         }
     },
-    computed: {
-        object() {
-            return this.store.company.objects;
-        },        
-        paginator() {
-            return this.store.jobpost.schema.paginator;
-        }
-    },
-    mounted() {
-        this.store.company.onInit(this.route.params.company);
-        this.store.jobpost.onInit(this.route.params.company);
-
-    },
-    data() {
-        return {
-            fallback: false
-        }
-    }
 }
 </script>
