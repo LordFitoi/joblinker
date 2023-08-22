@@ -34,13 +34,19 @@
 import Store from '~~/stores/jobpost.js';
 
 export default {
+    props: {
+        company: {
+            type: String,
+            default: ""
+        }
+    },
     setup() {
         return {
             store: Store()
         }
     },
     mounted() {
-        this.store.onInit();
+        this.store.onInit(this.company);
     },
     computed: {
         paginator() {
