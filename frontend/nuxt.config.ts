@@ -38,12 +38,6 @@ export default defineNuxtConfig({
             ],
             link: [
                 { rel: 'icon', type: 'image/x-icon', href: '/static/favicon.svg' }
-            ],
-            script: [
-                {
-                  src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9853098123219669',
-                  async: true
-                }
             ]
         },
     },
