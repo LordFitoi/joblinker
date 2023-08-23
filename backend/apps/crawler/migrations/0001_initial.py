@@ -5,24 +5,30 @@ import uuid
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='CrawlerRecord',
+            name="CrawlerRecord",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('jobposts', models.IntegerField(default=0)),
-                ('companies', models.IntegerField(default=0)),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("jobposts", models.IntegerField(default=0)),
+                ("companies", models.IntegerField(default=0)),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]

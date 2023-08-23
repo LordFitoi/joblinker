@@ -32,7 +32,7 @@ export default {
         validator: {
             type: Object,
             default: {
-                
+
                 $error: false,
                 $errors: []
             }

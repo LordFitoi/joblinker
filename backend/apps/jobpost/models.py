@@ -33,13 +33,17 @@ class Company(AbstractBaseModel):
     website = models.URLField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     origin_url = models.URLField(max_length=256, blank=True, null=True)
-    origin = models.ForeignKey(WebsiteOrigin, on_delete=models.CASCADE, blank=True, null=True)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE, blank=True, null=True)
-    slug = AutoSlugField(populate_from=['name'])
+    origin = models.ForeignKey(
+        WebsiteOrigin, on_delete=models.CASCADE, blank=True, null=True
+    )
+    location = models.ForeignKey(
+        Location, on_delete=models.CASCADE, blank=True, null=True
+    )
+    slug = AutoSlugField(populate_from=["name"])
 
     def __str__(self):
         return self.name
-    
+
 
 class JobPost(AbstractBaseModel):
     class JobType(models.TextChoices):
@@ -61,19 +65,29 @@ class JobPost(AbstractBaseModel):
     description = models.TextField(blank=True, null=True)
     categories = models.ManyToManyField(Category, blank=True)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
-    origin = models.ForeignKey(WebsiteOrigin, on_delete=models.CASCADE, blank=True, null=True)
+    origin = models.ForeignKey(
+        WebsiteOrigin, on_delete=models.CASCADE, blank=True, null=True
+    )
     origin_url = models.URLField(max_length=256, blank=True, null=True)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE, blank=True, null=True)
-    job_type = models.CharField(max_length=20, choices=JobType.choices, default=JobType.FULL_TIME)
-    status = models.CharField(max_length=20, choices=Status.choices, default=Status.ACTIVE)
+    location = models.ForeignKey(
+        Location, on_delete=models.CASCADE, blank=True, null=True
+    )
+    job_type = models.CharField(
+        max_length=20, choices=JobType.choices, default=JobType.FULL_TIME
+    )
+    status = models.CharField(
+        max_length=20, choices=Status.choices, default=Status.ACTIVE
+    )
     currency = models.CharField(max_length=10, default="USD")
-    start_salary = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    end_salary = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    start_salary = models.DecimalField(
+        max_digits=10, decimal_places=2, blank=True, null=True
+    )
+    end_salary = models.DecimalField(
+        max_digits=10, decimal_places=2, blank=True, null=True
+    )
     is_remote = models.BooleanField(default=False)
     release_date = models.DateTimeField(blank=True, null=True)
-    slug = AutoSlugField(populate_from=['title', 'id'])
+    slug = AutoSlugField(populate_from=["title", "id"])
 
     def __str__(self):
         return f"{self.title} - {self.company.name}"
-
-    

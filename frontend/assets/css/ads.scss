@@ -3,10 +3,10 @@
 //     gap: 8px;
 //     grid-template-columns: repeat(1, minmax(0, 1fr));
 //     margin-bottom: $general-spacing-lg;
-    
+
 //     [class$="bn-container"] {
 //         padding: 0px !important;
-    
+
 //         div[class$="bn"] {
 //             box-shadow: none;
 //             border: 1px solid $color-gray-300;
@@ -21,7 +21,7 @@
 //                 line-height: 1.5;
 //             }
 //         }
-//     } 
+//     }
 
 //     @media (min-width: $breakpoint-tablet) {
 //         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -47,8 +47,8 @@
         display: none;
         margin-left: auto;
         margin-right: auto;
-        
-    
+
+
         @media (min-width: $breakpoint-tablet) {
             display: block;
         }

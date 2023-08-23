@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('crawler', '0001_initial'),
+        ("crawler", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='crawlerrecord',
-            name='companies',
+            model_name="crawlerrecord",
+            name="companies",
             field=models.IntegerField(default=0, editable=False),
         ),
         migrations.AlterField(
-            model_name='crawlerrecord',
-            name='jobposts',
+            model_name="crawlerrecord",
+            name="jobposts",
             field=models.IntegerField(default=0, editable=False),
         ),
     ]

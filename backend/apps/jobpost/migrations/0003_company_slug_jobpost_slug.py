@@ -5,20 +5,23 @@ import django_extensions.db.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('jobpost', '0002_remove_jobpost_application_url_and_more'),
+        ("jobpost", "0002_remove_jobpost_application_url_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='company',
-            name='slug',
-            field=django_extensions.db.fields.AutoSlugField(blank=True, editable=False, populate_from=['name']),
+            model_name="company",
+            name="slug",
+            field=django_extensions.db.fields.AutoSlugField(
+                blank=True, editable=False, populate_from=["name"]
+            ),
         ),
         migrations.AddField(
-            model_name='jobpost',
-            name='slug',
-            field=django_extensions.db.fields.AutoSlugField(blank=True, editable=False, populate_from=['title', 'id']),
+            model_name="jobpost",
+            name="slug",
+            field=django_extensions.db.fields.AutoSlugField(
+                blank=True, editable=False, populate_from=["title", "id"]
+            ),
         ),
     ]

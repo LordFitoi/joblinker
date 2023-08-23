@@ -5,7 +5,7 @@
                 <LayoutLogo />
                 <NuxtLink to="/">Jobs</NuxtLink>
                 <NuxtLink to="/companies">Companies</NuxtLink>
-            </div>    
+            </div>
             <slot name="header"></slot>
         </header>
         <slot></slot>

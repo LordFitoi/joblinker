@@ -12,15 +12,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         settings = get_project_settings()
-        settings.setmodule('scrapper.settings', priority='project')
-        
+        settings.setmodule("scrapper.settings", priority="project")
+
         RecolectorSpider.record = CrawlerRecord.objects.create()
         ValidatorSpider.objects = {
-            origin.name: {
-                "jobpost": jobpost,
-                "company": jobpost.company
-            }
-
+            origin.name: {"jobpost": jobpost, "company": jobpost.company}
             for origin in WebsiteOrigin.objects.all()
             if origin and (jobpost := origin.jobpost_set.first())
         }

@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('jobpost', '0003_company_slug_jobpost_slug'),
+        ("jobpost", "0003_company_slug_jobpost_slug"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='company',
-            name='origin_url',
+            model_name="company",
+            name="origin_url",
             field=models.URLField(blank=True, max_length=256, null=True),
         ),
     ]

@@ -102,7 +102,7 @@ export class ApiSchema {
     }
     create(data, queryParams={}) {
         let path = this.setQueryParams(queryParams);
-        
+
         return this.client.post(path, data).then(response => {
             this.store.objects.push(response.data);
             this.callStoreMethod('onCreate', response);
@@ -123,7 +123,7 @@ export class PaginatedApiSchema extends ApiSchema {
         super(store, path, contentType);
         this.paginator = new Paginator();
     }
-    
+
     previousPage() {
         this.paginator.toPreviousPage(() => {
             this.fetch();

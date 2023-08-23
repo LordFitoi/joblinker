@@ -46,7 +46,7 @@ export default {
     },
     data() {
         return {
-            
+
             fields: {
                 amount: null,
                 payment_date: null,

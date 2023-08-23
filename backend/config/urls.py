@@ -19,20 +19,22 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 from django.conf import settings
 from backend.apps.utils import serve_media, get_sitemap, get_robots_txt
-from backend.apps.jobpost.views import CompanyDetailView, CompanyListView, JobpostListView
-
+from backend.apps.jobpost.views import (
+    CompanyDetailView,
+    CompanyListView,
+    JobpostListView,
+)
 
 
 urlpatterns = [
-    path('', JobpostListView.as_view()),
-    path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
+    path("", JobpostListView.as_view()),
+    path("admin/", admin.site.urls),
+    path("api-auth/", include("rest_framework.urls")),
     path("api/", include("backend.config.api")),
-    path('companies/', CompanyListView.as_view()),
-    path('companies/<str:company_slug>', CompanyDetailView.as_view()),
-    path('privacy/', TemplateView.as_view(template_name="privacy/index.html")),
+    path("companies/", CompanyListView.as_view()),
+    path("companies/<str:company_slug>", CompanyDetailView.as_view()),
+    path("privacy/", TemplateView.as_view(template_name="privacy/index.html")),
     path(f"{settings.MEDIA_URL[1:]}<str:media_name>", serve_media),
-
-    path('sitemap.xml', get_sitemap),
-    path('robots.txt', get_robots_txt),
+    path("sitemap.xml", get_sitemap),
+    path("robots.txt", get_robots_txt),
 ]

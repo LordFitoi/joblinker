@@ -9,14 +9,13 @@ class HimalayasAdapter(BaseAdapter):
             "title": "//h1/text()",
             "description": "//div[@class='trix-content']",
             "origin_url": "//meta[@property='og:url']/@content",
-            "company_link": "//span/a[contains(@href, 'companies')]/@href"
+            "company_link": "//span/a[contains(@href, 'companies')]/@href",
         },
         "company": {
             "name": "//h1//span/text()",
             "website": "//span[contains(text(), 'Visit')]/../@href",
             "logo_url": "//section//div[contains(@class, 'avatar-logo')]/img[contains(@title, 'logo')]/@src",
             "origin_url": "//meta[@property='og:url']/@content",
-            "description": "//div[@class='trix-content']"
-        }
+            "description": "//div[@class='trix-content']",
+        },
     }
-    

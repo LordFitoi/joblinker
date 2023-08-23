@@ -53,13 +53,10 @@ class BaseAdapter:
             no next page is found.
         """
 
-        next_page = response.xpath(self.selectors['next_page']).get()
+        next_page = response.xpath(self.selectors["next_page"]).get()
 
         if next_page:
-            return response.follow(
-                next_page,
-                callback=self
-            )
+            return response.follow(next_page, callback=self)
 
     def get_logo_url(self, response, selector):
         """
@@ -86,10 +83,12 @@ class BaseAdapter:
             WebOriginItem: An instance of WebOriginItem containing web origin data.
         """
 
-        return WebOriginItem(**{
-            'name': urlparse(response.url).hostname,
-            'website': f'https://{urlparse(response.url).hostname}'
-        })
+        return WebOriginItem(
+            **{
+                "name": urlparse(response.url).hostname,
+                "website": f"https://{urlparse(response.url).hostname}",
+            }
+        )
 
     def get_jobpost(self, response):
         """
@@ -103,13 +102,17 @@ class BaseAdapter:
             JobpostItem: An instance of JobpostItem containing job post data.
         """
 
-        selectors = self.selectors['jobpost']
+        selectors = self.selectors["jobpost"]
 
-        return JobpostItem(**{
-            'title': response.xpath(selectors['title']).get().strip(),
-            'description': self.format(response.xpath(selectors['description']).get()),
-            'origin_url': response.xpath(selectors['origin_url']).get()
-        })
+        return JobpostItem(
+            **{
+                "title": response.xpath(selectors["title"]).get().strip(),
+                "description": self.format(
+                    response.xpath(selectors["description"]).get()
+                ),
+                "origin_url": response.xpath(selectors["origin_url"]).get(),
+            }
+        )
 
     def get_company(self, response):
         """
@@ -122,14 +125,18 @@ class BaseAdapter:
             CompanyItem: An instance of CompanyItem containing company data.
         """
 
-        selectors = self.selectors['company']
+        selectors = self.selectors["company"]
 
-        return CompanyItem(**{
-            'name': response.xpath(selectors['name']).get().strip(),
-            'website': f'https://{urlparse(response.xpath(selectors["website"]).get()).netloc}',
-            'description': self.format(response.xpath(selectors['description']).get()),
-            'origin_url': response.xpath(selectors['origin_url']).get()
-        })
+        return CompanyItem(
+            **{
+                "name": response.xpath(selectors["name"]).get().strip(),
+                "website": f'https://{urlparse(response.xpath(selectors["website"]).get()).netloc}',
+                "description": self.format(
+                    response.xpath(selectors["description"]).get()
+                ),
+                "origin_url": response.xpath(selectors["origin_url"]).get(),
+            }
+        )
 
     def parse_company(self, response, jobpost, weborigin):
         """
@@ -144,13 +151,13 @@ class BaseAdapter:
             dict: A dictionary containing parsed company, job post, and web origin data.
         """
 
-        selectors = self.selectors['company']
+        selectors = self.selectors["company"]
 
         yield {
-            'logo_url': self.get_logo_url(response, selectors['logo_url']),
-            'company': self.get_company(response),
-            'jobpost': jobpost,
-            'weborigin': weborigin
+            "logo_url": self.get_logo_url(response, selectors["logo_url"]),
+            "company": self.get_company(response),
+            "jobpost": jobpost,
+            "weborigin": weborigin,
         }
 
     def parse_jobpost(self, response, weborigin):
@@ -167,14 +174,11 @@ class BaseAdapter:
         """
 
         yield response.follow(
-            response.xpath(self.selectors['jobpost']['company_link']).get(),
+            response.xpath(self.selectors["jobpost"]["company_link"]).get(),
             callback=self.parse_company,
-            cb_kwargs=dict(
-                jobpost=self.get_jobpost(response),
-                weborigin=weborigin
-            )
+            cb_kwargs=dict(jobpost=self.get_jobpost(response), weborigin=weborigin),
         )
-    
+
     def parse(self, response):
         """
         Parse the response to extract job card links, yield requests to parse job post information,
@@ -187,15 +191,13 @@ class BaseAdapter:
             scrapy.http.Request: Requests to parse job post information and for the next page.
         """
 
-        jobcards = response.xpath(self.selectors['link']).getall()
+        jobcards = response.xpath(self.selectors["link"]).getall()
 
         for link in jobcards:
             yield response.follow(
                 link,
                 callback=self.parse_jobpost,
-                cb_kwargs=dict(
-                    weborigin=self.get_weborigin(response)
-                )
+                cb_kwargs=dict(weborigin=self.get_weborigin(response)),
             )
 
         yield self.get_nextpage(response)
@@ -217,12 +219,14 @@ class BaseAdapter:
 
         crawled_company = self.get_company(response)
 
-        self.is_active = all([
-            company.name == crawled_company['name'],
-            company.origin_url == crawled_company['origin_url'],
-            self.format_and_striptags(company.description) == \
-                self.format_and_striptags(crawled_company['description'])
-        ])
+        self.is_active = all(
+            [
+                company.name == crawled_company["name"],
+                company.origin_url == crawled_company["origin_url"],
+                self.format_and_striptags(company.description)
+                == self.format_and_striptags(crawled_company["description"]),
+            ]
+        )
 
     def validate_jobpost(self, response, jobpost):
         """
@@ -241,12 +245,14 @@ class BaseAdapter:
 
         crawled_jobpost = self.get_jobpost(response)
 
-        self.is_active = all([
-            jobpost.title == crawled_jobpost['title'],
-            jobpost.origin_url == crawled_jobpost['origin_url'],
-            self.format_and_striptags(jobpost.description) == \
-                self.format_and_striptags(crawled_jobpost['description'])
-        ])
+        self.is_active = all(
+            [
+                jobpost.title == crawled_jobpost["title"],
+                jobpost.origin_url == crawled_jobpost["origin_url"],
+                self.format_and_striptags(jobpost.description)
+                == self.format_and_striptags(crawled_jobpost["description"]),
+            ]
+        )
 
     def validate(self, objects):
         """
@@ -259,13 +265,13 @@ class BaseAdapter:
             scrapy.http.Request: Requests to validate job post and company data.
         """
         yield scrapy.Request(
-            objects['jobpost'].origin_url,
+            objects["jobpost"].origin_url,
             callback=self.validate_jobpost,
-            cb_kwargs=dict(jobpost=objects['jobpost'] )
+            cb_kwargs=dict(jobpost=objects["jobpost"]),
         )
 
         yield scrapy.Request(
-            objects['company'].origin_url,
+            objects["company"].origin_url,
             callback=self.validate_company,
-            cb_kwargs=dict( company=objects['company'] )
+            cb_kwargs=dict(company=objects["company"]),
         )

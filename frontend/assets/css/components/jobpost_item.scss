@@ -66,7 +66,7 @@ main .jobpost--item {
             }
         }
 
-    
+
         h1, h2, h4, span, cite, p, .tag {
             color: $color-primary-700;
         }
@@ -75,7 +75,7 @@ main .jobpost--item {
     h1, h2, h4, span, cite, p, .tag {
         transition: color 300ms ease;
     }
-    
+
     .tags {
         display: flex;
         margin-top: 16px;

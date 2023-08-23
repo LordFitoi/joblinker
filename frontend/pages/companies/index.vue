@@ -24,7 +24,7 @@
                         </span>
                     </div>
                 </ClientOnly>
-                
+
                 <CardsTableCompany />
             </div>
             <PageAd adKey="b041a54588d9c42a335ae5bb9b246885" width="728" height="90" class="horizontal margin-top" />

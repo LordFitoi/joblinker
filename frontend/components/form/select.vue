@@ -14,7 +14,7 @@
             <p class="error--label" v-if="validator.$error">
                 %{{ validator.$errors[0].$message }}
             </p>
-            
+
             <template #fallback>
                 %{{ label }}
                 <label ref="input" tabindex="-1" class="input dropdown">

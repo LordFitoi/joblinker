@@ -4,7 +4,7 @@ from .adapters import ADAPTERS
 
 
 class ValidatorSpider(scrapy.Spider):
-    name="validator"
+    name = "validator"
     objects = {}
 
     def start_requests(self):
@@ -17,10 +17,7 @@ class ValidatorSpider(scrapy.Spider):
             yield scrapy.Request(
                 url,
                 callback=self.parse,
-                cb_kwargs=dict(
-                    adapter=adapter,
-                    objects=objects
-                )
+                cb_kwargs=dict(adapter=adapter, objects=objects),
             )
 
     def parse(self, _, adapter, objects):
