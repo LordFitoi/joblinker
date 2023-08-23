@@ -1,0 +1,7 @@
+# http://www.robotstxt.org/
+
+User-agent: *
+
+Disallow: /media/
+Disallow: /static/
+Sitemap: https://joblinker.site/sitemap.xml

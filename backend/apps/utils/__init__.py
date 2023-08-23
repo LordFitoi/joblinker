@@ -24,11 +24,19 @@ def serve_media(_, media_name):
     return HttpResponseNotFound()
 
 
-def get_sitemap(_):
+def serve_file(filename, content_type):
     try:
-        path = finders.find('sitemap.xml')
+        path = finders.find(filename)
         sitemap = open(path, "rb").read()
-        return HttpResponse(sitemap, content_type="application/xml")
+        return HttpResponse(sitemap, content_type=content_type)
     
     except FileNotFoundError:
         return HttpResponseNotFound()
+
+
+def get_sitemap(_):
+    return serve_file('sitemap.xml', 'application/xml')
+
+
+def get_robots_txt(_):
+    return serve_file('robots.txt', 'text/plain')
