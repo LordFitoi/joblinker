@@ -11,16 +11,13 @@
 <script>
 export default {
     setup() {
-        if (process.server) {
-            useSeoMeta({
-                title: '{{ company.name }} - Joblinker Site',
-                ogTitle: '{{ company.name }} - Joblinker Site',
-                description: '{{ company.description | striptags | truncatechars:200 }}',
-                ogDescription: '{{ company.description | striptags | truncatechars:200 }}',
-                ogImage: '{{ company.logo.url }}',
-                twitterCard: 'summary_large_image',
-            });
-        }
+        useServerSeoMeta({
+            title: '{{ company.name }} - Joblinker Site',
+            ogTitle: '{{ company.name }} - Joblinker Site',
+            description: '{{ company.description | striptags | truncatechars:200 }}',
+            ogDescription: '{{ company.description | striptags | truncatechars:200 }}',
+            ogImage: '{{ company.logo.url }}'
+        });  
     }
 }
 </script>

@@ -41,3 +41,17 @@
         </div>
     </NuxtLayout>
 </template>
+<script>
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
+    setup() {
+        useServerSeoMeta({
+            title: 'Privacy - Joblinker Site',
+            description: 'At JobLinker.site, your privacy is our priority. Learn about our commitment to safeguarding your personal information on our comprehensive Privacy Page. We explain how your data is collected, used, and protected, ensuring a secure job search experience. Trust us to handle your information with care.',
+            ogDescription: 'At JobLinker.site, your privacy is our priority. Learn about our commitment to safeguarding your personal information on our comprehensive Privacy Page. We explain how your data is collected, used, and protected, ensuring a secure job search experience. Trust us to handle your information with care.',
+            ogTitle: 'Privacy - Joblinker Site',
+        });
+    },
+})
+</script>

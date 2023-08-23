@@ -37,6 +37,13 @@ import Store from '~~/stores/jobpost.js';
 
 export default {
     setup() {
+        useServerSeoMeta({
+            title: 'Joblinker Site',
+            description: 'Discover your next career opportunity with joblinker.site! Explore a wide range of job listings and connect with employers effortlessly. Find your dream job with ease and take the next step towards a fulfilling career today',
+            ogDescription: 'Discover your next career opportunity with joblinker.site! Explore a wide range of job listings and connect with employers effortlessly. Find your dream job with ease and take the next step towards a fulfilling career today',
+            ogTitle: 'Joblinker Site',
+        });
+
         return {
             store: Store()
         }

@@ -38,6 +38,12 @@ import Store from '~~/stores/company.js';
 
 export default {
     setup() {
+        useServerSeoMeta({
+            title: '{{ page_obj.paginator.count }} Companies - Joblinker Site',
+            ogTitle: '{{ page_obj.paginator.count }} Companies - Joblinker Site',
+            description: 'Discover your next career move with joblinker.site! Explore a wide range of job opportunities from top companies. Our job board connects talented professionals with their dream roles. Find the perfect job that matches your skills and aspirations today.',
+            ogDescription: 'Discover your next career move with joblinker.site! Explore a wide range of job opportunities from top companies. Our job board connects talented professionals with their dream roles. Find the perfect job that matches your skills and aspirations today.',
+        });
         return {
             store: Store()
         }

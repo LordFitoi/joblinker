@@ -23,18 +23,12 @@ export default defineNuxtConfig({
         buildAssetsDir: "/static/",
         cdnURL: process.env[config.env.CDN_URL] ? process.env[config.env.CDN_URL]: '',
         head: {
-            title: "Joblinker",
             htmlAttrs: { lang: 'en' },
             meta: [
                 { charset: 'utf-8' },
                 {
                     name: 'viewport',
                     content: 'width=device-width, initial-scale=1'
-                },
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: "Discover your next career opportunity with joblinker.site! Explore a wide range of job listings and connect with employers effortlessly. Find your dream job with ease and take the next step towards a fulfilling career today"
                 }
             ],
             link: [
