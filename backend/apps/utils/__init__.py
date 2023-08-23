@@ -2,6 +2,8 @@ import uuid, os
 from django.conf import settings
 from django.db import models
 from django.http import HttpResponse, HttpResponseNotFound
+from django.contrib.staticfiles import finders
+
 
 class AbstractBaseModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -13,11 +15,20 @@ class AbstractBaseModel(models.Model):
 
 
 def serve_media(_, media_name):
-
     path = f"{settings.MEDIA_ROOT}/{media_name}"
 
     if os.path.exists(path):
         media_file = open(path, "rb").read()
-        return HttpResponse(media_file, content_type="image")
-    
+        return HttpResponse(media_file, content_type=["image/jpg", "image/png"])
+
     return HttpResponseNotFound()
+
+
+def get_sitemap(_):
+    try:
+        path = finders.find('sitemap.xml')
+        sitemap = open(path, "rb").read()
+        return HttpResponse(sitemap, content_type="application/xml")
+    
+    except FileNotFoundError:
+        return HttpResponseNotFound()

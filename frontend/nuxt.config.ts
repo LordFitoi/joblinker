@@ -16,7 +16,8 @@ export default defineNuxtConfig({
                 ],
             },
         ],
-        'nuxt-gtag'
+        'nuxt-gtag',
+        'nuxt-simple-sitemap'
     ],
     app: {
         buildAssetsDir: "/static/",
@@ -68,5 +69,13 @@ export default defineNuxtConfig({
         compilerOptions: {
             delimiters: ['%{{', '}}']
         }
+    },
+    site: {
+        url: 'https://joblinker.site',
+    },
+    sitemap: {
+        xsl: false,
+        discoverImages: false,
+        sitemapName: 'static/sitemap.xml'
     }
 })

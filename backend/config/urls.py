@@ -18,8 +18,10 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
 from django.conf import settings
-from backend.apps.utils import serve_media
+from backend.apps.utils import serve_media, get_sitemap
 from backend.apps.jobpost.views import CompanyDetailView, CompanyListView, JobpostListView
+
+
 
 urlpatterns = [
     path('', JobpostListView.as_view()),
@@ -29,6 +31,6 @@ urlpatterns = [
     path('companies/', CompanyListView.as_view()),
     path('companies/<str:company_slug>', CompanyDetailView.as_view()),
     path('privacy/', TemplateView.as_view(template_name="privacy/index.html")),
-
+    path('sitemap.xml', get_sitemap),
     path(f"{settings.MEDIA_URL[1:]}<str:media_name>", serve_media)
 ]
