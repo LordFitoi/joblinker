@@ -1,11 +1,6 @@
 <h1 align="center">Joblinker</h1>
 
-<<<<<<< Updated upstream
 ## Used Technologies
-=======
-## Used Technologies
-
->>>>>>> Stashed changes
 - PostgreSQL
 - Python / Django
 - Node.js / Nuxt

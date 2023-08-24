@@ -17,11 +17,7 @@ export default {
             description: '{{ company.description | striptags | truncatechars:200 }}',
             ogDescription: '{{ company.description | striptags | truncatechars:200 }}',
             ogImage: '{{ company.logo.url }}'
-<<<<<<< Updated upstream
         });
-=======
-        });
->>>>>>> Stashed changes
     }
 }
 </script>
