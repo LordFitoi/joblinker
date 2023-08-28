@@ -80,5 +80,6 @@ main .company--item {
         display: flex;
         margin-top: 16px;
         gap: 4px;
+        flex-wrap: wrap;
     }
 }
