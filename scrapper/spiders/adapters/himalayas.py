@@ -10,7 +10,7 @@ class HimalayasAdapter(BaseAdapter):
             "description": "//div[@class='trix-content']",
             "origin_url": "//meta[@property='og:url']/@content",
             "company_link": "//span/a[contains(@href, 'companies')]/@href",
-            "categories": "//label[contains(text(), 'Job categories')]/..//span/text()"
+            "categories": "//label[contains(text(), 'Job categories')]/..//span/text()",
         },
         "company": {
             "name": "//h1//span/text()",

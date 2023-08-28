@@ -55,28 +55,18 @@ class RecolectorPipeline:
         item["company"]["origin"] = item["jobpost"]["origin"] = weborigin
 
         item["categories"] = [
-            await self.create_object(
-                model=Category,
-                item=category_item
-            )
+            await self.create_object(model=Category, item=category_item)
             for category_item in item["jobpost"].pop("categories")
         ]
 
         item["jobpost"]["company"] = await self.create_object(
-            model=Company,
-            item=item["company"],
-            count_label="companies"
+            model=Company, item=item["company"], count_label="companies"
         )
 
-        await self.save_image(
-            item["jobpost"]["company"].logo,
-            item["logo_url"]
-        )
+        await self.save_image(item["jobpost"]["company"].logo, item["logo_url"])
 
         jobpost = await self.create_object(
-            model=JobPost,
-            item=item["jobpost"],
-            count_label="jobposts"
+            model=JobPost, item=item["jobpost"], count_label="jobposts"
         )
 
         await self.set_category(jobpost, item["categories"])

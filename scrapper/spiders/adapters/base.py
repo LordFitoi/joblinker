@@ -57,10 +57,10 @@ class BaseAdapter:
 
         if next_page:
             return response.follow(next_page, callback=self)
-        
+
     def get_categories(self, response, selector):
         labels = set(response.xpath(selector).getall())
-        return [ CategoryItem(name = label) for label in labels ]
+        return [CategoryItem(name=label) for label in labels]
 
     def get_logo_url(self, response, selector):
         """
@@ -115,7 +115,7 @@ class BaseAdapter:
                     response.xpath(selectors["description"]).get()
                 ),
                 "origin_url": response.xpath(selectors["origin_url"]).get(),
-                "categories": self.get_categories(response, selectors["categories"])
+                "categories": self.get_categories(response, selectors["categories"]),
             }
         )
 
@@ -178,7 +178,9 @@ class BaseAdapter:
             scrapy.http.Request: Requests to parse company information.
         """
 
-        print(f'\n\n{response.url}, {response.xpath(self.selectors["jobpost"]["company_link"]).get()}\n\n')
+        print(
+            f'\n\n{response.url}, {response.xpath(self.selectors["jobpost"]["company_link"]).get()}\n\n'
+        )
 
         yield response.follow(
             response.xpath(self.selectors["jobpost"]["company_link"]).get(),

@@ -12,7 +12,7 @@ class NoDeskAdapter(BaseAdapter):
             "description": "//div[@class='grey-800']",
             "company_link": "//h2//a[contains(@href, '/remote-companies/')][@class='link dim grey-700']/@href",
             "origin_url": "//meta[@property='og:url']/@content",
-            "categories": "//ul[@class='f9 list mv0 pl0']/li//text()"
+            "categories": "//ul[@class='f9 list mv0 pl0']/li//text()",
         },
         "company": {
             "name": "//h1/text()",
