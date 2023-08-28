@@ -12,6 +12,16 @@
         <div>
             <h2>{{ object.title }}</h2>
             <p>{{ object.description | striptags | truncatechars:200 }}</p>
+
+            {% if object.categories %}
+            <div class="tags">
+                {% for category in object.categories.all %}
+                <div class="tag badge">
+                    {{ category.name }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
     </a>
 </template>

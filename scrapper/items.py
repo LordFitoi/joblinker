@@ -11,6 +11,7 @@ class JobpostItem(scrapy.Item):
     description = scrapy.Field()
     company = scrapy.Field()
     origin_url = scrapy.Field()
+    categories = scrapy.Field()
     origin = scrapy.Field()
 
 
@@ -25,3 +26,7 @@ class CompanyItem(scrapy.Item):
 class WebOriginItem(scrapy.Item):
     name = scrapy.Field()
     website = scrapy.Field()
+
+
+class CategoryItem(scrapy.Item):
+    name = scrapy.Field()
