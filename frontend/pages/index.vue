@@ -38,7 +38,7 @@ import Store from '~~/stores/jobpost.js';
 export default {
     setup() {
         useServerSeoMeta({
-            
+
             title: SEO.TITLE.GENERAL,
             description: SEO.DESCRIPTION.GENERAL,
             ogType: SEO.TYPE,
