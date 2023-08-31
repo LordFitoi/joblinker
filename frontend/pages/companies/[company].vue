@@ -12,11 +12,17 @@
 export default {
     setup() {
         useServerSeoMeta({
-            title: '{{ company.name }} - Joblinker Site',
-            ogTitle: '{{ company.name }} - Joblinker Site',
-            description: '{{ company.description | striptags | truncatechars:200 }}',
-            ogDescription: '{{ company.description | striptags | truncatechars:200 }}',
-            ogImage: '{{ company.logo.url }}'
+            title: SEO.TITLE.COMPANY,
+            description: SEO.DESCRIPTION.COMPANY,
+            ogType: SEO.TYPE,
+            ogUrl: SEO.URL,
+            ogTitle: SEO.TITLE.COMPANY,
+            ogDescription: SEO.DESCRIPTION.COMPANY,
+            ogImage: SEO.IMAGE.COMPANY,
+            twitterUrl: SEO.URL,
+            twitterTitle: SEO.TITLE.COMPANY,
+            twitterDescription: SEO.DESCRIPTION.COMPANY,
+            twitterImage: SEO.IMAGE.COMPANY
         });
     }
 }

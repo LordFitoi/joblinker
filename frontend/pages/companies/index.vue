@@ -39,10 +39,17 @@ import Store from '~~/stores/company.js';
 export default {
     setup() {
         useServerSeoMeta({
-            title: '{{ page_obj.paginator.count }} Companies - Joblinker Site',
-            ogTitle: '{{ page_obj.paginator.count }} Companies - Joblinker Site',
-            description: 'Discover your next career move with joblinker.site! Explore a wide range of job opportunities from top companies. Our job board connects talented professionals with their dream roles. Find the perfect job that matches your skills and aspirations today.',
-            ogDescription: 'Discover your next career move with joblinker.site! Explore a wide range of job opportunities from top companies. Our job board connects talented professionals with their dream roles. Find the perfect job that matches your skills and aspirations today.',
+            title: SEO.TITLE.COMPANIES,
+            description: SEO.DESCRIPTION.COMPANIES,
+            ogType: SEO.TYPE,
+            ogUrl: SEO.URL,
+            ogTitle: SEO.TITLE.COMPANIES,
+            ogDescription: SEO.DESCRIPTION.COMPANIES,
+            ogImage: SEO.IMAGE.GENERAL,
+            twitterUrl: SEO.URL,
+            twitterTitle: SEO.TITLE.COMPANIES,
+            twitterDescription: SEO.DESCRIPTION.COMPANIES,
+            twitterImage: SEO.IMAGE.GENERAL
         });
         return {
             store: Store()

@@ -38,10 +38,18 @@ import Store from '~~/stores/jobpost.js';
 export default {
     setup() {
         useServerSeoMeta({
-            title: 'Joblinker Site',
-            description: 'Discover your next career opportunity with joblinker.site! Explore a wide range of job listings and connect with employers effortlessly. Find your dream job with ease and take the next step towards a fulfilling career today',
-            ogDescription: 'Discover your next career opportunity with joblinker.site! Explore a wide range of job listings and connect with employers effortlessly. Find your dream job with ease and take the next step towards a fulfilling career today',
-            ogTitle: 'Joblinker Site',
+            
+            title: SEO.TITLE.GENERAL,
+            description: SEO.DESCRIPTION.GENERAL,
+            ogType: SEO.TYPE,
+            ogUrl: SEO.URL,
+            ogTitle: SEO.TITLE.GENERAL,
+            ogDescription: SEO.DESCRIPTION.GENERAL,
+            ogImage: SEO.IMAGE.GENERAL,
+            twitterUrl: SEO.URL,
+            twitterTitle: SEO.TITLE.GENERAL,
+            twitterDescription: SEO.DESCRIPTION.GENERAL,
+            twitterImage: SEO.IMAGE.GENERAL
         });
 
         return {
