@@ -198,7 +198,7 @@ class BaseAdapter(ValidationMixin):
             str: The extracted logo URL.
         """
 
-        return response.xpath(selector).get()
+        return f'https://{urlparse(response.url).hostname}{response.xpath(selector).get()}'
 
     def get_weborigin(self, response):
         """

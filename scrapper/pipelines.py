@@ -21,14 +21,13 @@ class RecolectorPipeline:
     @sync_to_async
     def save_image(self, object_field, url):
         if not object_field:
-            name = f"{urlparse(url).path.split('/')[-1]}.jpg"
             content = requests.get(url).content
 
             img_temp = NamedTemporaryFile(delete=True)
             img_temp.write(content)
             img_temp.flush()
 
-            object_field.save(name, File(img_temp), save=True)
+            object_field.save("logo.jpg", File(img_temp), save=True)
 
     @sync_to_async
     def set_category(self, jobpost, categories):
@@ -63,8 +62,7 @@ class RecolectorPipeline:
             model=Company, item=item["company"], count_label="companies"
         )
 
-        logo_url = f'{weborigin.website}{urlparse(item["logo_url"]).path[1:]}'
-        await self.save_image(item["jobpost"]["company"].logo, logo_url)
+        await self.save_image(item["jobpost"]["company"].logo, item["logo_url"])
 
         jobpost = await self.create_object(
             model=JobPost, item=item["jobpost"], count_label="jobposts"
