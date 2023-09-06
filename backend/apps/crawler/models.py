@@ -7,7 +7,7 @@ class CrawlerRecord(AbstractBaseModel):
         COMPLETE = "Complete"
         FAILED = "Failed"
         PROCESS = "Process"
-    
+
     jobposts = models.IntegerField(default=0, editable=False)
     companies = models.IntegerField(default=0, editable=False)
     state = models.CharField(
@@ -26,7 +26,7 @@ class CrawlerRecord(AbstractBaseModel):
     def mark_as_failed(self):
         self.state = self.CrawlState.FAILED
         self.save()
-    
+
     def mark_as_complete(self):
         self.state = self.CrawlState.COMPLETE
         self.save()

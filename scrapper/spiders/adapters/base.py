@@ -6,7 +6,7 @@ from scrapper.items import CategoryItem, CompanyItem, JobpostItem, WebOriginItem
 
 class InvalidAdapterError(Exception):
     "Raised when the adapter validation fails"
-    
+
     def __init__(self, adapter, field):
         self.message = f'{adapter} validation fails in field "{field}".'
         super().__init__(self.message)
@@ -29,11 +29,11 @@ class TextSimilarity:
         text = re.sub("\s+", " ", text)
         text = strip_tags(text)
         return text.strip()
-    
+
     @classmethod
     def get_subwords(self, word):
         """Returns the subwords the word"""
-        return set([word[i:i+3] for i in range(len(word) - 2)])
+        return set([word[i : i + 3] for i in range(len(word) - 2)])
 
     @classmethod
     def get_similarity(self, text_a, text_b):
@@ -73,7 +73,6 @@ class ValidationMixin:
             ]
         )
 
-
     def validate_jobpost(self, response, jobpost):
         """
         Validate job post data by comparing crawled data with provided data.
@@ -91,20 +90,18 @@ class ValidationMixin:
 
         crawled_jobpost = self.get_jobpost(response)
 
-        fields_to_validate = [
-            "title",
-            "origin_url",
-            "description"
-        ]
+        fields_to_validate = ["title", "origin_url", "description"]
 
         for field in fields_to_validate:
             local_object = self.format_and_striptags(getattr(jobpost, field))
             scrapped_object = self.format_and_striptags(crawled_jobpost[field])
 
-            if TextSimilarity.get_similarity(local_object, scrapped_object) < self.min_similarity_bias:
+            if (
+                TextSimilarity.get_similarity(local_object, scrapped_object)
+                < self.min_similarity_bias
+            ):
                 self.is_active = False
                 raise InvalidAdapterError(self, field)
-
 
     def validate(self, objects):
         """
@@ -198,7 +195,9 @@ class BaseAdapter(ValidationMixin):
             str: The extracted logo URL.
         """
 
-        return f'https://{urlparse(response.url).hostname}{response.xpath(selector).get()}'
+        return (
+            f"https://{urlparse(response.url).hostname}{response.xpath(selector).get()}"
+        )
 
     def get_weborigin(self, response):
         """
@@ -288,7 +287,6 @@ class BaseAdapter(ValidationMixin):
                 "categories": self.get_categories(response, selectors["categories"]),
             }
         )
-
 
     def parse_jobpost(self, response, weborigin):
         """

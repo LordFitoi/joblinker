@@ -24,7 +24,7 @@ class NoDeskAdapter(BaseAdapter):
     pages = [
         "/remote-jobs/design/",
         "/remote-jobs/customer-support/",
-        "/remote-jobs/entry-level/"
+        "/remote-jobs/entry-level/",
     ]
 
     def get_logo_url(self, response, selector):

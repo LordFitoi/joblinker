@@ -35,5 +35,3 @@ class Command(BaseCommand):
             record.mark_as_complete()
         else:
             record.mark_as_failed()
-
-  

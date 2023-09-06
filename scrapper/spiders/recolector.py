@@ -12,9 +12,7 @@ class RecolectorSpider(scrapy.Spider):
                 continue
 
             yield scrapy.Request(
-                adapter.root_page,
-                callback=self.parse,
-                cb_kwargs=dict(adapter=adapter)
+                adapter.root_page, callback=self.parse, cb_kwargs=dict(adapter=adapter)
             )
 
     def parse(self, response, adapter):

@@ -22,5 +22,5 @@ class HimalayasAdapter(BaseAdapter):
     pages = [
         "/jobs/software-engineering",
         "/jobs/software-development",
-        "/jobs/software-architecture"
+        "/jobs/software-architecture",
     ]
