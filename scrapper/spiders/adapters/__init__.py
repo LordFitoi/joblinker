@@ -3,6 +3,6 @@ from .nodesk import NoDeskAdapter
 
 
 ADAPTERS = [
-    # HimalayasAdapter(),
+    HimalayasAdapter(),
     NoDeskAdapter(),
 ]

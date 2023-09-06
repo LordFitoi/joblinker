@@ -6,7 +6,6 @@
 
 # useful for handling different item types with a single interface
 import requests
-from urllib.parse import urlparse
 from asgiref.sync import sync_to_async
 from backend.apps.jobpost.models import JobPost, Company, WebsiteOrigin, Category
 from django.core.files import File
