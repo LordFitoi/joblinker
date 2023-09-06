@@ -3,20 +3,24 @@ from scrapper.spiders.adapters.base import BaseAdapter
 
 class HimalayasAdapter(BaseAdapter):
     selectors = {
-        "link": "//ul[@id='card-group']/li[@data-action='click->card#goToPage']/@data-path",
-        "next_page": "//a[@data-action='click->instantsearch#changePage'][contains(@class, 'btn')][@rel='next']/@href",
+        "link": "//article//a[contains(@href,'/jobs/')][contains(@href,'/companies/')]/@href",
+        "next_page": "//nav[@aria-label='pagination']//span[contains(text(), 'Next')]/../@href",
         "jobpost": {
             "title": "//h1/text()",
-            "description": "//div[@class='trix-content']",
-            "origin_url": "//meta[@property='og:url']/@content",
-            "company_link": "//span/a[contains(@href, 'companies')]/@href",
-            "categories": "//label[contains(text(), 'Job categories')]/..//span/text()",
+            "description": "//div[@class='border-b border-gray-200 pb-8 md:pb-12']//article",
+            "company_link": "//section//a[contains(@href, '/companies/')]/@href",
+            "categories": "//h3[contains(text(), 'Job categories')]/..//span/text()",
         },
         "company": {
-            "name": "//h1//span/text()",
-            "website": "//span[contains(text(), 'Visit')]/../@href",
-            "logo_url": "//section//div[contains(@class, 'avatar-logo')]/img[contains(@title, 'logo')]/@src",
-            "origin_url": "//meta[@property='og:url']/@content",
-            "description": "//div[@class='trix-content']",
+            "name": "//h1/text()",
+            "website": "//a[contains(text(), 'Visit')]/@href",
+            "logo_url": "//img[@data-nimg='fill']/@src",
+            "description": "//div[@class='flex-shrink-0 xl:w-[48rem]']//article//article",
         },
     }
+    root_page = "https://himalayas.app/jobs"
+    pages = [
+        "/jobs/software-engineering",
+        "/jobs/software-development",
+        "/jobs/software-architecture"
+    ]

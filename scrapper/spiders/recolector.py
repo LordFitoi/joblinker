@@ -7,12 +7,14 @@ class RecolectorSpider(scrapy.Spider):
     record = None
 
     def start_requests(self):
-        for url, adapter in ADAPTERS.items():
+        for adapter in ADAPTERS:
             if not adapter.is_active:
                 continue
 
             yield scrapy.Request(
-                url, callback=self.parse, cb_kwargs=dict(adapter=adapter)
+                adapter.root_page,
+                callback=self.parse,
+                cb_kwargs=dict(adapter=adapter)
             )
 
     def parse(self, response, adapter):

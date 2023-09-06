@@ -63,7 +63,8 @@ class RecolectorPipeline:
             model=Company, item=item["company"], count_label="companies"
         )
 
-        await self.save_image(item["jobpost"]["company"].logo, item["logo_url"])
+        logo_url = f'{weborigin.website}{urlparse(item["logo_url"]).path[1:]}'
+        await self.save_image(item["jobpost"]["company"].logo, logo_url)
 
         jobpost = await self.create_object(
             model=JobPost, item=item["jobpost"], count_label="jobposts"

@@ -8,7 +8,8 @@ class ValidatorSpider(scrapy.Spider):
     objects = {}
 
     def start_requests(self):
-        for url, adapter in ADAPTERS.items():
+        for adapter in ADAPTERS:
+            url = adapter.root_page
             objects = self.objects.get(urlparse(url).netloc, None)
 
             if not objects:

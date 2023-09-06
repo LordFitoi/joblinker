@@ -10,19 +10,30 @@ from scrapper.spiders.validator import ValidatorSpider
 class Command(BaseCommand):
     help = "Crawl scrapper spider"
 
+    def get_validation_data(self):
+        return {
+            origin.name: {"jobpost": jobpost, "company": jobpost.company}
+            for origin in WebsiteOrigin.objects.all()
+            if origin and (jobpost := origin.jobpost_set.last())
+        }
+
     def handle(self, *args, **options):
         settings = get_project_settings()
         settings.setmodule("scrapper.settings", priority="project")
 
-        RecolectorSpider.record = CrawlerRecord.objects.create()
-        ValidatorSpider.objects = {
-            origin.name: {"jobpost": jobpost, "company": jobpost.company}
-            for origin in WebsiteOrigin.objects.all()
-            if origin and (jobpost := origin.jobpost_set.first())
-        }
+        record = CrawlerRecord.objects.create()
+        ValidatorSpider.objects = self.get_validation_data()
+        RecolectorSpider.record = record
 
         process = CrawlerProcess(settings)
         validation = process.crawl(ValidatorSpider)
         validation.addCallback(lambda _: process.crawl(RecolectorSpider))
 
         process.start()
+
+        if record.jobposts and record.companies:
+            record.mark_as_complete()
+        else:
+            record.mark_as_failed()
+
+  
