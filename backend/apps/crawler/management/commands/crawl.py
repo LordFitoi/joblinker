@@ -31,7 +31,7 @@ class Command(BaseCommand):
 
         process.start()
 
-        if record.jobposts and record.companies:
+        if record.jobposts:
             record.mark_as_complete()
         else:
             record.mark_as_failed()
