@@ -9,12 +9,18 @@ class WebsiteOrigin(AbstractBaseModel):
     website = models.URLField(blank=True, null=True)
     json_scrap_origin = models.JSONField(blank=True, null=True)
 
+    class Meta:
+        ordering = ["name", "-created_at"]
+
     def __str__(self):
         return self.name
 
 
 class Category(AbstractBaseModel):
     name = models.CharField(max_length=100)
+
+    class Meta:
+        ordering = ["name", "-created_at"]
 
     def __str__(self):
         return self.name
@@ -40,6 +46,9 @@ class Company(AbstractBaseModel):
         Location, on_delete=models.CASCADE, blank=True, null=True
     )
     slug = AutoSlugField(populate_from=["name"])
+
+    class Meta:
+        ordering = ["name", "-created_at"]
 
     def __str__(self):
         return self.name
