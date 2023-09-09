@@ -14,7 +14,6 @@ from tempfile import NamedTemporaryFile
 from .spiders.recolector import RecolectorSpider
 
 
-
 class JobpostPipeline:
     record = None
 
@@ -23,10 +22,10 @@ class JobpostPipeline:
         adapter = ItemAdapter(item)
 
         try:
-            return Category.objects.get(name=adapter['name'])
+            return Category.objects.get(name=adapter["name"])
         except Category.DoesNotExist:
             category = Category.objects.create(**adapter)
-            self.record.add_count('categories')
+            self.record.add_count("categories")
 
             return category
 
@@ -35,15 +34,15 @@ class JobpostPipeline:
         adapter = ItemAdapter(item)
 
         try:
-            return JobPost.objects.get(origin_url=adapter['origin_url'])
+            return JobPost.objects.get(origin_url=adapter["origin_url"])
         except JobPost.DoesNotExist:
             jobpost = JobPost.objects.create(**adapter)
-            
-            self.record.add_count('jobposts')
+
+            self.record.add_count("jobposts")
             jobpost.categories.set(categories)
 
             return jobpost
-        
+
     async def __call__(self, item):
         item["categories"] = [
             await self.get_category(category_item)
@@ -72,10 +71,10 @@ class CompanyPipeline:
         adapter = ItemAdapter(item)
 
         try:
-            return Company.objects.get(website=adapter['website'])
+            return Company.objects.get(website=adapter["website"])
         except Company.DoesNotExist:
             company = Company.objects.create(**adapter)
-            self.record.add_count('companies')
+            self.record.add_count("companies")
 
             return company
 
@@ -96,7 +95,7 @@ class RecolectorPipeline:
         adapter = ItemAdapter(item)
 
         try:
-            return WebsiteOrigin.objects.get(website=adapter['website'])
+            return WebsiteOrigin.objects.get(website=adapter["website"])
         except WebsiteOrigin.DoesNotExist:
             return WebsiteOrigin.objects.create(**adapter)
 
