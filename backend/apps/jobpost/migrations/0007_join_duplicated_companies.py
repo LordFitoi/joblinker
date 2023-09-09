@@ -20,7 +20,7 @@ def join_duplicated_companies(apps, schema_editor):
     for data in websites:
         companies = list(Company.objects.filter(website=data['website']).order_by('created_at'))
 
-        if len(companies) < 1:
+        if len(companies) <= 1:
             continue
 
         original_company = companies.pop(0)

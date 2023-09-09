@@ -5,7 +5,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("jobpost", "0007_join_duplicated_companies"),
+        ("jobpost", "0008_remove_duplicated_jobpost"),
     ]
 
     operations = [
