@@ -6,7 +6,7 @@ from django_extensions.db.models import AutoSlugField
 class WebsiteOrigin(AbstractBaseModel):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
-    website = models.URLField(blank=True, null=True)
+    website = models.URLField(blank=True, null=True, unique=True)
     json_scrap_origin = models.JSONField(blank=True, null=True)
 
     class Meta:
@@ -36,7 +36,7 @@ class Location(AbstractBaseModel):
 class Company(AbstractBaseModel):
     name = models.CharField(max_length=100)
     logo = models.ImageField(blank=True, null=True)
-    website = models.URLField(blank=True, null=True)
+    website = models.URLField(blank=True, null=True, unique=True)
     description = models.TextField(blank=True, null=True)
     origin_url = models.URLField(max_length=256, blank=True, null=True)
     origin = models.ForeignKey(
@@ -77,7 +77,7 @@ class JobPost(AbstractBaseModel):
     origin = models.ForeignKey(
         WebsiteOrigin, on_delete=models.CASCADE, blank=True, null=True
     )
-    origin_url = models.URLField(max_length=256, blank=True, null=True)
+    origin_url = models.URLField(max_length=256, blank=True, null=True, unique=True)
     location = models.ForeignKey(
         Location, on_delete=models.CASCADE, blank=True, null=True
     )

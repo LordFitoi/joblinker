@@ -10,6 +10,7 @@ class CrawlerRecord(AbstractBaseModel):
 
     jobposts = models.IntegerField(default=0, editable=False)
     companies = models.IntegerField(default=0, editable=False)
+    categories = models.IntegerField(default=0, editable=False)
     state = models.CharField(
         max_length=20,
         choices=CrawlState.choices,

@@ -14,33 +14,91 @@ from tempfile import NamedTemporaryFile
 from .spiders.recolector import RecolectorSpider
 
 
-class RecolectorPipeline:
+
+class JobpostPipeline:
     record = None
 
     @sync_to_async
-    def save_image(self, object_field, url):
-        if not object_field:
+    def get_category(self, item):
+        adapter = ItemAdapter(item)
+
+        try:
+            return Category.objects.get(name=adapter['name'])
+        except Category.DoesNotExist:
+            category = Category.objects.create(**adapter)
+            self.record.add_count('categories')
+
+            return category
+
+    @sync_to_async
+    def get_jobpost(self, item, categories):
+        adapter = ItemAdapter(item)
+
+        try:
+            return JobPost.objects.get(origin_url=adapter['origin_url'])
+        except JobPost.DoesNotExist:
+            jobpost = JobPost.objects.create(**adapter)
+            
+            self.record.add_count('jobposts')
+            jobpost.categories.set(categories)
+
+            return jobpost
+        
+    async def __call__(self, item):
+        item["categories"] = [
+            await self.get_category(category_item)
+            for category_item in item["jobpost"].pop("categories")
+        ]
+
+        return await self.get_jobpost(item["jobpost"], item["categories"])
+
+
+class CompanyPipeline:
+    record = None
+
+    @sync_to_async
+    def save_image(self, company, url):
+        if not company.logo:
             content = requests.get(url).content
 
             img_temp = NamedTemporaryFile(delete=True)
             img_temp.write(content)
             img_temp.flush()
 
-            object_field.save("logo.jpg", File(img_temp), save=True)
+            company.logo.save("logo.jpg", File(img_temp), save=True)
 
     @sync_to_async
-    def set_category(self, jobpost, categories):
-        jobpost.categories.set(categories)
-
-    @sync_to_async
-    def create_object(self, model=None, item=None, count_label=None):
+    def get_object(self, item):
         adapter = ItemAdapter(item)
-        item, is_new = model.objects.get_or_create(**adapter)
 
-        if is_new and count_label:
-            self.record.add_count(count_label)
+        try:
+            return Company.objects.get(website=adapter['website'])
+        except Company.DoesNotExist:
+            company = Company.objects.create(**adapter)
+            self.record.add_count('companies')
 
-        return model.objects.get_or_create(**adapter)[0]
+            return company
+
+    async def __call__(self, item):
+        company = await self.get_object(item["company"])
+        await self.save_image(company, item["logo_url"])
+
+        return company
+
+
+class RecolectorPipeline:
+    record = None
+    company_pipeline = CompanyPipeline()
+    jobpost_pipeline = JobpostPipeline()
+
+    @sync_to_async
+    def get_weborigin(self, item):
+        adapter = ItemAdapter(item)
+
+        try:
+            return WebsiteOrigin.objects.get(website=adapter['website'])
+        except WebsiteOrigin.DoesNotExist:
+            return WebsiteOrigin.objects.create(**adapter)
 
     async def process_item(self, item, spider):
         if not isinstance(spider, RecolectorSpider):
@@ -48,25 +106,11 @@ class RecolectorPipeline:
 
         if not self.record:
             self.record = spider.record
+            self.company_pipeline.record = spider.record
+            self.jobpost_pipeline.record = spider.record
 
-        weborigin = await self.create_object(WebsiteOrigin, item["weborigin"])
+        weborigin = await self.get_weborigin(item["weborigin"])
         item["company"]["origin"] = item["jobpost"]["origin"] = weborigin
+        item["jobpost"]["company"] = await self.company_pipeline(item)
 
-        item["categories"] = [
-            await self.create_object(model=Category, item=category_item)
-            for category_item in item["jobpost"].pop("categories")
-        ]
-
-        item["jobpost"]["company"] = await self.create_object(
-            model=Company, item=item["company"], count_label="companies"
-        )
-
-        await self.save_image(item["jobpost"]["company"].logo, item["logo_url"])
-
-        jobpost = await self.create_object(
-            model=JobPost, item=item["jobpost"], count_label="jobposts"
-        )
-
-        await self.set_category(jobpost, item["categories"])
-
-        return item
+        return await self.jobpost_pipeline(item)
