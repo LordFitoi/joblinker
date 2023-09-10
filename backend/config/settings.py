@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
+
     # 3rd party apps
     "rest_framework",
     "corsheaders",

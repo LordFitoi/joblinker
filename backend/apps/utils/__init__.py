@@ -34,9 +34,5 @@ def serve_file(filename, content_type):
         return HttpResponseNotFound()
 
 
-def get_sitemap(_):
-    return serve_file("sitemap.xml", "application/xml")
-
-
 def get_robots_txt(_):
     return serve_file("robots.txt", "text/plain")

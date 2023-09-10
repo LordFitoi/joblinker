@@ -9,8 +9,7 @@
   },
   "devDependencies": {
     "nuxt": "^3.6.5",
-    "nuxt-gtag": "^0.5.7",
-    "nuxt-simple-sitemap": "^3.2.4"
+    "nuxt-gtag": "^0.5.7"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.6",

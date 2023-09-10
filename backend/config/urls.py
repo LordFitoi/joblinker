@@ -18,23 +18,30 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
 from django.conf import settings
-from backend.apps.utils import serve_media, get_sitemap, get_robots_txt
+from django.contrib.sitemaps.views import sitemap
+from backend.apps.utils import serve_media, get_robots_txt
 from backend.apps.jobpost.views import (
     CompanyDetailView,
     CompanyListView,
     JobpostListView,
 )
 
+from backend.apps.jobpost.sitemaps import StaticViewSitemap, CompaniesSitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'companies': CompaniesSitemap,
+}
 
 urlpatterns = [
-    path("", JobpostListView.as_view()),
+    path("", JobpostListView.as_view(), name="jobposts"),
     path("admin/", admin.site.urls),
     path("api-auth/", include("rest_framework.urls")),
     path("api/", include("backend.config.api")),
-    path("companies/", CompanyListView.as_view()),
-    path("companies/<str:company_slug>", CompanyDetailView.as_view()),
-    path("privacy/", TemplateView.as_view(template_name="privacy/index.html")),
+    path("companies/", CompanyListView.as_view(), name="companies"),
+    path("companies/<str:company_slug>", CompanyDetailView.as_view(), name="company-detail"),
+    path("privacy/", TemplateView.as_view(template_name="privacy/index.html"), name="privacy"),
     path(f"{settings.MEDIA_URL[1:]}<str:media_name>", serve_media),
-    path("sitemap.xml", get_sitemap),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
     path("robots.txt", get_robots_txt),
 ]
