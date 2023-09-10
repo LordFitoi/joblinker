@@ -6,18 +6,18 @@ from backend.apps.jobpost.models import Company
 
 class StaticViewSitemap(Sitemap):
     def items(self):
-        return ['companies', 'jobposts', 'privacy']
-    
+        return ["companies", "jobposts", "privacy"]
+
     def location(self, item):
         return reverse(item)
-    
+
 
 class CompaniesSitemap(Sitemap):
     def items(self):
         return Company.objects.all()
-    
+
     def location(self, item):
-        return reverse('company-detail', kwargs={'company_slug': item.slug})
-    
+        return reverse("company-detail", kwargs={"company_slug": item.slug})
+
     def lastmod(self, item):
         return item.updated_at

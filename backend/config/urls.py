@@ -29,8 +29,8 @@ from backend.apps.jobpost.views import (
 from backend.apps.jobpost.sitemaps import StaticViewSitemap, CompaniesSitemap
 
 sitemaps = {
-    'static': StaticViewSitemap,
-    'companies': CompaniesSitemap,
+    "static": StaticViewSitemap,
+    "companies": CompaniesSitemap,
 }
 
 urlpatterns = [
@@ -39,9 +39,17 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls")),
     path("api/", include("backend.config.api")),
     path("companies/", CompanyListView.as_view(), name="companies"),
-    path("companies/<str:company_slug>", CompanyDetailView.as_view(), name="company-detail"),
-    path("privacy/", TemplateView.as_view(template_name="privacy/index.html"), name="privacy"),
+    path(
+        "companies/<str:company_slug>",
+        CompanyDetailView.as_view(),
+        name="company-detail",
+    ),
+    path(
+        "privacy/",
+        TemplateView.as_view(template_name="privacy/index.html"),
+        name="privacy",
+    ),
     path(f"{settings.MEDIA_URL[1:]}<str:media_name>", serve_media),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}),
     path("robots.txt", get_robots_txt),
 ]
