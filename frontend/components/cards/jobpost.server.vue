@@ -5,7 +5,7 @@
                 {% if object.company.logo %}
                     <img :src="'{{ object.company.logo.url }}'" alt="{{ object.company.name }} logo">
                 {% else %}
-                    <img src="~/assets/images/logo.png" class="fallback"  alt="{{ object.name }} logo">
+                    <img src="~/assets/images/logo.png" class="fallback"  alt="">
                 {% endif %}
             </div>
             <div class="inner">

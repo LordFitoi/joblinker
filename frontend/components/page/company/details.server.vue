@@ -2,7 +2,11 @@
     <div>
         <a class="company-heading" href="{{ company.website }}?ref=www.joblinker.site&source=www.joblinker.site">
             <div class="company--logo big">
-                <img :src="'{{ company.logo.url }}'" alt="{{ company.name }} logo">
+                {% if company.logo %}
+                    <img :src="'{{ company.logo.url }}'" alt="{{ company.name }} logo">
+                {% else %}
+                    <img src="~/assets/images/logo.png" class="fallback"  alt="">
+                {% endif %}
             </div>
 
             <div class="inner">
