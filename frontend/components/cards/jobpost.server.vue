@@ -2,7 +2,11 @@
     <a class="jobpost--item" href="{{ object.origin_url }}?ref=www.joblinker.site&source=www.joblinker.site">
         <div class="meta">
             <div class="company--logo">
-                <img :src="'{{ object.company.logo.url }}'" alt="{{ object.company.name }} logo">
+                {% if object.company.logo %}
+                    <img :src="'{{ object.company.logo.url }}'" alt="{{ object.company.name }} logo">
+                {% else %}
+                    <img src="~/assets/images/logo.png" class="fallback"  alt="{{ object.name }} logo">
+                {% endif %}
             </div>
             <div class="inner">
                 <span>{{ object.company.name }}</span>

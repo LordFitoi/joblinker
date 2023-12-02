@@ -4,8 +4,8 @@
         <div v-else>
             <a class="company-heading" :href="backend.addUrlReference(object.website)">
                 <div class="company--logo big">
-                    <img v-if="fallback" src="~/assets/icons/logo.svg" class="fallback" alt="">
-                    <img v-else :src="object.logo" @error="fallback=true" :alt="`${object.name} logo`">
+                    <img v-if="object.logo && fallback" :src="object.logo" @error="fallback=true" :alt="`${object.name} logo`">
+                    <img v-else src="~/assets/icons/logo.svg" class="fallback" alt="">
                 </div>
 
                 <div class="inner">

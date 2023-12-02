@@ -2,8 +2,8 @@
     <a class="jobpost--item" :href="backend.addUrlReference(data.origin_url)">
         <div v-if="metaVisible" class="meta">
             <div class="company--logo">
-                <img v-if="fallback" src="~/assets/icons/logo.svg" class="fallback" alt="">
-                <img v-else :src="data.company.logo" @error="fallback=true" :alt="`${data.company.name} logo`">
+                <img v-if="data.company.logo && !fallback" :src="data.company.logo" @error="fallback=true" :alt="`${data.company.name} logo`">
+                <img v-else src="~/assets/icons/logo.svg" class="fallback" alt="">
             </div>
             <div class="inner">
                 <span>%{{ data.company.name }}</span>

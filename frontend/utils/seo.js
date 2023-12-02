@@ -15,7 +15,7 @@ export const SEO = {
     },
     IMAGE: {
         GENERAL: IMAGES['/assets/images/logo.png'],
-        COMPANY: '{{ company.logo.url }}',
+        COMPANY: `{% if company.logo %}{{ company.logo.url }}{% else %}${IMAGES['/assets/images/logo.png']}{% endif %}`,
     }
 
 }
