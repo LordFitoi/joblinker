@@ -42,7 +42,7 @@ export default defineNuxtConfig({
     },
     nitro: {
         output: {
-            dir: `./../${config.outputDir}`,
+            dir: `./../../${config.outputDir}`,
         },
         prerender: {
             crawlLinks: false
