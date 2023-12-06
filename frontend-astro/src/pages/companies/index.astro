@@ -1,0 +1,20 @@
+---
+import TableContainer from "../../components/TableContainer.astro";
+import TableCompanyCard from "../../components/TableCompanyCard.astro";
+import SearchHeader from "../../components/SearchHeader.astro";
+import Layout from "../../layouts/Layout.astro";
+
+---
+
+<Layout>
+  <main>
+    <div class="container">
+      <h1 class="text-center">Companies</h1>
+
+      <SearchHeader />
+      <TableContainer>
+        <TableCompanyCard />
+      </TableContainer>
+    </div>
+  </main>
+</Layout>

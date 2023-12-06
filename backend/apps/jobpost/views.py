@@ -13,6 +13,12 @@ class JobpostListView(ListView):
 
         return queryset
 
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["object_count"] = self.get_queryset().count()
+
+        return context
+
 
 class CompanyListView(ListView):
     template_name = "companies/index.html"
@@ -23,10 +29,16 @@ class CompanyListView(ListView):
         queryset = super().get_queryset(*args, **kwargs)
 
         return queryset
+    
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["object_count"] = self.get_queryset().count()
+
+        return context
 
 
 class CompanyDetailView(ListView):
-    template_name = "companies/company.html"
+    template_name = "companies/details/index.html"
     model = JobPost
     paginate_by = 10
 
@@ -40,6 +52,6 @@ class CompanyDetailView(ListView):
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        context["company"] = self.get_object()
+        context["object"] = self.get_object()
 
         return context

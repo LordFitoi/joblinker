@@ -1,0 +1,99 @@
+---
+---
+
+<header class="container" id="header">
+  <a class="logo" href="/">
+    <img
+      width="40"
+      height="40"
+      class="logo"
+      src="/public/static/icons/logo.svg"
+      alt="Joblinker logo"
+      role="img"
+    />
+    <span>Job Linker</span>
+  </a>
+  <div class="links">
+    <a href="/">Jobs</a>
+    <a href="/companies">Companies</a>
+  </div>
+</header>
+<style lang="scss">
+  header {
+    padding: var(--general-spacing-md) var(--general-spacing-sm);
+    gap: var(--general-spacing-md);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .logo {
+      display: flex;
+      width: max-content;
+      gap: 4px;
+      align-items: center;
+      color: var(--color-gray-500);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      flex-direction: column;
+      transition: opacity 200ms ease;
+
+      &:hover {
+        opacity: 0.65;
+        text-decoration: none;
+      }
+    }
+
+    .container.search {
+      max-width: 50%;
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
+      padding: 0;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: var(--general-spacing-sm);
+      margin-left: auto;
+      
+      a {
+        font-weight: 300;
+        color: var(--color-gray-500);
+        
+        span {
+          font-size: var(--general-font-xs-1);
+        }
+
+        &:nth-child(1) {
+          margin-right: auto;
+        }
+      }
+
+    }
+
+    @media (max-width: var(--breakpoint-desktop)) {
+      flex-direction: column;
+
+      .container.search {
+        max-width: none;
+        width: 100%;
+        padding: var(--general-spacing-sm);
+      }
+
+      .links {
+        width: 100%;
+        padding-left: var(--general-spacing-sm);
+        padding-right: var(--general-spacing-sm);
+
+        a span {
+          font-size: var(--general-font-xs-2);
+        }
+      }
+    }
+  }
+</style>
