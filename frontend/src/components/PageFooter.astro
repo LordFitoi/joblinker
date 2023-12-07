@@ -1,0 +1,86 @@
+---
+
+---
+<footer>
+  <div class="container">
+    <a class="logo" href="/">
+      <img
+        width="40"
+        height="40"
+        class="logo"
+        src="/public/static/icons/logo.svg"
+        alt="Joblinker logo"
+        role="img"
+      />
+      <span>Job Linker</span>
+    </a>
+    <div class="privacy">
+      <a href="/privacy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+<style lang="scss">
+  footer {
+    width: 100%;
+    .container {
+      padding: 24px var(--general-spacing-sm);
+      gap: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+    }
+
+    img.logo {
+      width: 100px;
+    }
+
+    .logo {
+      display: flex;
+      width: max-content;
+      gap: 4px;
+      align-items: center;
+      color: var(--color-gray-900);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      flex-direction: column;
+      transition: opacity 200ms ease;
+
+      &:hover {
+        opacity: 0.65;
+        text-decoration: none;
+      }
+      flex-direction: row;
+      gap: 8px;
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+
+      filter: grayscale(1) brightness(0) var(--filter-gray-500);
+    }
+
+    .privacy {
+      display: flex;
+      gap: 16px;
+    }
+
+    a {
+      font-size: 14px;
+      color: var(--color-gray-500);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    @media (max-width: --breakpoint-desktop) {
+      padding: 24px 16px;
+    }
+  }
+</style>

@@ -1,0 +1,180 @@
+// INPUTS
+// ---------------------------------
+
+.input--container {
+    gap: 6px;
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    flex-direction: column;
+    color: $color-gray-700;
+
+    .error--label {
+        font-size: 12px;
+        margin-left: 8px;
+        margin-right: 8px;
+        color: $color-error-600;
+    }
+}
+
+.input {
+    display: flex;
+    position: relative;
+    width: 100%;
+    align-items: center;
+    border: 1px solid $color-gray-300;
+    background-color: $color-base-white;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    padding: 12px 14px;
+    height: 44px;
+    gap: 8px;
+    transition:
+        box-shadow 200ms ease,
+        border-color 200ms ease;
+
+    white-space: nowrap;
+
+    img {
+        width: 20px;
+        height: 20px;
+
+        filter: $filter-gray-500;
+    }
+
+
+    input[type="url"],
+    input[type="text"],
+    input[type="date"],
+    input[type="datetime-local"],
+    input[type="time"],
+    input[type="number"],
+    input[type="email"] {
+        width: 100%;
+        border: none;
+        outline: none;
+        font-weight: 400;
+        font-size: 16px;
+        color: $color-gray-900;
+        flex-grow: 1;
+
+
+        &:read-only {
+            pointer-events: none;
+        }
+
+        &::placeholder {
+            color: $color-gray-500;
+        }
+    }
+    input[type="date"],
+    input[type="time"],
+    input[type="datetime-local"] {
+        user-select: none;
+        &::-webkit-datetime-edit-text,
+        &::-webkit-datetime-edit-day-field,
+        &::-webkit-datetime-edit-month-field,
+        &::-webkit-datetime-edit-year-field {
+            color: $color-gray-900;
+            outline: none;
+            position: relative;
+            z-index: 1;
+        }
+        &::-webkit-calendar-picker-indicator {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            left: 0;
+            right: 0;
+            opacity: 0;
+
+        }
+    }
+}
+
+textarea.input {
+    border: 1px solid $color-gray-300;
+    background-color: $color-base-white;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    padding: 12px 14px;
+    min-height: 88px;
+    resize: vertical;
+    gap: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    color: $color-gray-900;
+    white-space: normal;
+
+    &:read-only {
+        pointer-events: none;
+    }
+    &::placeholder {
+        color: $color-gray-500;
+        white-space: wrap;
+    }
+    &::-webkit-input-placeholder {
+        white-space: pre-line;
+        position:static;
+    }
+    &::-moz-placeholder {
+        white-space: pre-line;
+        position:static;
+    }
+    &:-ms-input-placeholder {
+        white-space: pre-line;
+        position:static;
+    }
+    &:-moz-placeholder {
+        white-space: pre-line;
+        position:static;
+    }
+}
+
+.checkbox--container {
+    .checkbox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        border-radius: 6px;
+        background-color: $color-base-white;
+        border: 1px solid $color-gray-300;
+        transition:
+            background-color 100ms ease,
+            border-color 100ms ease;
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+
+    input[type="checkbox"]:checked + .checkbox {
+        background-color: $color-primary-50;
+        border-color: $color-primary-600;
+        img { opacity: 1; }
+    }
+
+    img {
+        width: 14px;
+        height: 14px;
+        opacity: 0;
+        transition: opacity 100ms ease;
+
+        filter:
+            brightness(0)
+            saturate(100%)
+            invert(30%)
+            sepia(45%)
+            saturate(7409%)
+            hue-rotate(250deg)
+            brightness(83%)
+            contrast(84%);
+    }
+    input[type="checkbox"] {
+        display: none;
+    }
+}

@@ -160,11 +160,16 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Nuxt app settings
 NUXT_OUTPUT_DIR = "../static/"
-TEMPLATES[0]["DIRS"] += [str(BASE_DIR / f"{NUXT_OUTPUT_DIR}/public")]
+ASTRO_OUTPUT_DIR = "../frontend-astro/dist/"
+# TEMPLATES[0]["DIRS"] += [str(BASE_DIR / f"{NUXT_OUTPUT_DIR}/public")]
+TEMPLATES[0]["DIRS"] += [str(BASE_DIR / f"{ASTRO_OUTPUT_DIR}/")]
+
 STATICFILES_DIRS = [
-    str(BASE_DIR / f"{NUXT_OUTPUT_DIR}/public/static"),
+    # str(BASE_DIR / f"{NUXT_OUTPUT_DIR}/public/static"),
+    str(BASE_DIR / f"{ASTRO_OUTPUT_DIR}/static/"),
     str(BASE_DIR / "public/"),
 ]
+
 
 # Rest framework settings
 REST_FRAMEWORK = {

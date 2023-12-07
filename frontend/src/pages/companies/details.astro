@@ -1,0 +1,84 @@
+---
+import TableContainer from '../../components/TableContainer.astro';
+import TableJobpostCard from '../../components/TableJobpostCard.astro';
+import CompanyLogo from "../../components/CompanyLogo.astro";
+
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="(( object.name )) - Job Linker Site"
+  description="(( company.description | striptags | truncatechars:160 ))"
+  ogImage="(% if object.logo %)(( object.logo.url ))(% endif %)"
+  ogUrl="https://joblinker.site/companies/(( object.slug ))/"
+>
+  <main class="bg-white">
+    <div class="container">
+      <a
+        class="company-heading"
+        href="(( object.website ))?ref=www.joblinker.site&source=www.joblinker.site"
+      >
+        <CompanyLogo type="big" />
+
+        <div class="inner">
+          <h1>(( object.name ))</h1>
+          <cite>(( object.website ))</cite>
+        </div>
+      </a>
+
+      <h2>About</h2>
+      <div class="description">(( object.description | safe ))</div>
+      <h2>Related jobs</h2>
+      <TableContainer>
+        <TableJobpostCard />
+      </TableContainer>
+    </div>
+  </main>
+</Layout>
+<style lang="scss">
+  h2 {
+    font-size: var(--general-font-lg);
+    margin-bottom: var(--general-spacing-sm);
+  }
+  h3 {
+    font-size: var(--general-font-md);
+    margin-bottom: var(--general-spacing-xs);
+    font-weight: 400;
+
+    strong {
+      font-weight: 400;
+    }
+  }
+
+  .company-heading {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 64px;
+    text-decoration: none;
+
+    .inner {
+      flex-grow: 0.5;
+
+      h1 {
+        margin-bottom: 0px;
+      }
+
+      cite {
+        font-size: 12px;
+        color: var(--color-gray-500);
+      }
+    }
+
+    &:hover {
+      h1,
+      cite {
+        color: var(--color-primary-700);
+      }
+    }
+  }
+
+  .container {
+    min-height: unset;
+  }
+</style>

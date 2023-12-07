@@ -1,0 +1,25 @@
+---
+
+---
+<div class="search-results">
+  (( object_count )) Results found
+  (% if request.GET.search %)
+    <span>- (( request.GET.search ))</span>
+  (% endif %)
+</div>
+<style lang="scss">
+  .search-results {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 16px;
+    color: var(--color-gray-500);
+
+    span {
+      font-size: 14px;
+    }
+
+    @media (max-width: --breakpoint-desktop) {
+      padding: 0 16px;
+    }
+  }
+</style>

@@ -1,0 +1,21 @@
+---
+import TableContainer from '../components/TableContainer.astro';
+import TableJobpostCard from '../components/TableJobpostCard.astro';
+import SearchHeader from '../components/SearchHeader.astro';
+import SearchInput from '../components/SearchInput.astro';
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout >
+	<main>
+    <div class="container">
+      <h1 class="text-center">Jobposts</h1>
+      <SearchInput placeholder="Search jobpost by title, description or career..." />
+      <SearchHeader />
+      <TableContainer>
+        <TableJobpostCard />
+      </TableContainer>
+    </div>
+	</main>
+</Layout>

@@ -1,0 +1,47 @@
+---
+const {
+    placeholder="Search a title or description..."
+} = Astro.props;
+---
+
+<div class="searchbar">
+    <label tabindex="-1" class="input">
+        <img src="/public/static/icons/search-lg.svg" alt="" role="img">
+        <input id="search" type="text" placeholder={placeholder}>
+    </label>
+    <button class="button--primary" id="button-search">Search</button>
+</div>
+<script>
+    const inputSearch = document.querySelector('#search');
+    const buttonSearch = document.querySelector('#button-search');
+
+    if (window.location.search.includes('search=')) {
+        const searchParam = new URLSearchParams(window.location.search).get('search');
+        inputSearch.value = searchParam;
+    }
+
+    buttonSearch.onclick = () => {
+        window.location.href = inputSearch.value
+            ? `${window.location.pathname}?search=${inputSearch.value}`
+            : window.location.pathname;
+    }
+
+    inputSearch.onkeydown = (event) => {
+        if (event.key === 'Enter') {
+            window.location.href = inputSearch.value
+                ? `${window.location.pathname}?search=${inputSearch.value}`
+                : window.location.pathname;
+        }
+    };
+</script>
+<style class="scss">
+    .searchbar {
+        display: flex;
+        margin-bottom: var(--general-spacing-lg);
+        gap: var(--general-spacing-sm);
+
+        .button--primary {
+            height: 44px;
+        }
+    }
+</style>

@@ -1,0 +1,53 @@
+---
+
+---
+<div class="badge"><slot /></div>
+<style lang="scss">
+  .badge {
+    width: max-content;
+    height: max-content;
+    gap: 4px;
+    display: flex;
+    font-size: 12px;
+    padding: 2px 8px;
+    font-weight: 500;
+    align-items: center;
+    border-radius: 16px;
+    background-color: var(--color-primary-100);
+    color: var(--color-primary-700);
+
+    img {
+      width: 12px;
+      height: 12px;
+
+      filter: var(--filter-primary-700);
+    }
+
+    &.success {
+      background-color: var(--color-success-50);
+      color: var(--color-success-700);
+
+      img {
+        filter: var(--filter-success-700);
+      }
+    }
+
+    &.pending {
+      background-color: var(--color-gray-50);
+      color: var(--color-gray-500);
+
+      img {
+        filter: var(--filter-gray-500);
+      }
+    }
+
+    &.cancel {
+      background-color: var(--color-error-50);
+      color: var(--color-error-700);
+
+      img {
+        filter: var(--filter-error-700);
+      }
+    }
+  }
+</style>

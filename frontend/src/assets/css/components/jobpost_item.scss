@@ -1,0 +1,85 @@
+main .jobpost--item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    padding: 16px;
+    transition: background-color 300ms ease;
+    text-decoration: none;
+    border-top: 1px solid $color-gray-200;
+
+    .meta {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 42px 1fr;
+        gap: 8px;
+
+        .inner {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            cite {
+                color: $color-gray-500;
+                font-size: 12px;
+                line-height: 1.2;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+            span {
+                color: $color-gray-700;
+                font-size: 14px;
+                line-height: 1.5;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                font-weight: 500;
+            }
+        }
+
+    }
+
+    h2 {
+        font-size: $general-font-md;
+        margin-bottom: $general-spacing-xs;
+    }
+
+    &:nth-child(1) {
+        border-top: none;
+    }
+
+    &:nth-child(2n) {
+        background-color: $color-gray-50;
+    }
+
+    &:not(.placeholder):hover {
+        background-color: $color-primary-100;
+        text-decoration: none;
+
+
+        .company--logo {
+            background-color: $color-primary-200;
+
+            img.fallback {
+                filter:  grayscale(1) brightness(0) $filter-primary-700  opacity(1);
+            }
+        }
+
+
+        h1, h2, h4, span, cite, p, .tag {
+            color: $color-primary-700;
+        }
+    }
+
+    h1, h2, h4, span, cite, p, .tag {
+        transition: color 300ms ease;
+    }
+
+    .tags {
+        display: flex;
+        margin-top: 16px;
+        gap: 4px;
+        flex-wrap: wrap;
+    }
+}

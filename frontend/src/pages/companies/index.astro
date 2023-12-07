@@ -1,0 +1,26 @@
+---
+import TableContainer from "../../components/TableContainer.astro";
+import TableCompanyCard from "../../components/TableCompanyCard.astro";
+import SearchHeader from "../../components/SearchHeader.astro";
+import SearchInput from "../../components/SearchInput.astro";
+
+import Layout from "../../layouts/Layout.astro";
+---
+<Layout
+  title="(( page_obj.paginator.count )) Companies - Job Linker Site"
+  description="Discover your next career move with joblinker.site! Explore a wide range of job opportunities from top companies."
+  ogImage="https://joblinker.site/static/logo.png"
+  ogUrl="https://joblinker.site/companies/(( object.slug ))/"
+>
+  <main>
+    <div class="container">
+      <h1 class="text-center">Companies</h1>
+
+      <SearchInput placeholder="Search company by title, description or career..." />
+      <SearchHeader />
+      <TableContainer>
+        <TableCompanyCard />
+      </TableContainer>
+    </div>
+  </main>
+</Layout>
