@@ -19,7 +19,7 @@ const {
         const searchParam = new URLSearchParams(window.location.search).get('search');
         inputSearch.value = searchParam;
     }
-    
+
     buttonSearch.onclick = () => {
         window.location.href = inputSearch.value
             ? `${window.location.pathname}?search=${inputSearch.value}`

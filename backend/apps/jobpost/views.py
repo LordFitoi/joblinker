@@ -9,12 +9,7 @@ class JobpostListView(ListView):
     template_name = "index.html"
     model = JobPost
     paginate_by = 10
-    search_fields = (
-        "title",
-        "description",
-        "origin_url",
-        "job_type"
-    )
+    search_fields = ("title", "description", "origin_url", "job_type")
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
@@ -40,7 +35,7 @@ class CompanyListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
-        
+
         if search_query := self.request.GET.get("search"):
             search_vector = queryset.annotate(search=SearchVector(*self.search_fields))
             queryset = search_vector.filter(search=search_query)
@@ -52,8 +47,6 @@ class CompanyListView(ListView):
         context["object_count"] = self.get_queryset().count()
 
         return context
-    
-
 
 
 class CompanyDetailView(ListView):

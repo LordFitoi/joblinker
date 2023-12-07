@@ -13,7 +13,7 @@ const postprocess = {
         if (process.env.NODE_ENV === 'production') {
             src = src.replace(/\/public\//g, "/");
         }
-        
+
         return {
             code: src,
             map: null
