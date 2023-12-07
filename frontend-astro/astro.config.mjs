@@ -10,7 +10,6 @@ const postprocess = {
             ? src = src.replace(/\(%([^%]*)%\)/g, "")
             : src = src.replace(/\(%([^%]*)%\)/g, "{%$1%}");
 
-
         if (process.env.NODE_ENV === 'production') {
             src = src.replace(/\/public\//g, "/");
         }

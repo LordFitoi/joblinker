@@ -5,20 +5,10 @@ import PageFooter from "../components/PageFooter.astro";
 const {
   title = "Job Linker Site",
   description = "Unlock your dream career with joblinker.site! Browse diverse job listings for engineers, software designers, managers & more. Your next step starts here!",
-
-  // Open Graph / Facebook
   ogType = "website",
   ogUrl = "https://joblinker.site",
-  ogTitle = "Job Linker Site",
-  ogDescription = "Unlock your dream career with joblinker.site! Browse diverse job listings for engineers, software designers, managers & more. Your next step starts here!",
   ogImage = "/public/logo.png",
-
-  // Twitter
   twitterCard = "summary_large_image",
-  twitterUrl = "https://joblinker.site",
-  twitterTitle = "Job Linker Site",
-  twitterDescription = "Unlock your dream career with joblinker.site! Browse diverse job listings for engineers, software designers, managers & more. Your next step starts here!",
-  twitterImage = "/public/logo.png",
 } = Astro.props;
 ---
 
@@ -33,24 +23,22 @@ const {
 
     <!-- Primary Meta Tags -->
     <title>{title}</title>
-    <meta name="title" content={ogTitle} />
-    <meta name="description" content={ogDescription} />
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={ogUrl} />
-    <meta property="og:title" content={ogTitle} />
-    <meta property="og:description" content={ogDescription} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content={twitterCard} />
-    <meta property="twitter:url" content={twitterUrl} />
-    <meta property="twitter:title" content={twitterTitle} />
-    <meta property="twitter:description" content={twitterDescription} />
-    <meta property="twitter:image" content={twitterImage} />
-
-    <!-- Meta Tags Generated with https://metatags.io -->
+    <meta property="twitter:url" content={ogUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
   </head>
   <body>
     <PageHeader />
@@ -59,196 +47,5 @@ const {
   </body>
 </html>
 <style global lang="scss">
-  :root {
-    --breakpoint-tablet: 740px;
-    --breakpoint-desktop: 980px;
-
-    /* COLORS */
-    --color-base-white: #ffffff;
-
-    --color-gray-50: #f9fafb;
-    --color-gray-100: #f2f4f7;
-    --color-gray-200: #eaecf0;
-    --color-gray-300: #d0d5dd;
-    --color-gray-400: #98a2b3;
-    --color-gray-500: #667085;
-    --color-gray-600: #475467;
-    --color-gray-700: #344054;
-    --color-gray-800: #333333;
-    --color-gray-900: #101828;
-
-    --color-primary-50: #eff8ff;
-    --color-primary-100: #d1e9ff;
-    --color-primary-200: #b2ddff;
-    --color-primary-300: #84caff;
-    --color-primary-500: #2e90fa;
-    --color-primary-600: #1570ef;
-    --color-primary-700: #175cd3;
-
-    --color-success-50: #ecfdf3;
-    --color-success-500: #12b76a;
-    --color-success-700: #027a48;
-
-    --color-error-25: #fffbfa;
-    --color-error-50: #fef3f2;
-    --color-error-100: #fee4e2;
-    --color-error-300: #fda29b;
-    --color-error-600: #d92d20;
-    --color-error-700: #b42318;
-
-    /* FILTERS */
-    --filter-base-white: brightness(0) saturate(100%) invert(100%) sepia(100%)
-      saturate(0%) hue-rotate(163deg) brightness(100%) contrast(103%);
-    --filter-primary-700: invert(16%) sepia(86%) saturate(6019%)
-      hue-rotate(216deg) brightness(98%) contrast(82%);
-    --filter-gray-300: invert(83%) sepia(4%) saturate(346%) hue-rotate(178deg)
-      brightness(101%) contrast(96%);
-    --filter-gray-500: brightness(0) saturate(100%) invert(44%) sepia(24%)
-      saturate(350%) hue-rotate(182deg) brightness(92%) contrast(87%);
-    --filter-success-700: brightness(0) saturate(100%) invert(29%) sepia(73%)
-      saturate(921%) hue-rotate(116deg) brightness(98%) contrast(98%);
-    --filter-error-700: invert(25%) sepia(85%) saturate(2579%)
-      hue-rotate(349deg) brightness(71%) contrast(100%);
-
-    /* BORDER RADIUS */
-    --border-radius-md: 8px;
-
-    /* SPACING */
-    --general-spacing-xs: 8px;
-    --general-spacing-sm: 16px;
-    --general-spacing-md: 24px;
-    --general-spacing-lg: 32px;
-    --general-spacing-xl-1: 64px;
-    --general-spacing-xl-2: 128px;
-
-    /* TYPOGRAPHY */
-    --general-font-xs-2: 12px;
-    --general-font-xs-1: 14px;
-    --general-font-sm: 16px;
-    --general-font-md: 18px;
-    --general-font-lg: 20px;
-    --general-font-xl-1: 24px;
-    --general-font-xl-2: 30px;
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
-  }
-
-  body {
-    color: var(--color-gray-900);
-    line-height: 1.5em;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--color-gray-50);
-  }
-
-  a {
-    color: var(--color-gray-900);
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 400;
-    color: var(--color-gray-900);
-    margin-bottom: var(--general-spacing-sm);
-    line-height: 1.2;
-  }
-
-  h1 {
-    font-size: var(--general-font-xl-2);
-  }
-  h2 {
-    font-size: var(--general-font-lg);
-  }
-  h3 {
-    font-size: var(--general-font-md);
-  }
-  h4 {
-    font-size: var(--general-font-sm);
-  }
-  h5 {
-    font-size: var(--general-font-xs-1);
-  }
-  h6 {
-    font-size: var(--general-font-xs-2);
-  }
-  p {
-    font-weight: 300;
-    font-size: var(--general-font-xs-1);
-    color: var(--color-gray-500);
-    line-height: 1.5;
-  }
-
-  .input {
-    input[type="url"],
-    input[type="text"],
-    input[type="date"],
-    input[type="datetime-local"],
-    input[type="time"],
-    input[type="number"],
-    input[type="email"] {
-      font-size: var(--general-font-xs-1);
-      font-weight: 300;
-    }
-  }
-
-  .text-center {
-    text-align: center;
-  }
-
-  .container {
-    width: 100%;
-    max-width: var(--breakpoint-desktop);
-    padding: 0 var(--general-spacing-sm);
-    margin: 0 auto;
-
-    @media (max-width: --breakpoint-tablet) {
-      max-width: var(--breakpoint-tablet);
-    }
-  }
-
-  .lazy-img {
-    position: relative;
-    img:not(.fallback) {
-      opacity: 0;
-      position: absolute;
-      z-index: 1;
-
-      &.loaded {
-        opacity: 1;
-      }
-    }
-  }
-
-  .bg-white {
-    background-color: white;
-    padding-bottom: 64px;
-    padding-top: 64px;
-  }
-  
-  .description {
-    margin-bottom: 32px;
-
-    p + p {
-      margin-top: 16px;
-    }
-    p + h3 {
-      margin-top: 24px;
-    }
-    ul {
-      padding-left: 24px;
-    }
-  }
+@import '../assets/css/styles.scss';
 </style>

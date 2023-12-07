@@ -1,13 +1,20 @@
 ---
 import TableFooter from "./TableFooter.astro";
 ---
-
 <div class="table">
-  (% for object in object_list %)<slot />(% endfor %)
+  (% if object_list %)
+    (% for object in object_list %)<slot />(% endfor %)
+  (% else %)
+    <div class="no-results">
+      <img src="/public/static/icons/search-lg.svg">
+      No results found...
+    </div>
+  (% endif %)
   <TableFooter />
 </div>
 <style lang="scss">
   .table {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -36,6 +43,25 @@ import TableFooter from "./TableFooter.astro";
       .input--container {
         flex-grow: 1;
       }
+    }
+
+    .no-results {
+      top: calc(50% - 20px);
+      left: 50%;
+      margin: auto;
+      margin: auto;
+      display: flex;
+      display: flex;
+      position: absolute;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      transform: translate(-50%, -50%);
+      gap: var(--general-spacing-xs);
+      color: var(--color-gray-500);
+      font-size: 14px;
+      font-weight: 300;
+      text-decoration: none;
     }
 
     @media (max-width: var(--breakpoint-desktop)) {

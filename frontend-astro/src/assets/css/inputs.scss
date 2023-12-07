@@ -4,17 +4,17 @@
 .input--container {
     gap: 6px;
     display: flex;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    line-height: var(--line-height);
     flex-direction: column;
-    color: $color-gray-700;
+    color: var(--color-gray-700);
 
     .error--label {
-        font-size: 12px;
+        font-size: var(--font-size-small);
         margin-left: 8px;
         margin-right: 8px;
-        color: $color-error-600;
+        color: var(--color-error-600);
     }
 }
 
@@ -23,8 +23,8 @@
     position: relative;
     width: 100%;
     align-items: center;
-    border: 1px solid $color-gray-300;
-    background-color: $color-base-white;
+    border: 1px solid var(--color-gray-300);
+    background-color: var(--color-base-white);
     box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
     border-radius: 8px;
     padding: 12px 14px;
@@ -40,7 +40,7 @@
         width: 20px;
         height: 20px;
 
-        filter: $filter-gray-500;
+        filter: var(--filter-gray-500);
     }
 
 
@@ -54,9 +54,9 @@
         width: 100%;
         border: none;
         outline: none;
-        font-weight: 400;
-        font-size: 16px;
-        color: $color-gray-900;
+        font-weight: var(--font-weight-normal);
+        font-size: var(--font-size-medium);
+        color: var(--color-gray-900);
         flex-grow: 1;
 
 
@@ -65,7 +65,7 @@
         }
 
         &::placeholder {
-            color: $color-gray-500;
+            color: var(--color-gray-500);
         }
     }
     input[type="date"],
@@ -76,7 +76,7 @@
         &::-webkit-datetime-edit-day-field,
         &::-webkit-datetime-edit-month-field,
         &::-webkit-datetime-edit-year-field {
-            color: $color-gray-900;
+            color: var(--color-gray-900);
             outline: none;
             position: relative;
             z-index: 1;
@@ -94,26 +94,25 @@
         }
     }
 }
-
 textarea.input {
-    border: 1px solid $color-gray-300;
-    background-color: $color-base-white;
+    border: 1px solid var(--color-gray-300);
+    background-color: var(--color-base-white);
     box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
     border-radius: 8px;
     padding: 12px 14px;
     min-height: 88px;
     resize: vertical;
     gap: 8px;
-    font-weight: 400;
-    font-size: 16px;
-    color: $color-gray-900;
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-medium);
+    color: var(--color-gray-900);
     white-space: normal;
 
     &:read-only {
         pointer-events: none;
     }
     &::placeholder {
-        color: $color-gray-500;
+        color: var(--color-gray-500);
         white-space: wrap;
     }
     &::-webkit-input-placeholder {
@@ -134,6 +133,7 @@ textarea.input {
     }
 }
 
+
 .checkbox--container {
     .checkbox {
         display: flex;
@@ -142,8 +142,8 @@ textarea.input {
         width: 20px;
         height: 20px;
         border-radius: 6px;
-        background-color: $color-base-white;
-        border: 1px solid $color-gray-300;
+        background-color: var(--color-base-white);
+        border: 1px solid var(--color-gray-300);
         transition:
             background-color 100ms ease,
             border-color 100ms ease;
@@ -153,8 +153,8 @@ textarea.input {
     }
 
     input[type="checkbox"]:checked + .checkbox {
-        background-color: $color-primary-50;
-        border-color: $color-primary-600;
+        background-color: var(--color-primary-50);
+        border-color: var(--color-primary-600);
         img { opacity: 1; }
     }
 

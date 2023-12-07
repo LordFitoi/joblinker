@@ -1,0 +1,26 @@
+.container {
+    @include container-base;
+    box-shadow: none;
+    border-color: $color-gray-300;
+
+    &.no-min-height {
+        min-height: unset;
+    }
+
+    &.search {
+        height: max-content;
+        min-height: 0;
+        flex-direction: row;
+        gap: 16px;
+        padding: 8px;
+
+        .input--container {
+            flex-grow: 1;
+        }
+    }
+
+    @media (max-width: $breakpoint-desktop) {
+        border: none;
+        border-radius: 0%;
+    }
+}

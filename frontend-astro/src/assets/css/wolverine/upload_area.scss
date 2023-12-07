@@ -1,0 +1,202 @@
+// UPLOAD AREA
+// ---------------------------------
+.upload--container {
+    display: flex;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border: 1px dashed $color-gray-300;
+    flex-direction: column;
+    background: $color-base-white;
+    align-items: center;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px 24px;
+    flex-grow: 1;
+    gap: 12px;
+    cursor: pointer;
+
+    .upload-icon--container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background: $color-gray-100;
+        border: 6px solid $color-gray-50;
+        border-radius: 50%;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 14px;
+        color: $color-gray-500;
+
+        span {
+            font-weight: 500;
+            color: $color-primary-700;
+        }
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+}
+
+// FILE CARD
+// ---------------------------------
+.file-card--container {
+    padding: 16px;
+    background: $color-base-white;
+    border: 1px solid $color-gray-200;
+    border-radius: 8px;
+    display: flex;
+    gap: 16px;
+
+    .file-details--container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        flex-grow: 1;
+    }
+
+
+    .file-icon--container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        background-color: $color-primary-100;
+        border: 4px solid $color-primary-50;
+        border-radius: 50%;
+
+        img {
+            width: 16px;
+            height: 16px;
+
+            filter:
+                brightness(0)
+                saturate(100%)
+                invert(37%)
+                sepia(100%)
+                saturate(2171%)
+                hue-rotate(237deg)
+                brightness(88%)
+                contrast(92%);
+        }
+    }
+
+    .upload-bar--container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .upload-bar {
+            height: 8px;
+            flex-grow: 1;
+            background-color: #EAECF0;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+
+            &::after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                content: ".";
+                color: transparent;
+                background-color: #7F56D9;
+            }
+        }
+    }
+
+    img.done { display: none; }
+    img.trash {
+        cursor: pointer;
+        filter:
+            brightness(0)
+            saturate(100%)
+            invert(43%)
+            sepia(11%)
+            saturate(777%)
+            hue-rotate(183deg)
+            brightness(96%)
+            contrast(83%);
+    }
+
+
+    &.active {
+        border-color: $color-primary-600;
+
+        img.done { display: block; }
+        img.trash {display: none; }
+
+        &:hover {
+            img.trash { display: block; }
+            img.done { display: none; }
+        }
+    }
+
+    &.error {
+        background-color: $color-error-25;
+        border-color: $color-error-300;
+
+        h4 { color: $color-error-700 }
+        p { color: $color-error-600 }
+
+
+        .upload-bar--container {
+            display: none;
+        }
+
+        .file-icon--container {
+            background-color: $color-error-100;
+            border-color: $color-error-50;
+
+            img {
+                filter:
+                    brightness(0)
+                    saturate(100%)
+                    invert(20%)
+                    sepia(82%)
+                    saturate(2082%)
+                    hue-rotate(345deg)
+                    brightness(114%)
+                    contrast(102%);
+            }
+        }
+
+        img.trash {
+            filter:
+                brightness(0)
+                saturate(100%)
+                invert(15%)
+                sepia(77%)
+                saturate(2616%)
+                hue-rotate(348deg)
+                brightness(114%)
+                contrast(99%);
+        }
+
+        button.try-again--button {
+            display: block;
+        }
+    }
+
+    button {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        width: max-content;
+
+        &.try-again--button {
+            display: none;
+            color: $color-error-700;
+            font-weight: 500;
+            font-size: 14px;
+        }
+    }
+}

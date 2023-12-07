@@ -6,7 +6,12 @@ import CompanyLogo from "../../components/CompanyLogo.astro";
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout>
+<Layout
+  title="(( object.name )) - Job Linker Site"
+  description="(( company.description | striptags | truncatechars:160 ))"
+  ogImage="(% if object.logo %)(( object.logo.url ))(% endif %)"
+  ogUrl="https://joblinker.site/companies/(( object.slug ))/"
+>
   <main class="bg-white">
     <div class="container">
       <a
