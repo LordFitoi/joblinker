@@ -1,6 +1,7 @@
 from typing import Any, Dict
-from django.views.generic import DetailView, ListView
+from django.views.generic import ListView
 from django.contrib.postgres.search import SearchVector
+from datetime import datetime, timedelta
 from .models import Company, JobPost
 
 
