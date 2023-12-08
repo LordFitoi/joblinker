@@ -1,6 +1,8 @@
 ---
 import PageHeader from "../components/PageHeader.astro";
 import PageFooter from "../components/PageFooter.astro";
+import FallbackImage from '../assets/img/logo.png';
+
 const {
   title = "Job Linker Site",
   description = "Unlock your dream career with joblinker.site! Browse diverse job listings for engineers, software designers, managers & more. Your next step starts here!",
@@ -21,6 +23,7 @@ const {
 
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="preload" as="image" href={FallbackImage.src}>
 
     <!-- Primary Meta Tags -->
     <title>{title}</title>
