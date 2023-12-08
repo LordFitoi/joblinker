@@ -14,10 +14,10 @@ class JobpostListView(ListView):
 
         if search_query := self.request.GET.get("search"):
             queryset = queryset.filter(
-                Q(title__icontains=search_query) |
-                Q(description__icontains=search_query) |
-                Q(origin_url__icontains=search_query) |
-                Q(job_type__icontains=search_query)
+                Q(title__icontains=search_query)
+                | Q(description__icontains=search_query)
+                | Q(origin_url__icontains=search_query)
+                | Q(job_type__icontains=search_query)
             )
 
         return queryset
@@ -40,10 +40,10 @@ class CompanyListView(ListView):
         search_query = self.request.GET.get("search")
         if search_query:
             queryset = queryset.filter(
-                Q(name__icontains=search_query) |
-                Q(description__icontains=search_query) |
-                Q(origin_url__icontains=search_query) |
-                Q(website__icontains=search_query)
+                Q(name__icontains=search_query)
+                | Q(description__icontains=search_query)
+                | Q(origin_url__icontains=search_query)
+                | Q(website__icontains=search_query)
             )
 
         return queryset
