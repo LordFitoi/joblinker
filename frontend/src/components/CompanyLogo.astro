@@ -1,9 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+import FallbackImage from '../assets/img/logo.png';
+
 const {src, alt, type=""} = Astro.props;
 ---
 <div class={ `company--logo lazy-img ${type}` }>
 	<img onload="this.classList.add('loaded')" src={src} alt={alt} />
-	<img src="/public/static/logo.png" class="fallback" alt="" />
+	<Image src={FallbackImage} class="fallback" alt="" />
 </div>
 <style lang="scss">
 	.company--logo {

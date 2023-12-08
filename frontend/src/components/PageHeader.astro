@@ -1,15 +1,16 @@
 ---
+import { Image } from 'astro:assets';
+import LogoImage from '../assets/img/logo.png';
 ---
 
 <header class="container" id="header">
   <a class="logo" href="/">
-    <img
+    <Image
       width="40"
       height="40"
       class="logo"
-      src="/public/static/icons/logo.svg"
+      src={LogoImage}
       alt="Joblinker logo"
-      role="img"
     />
     <span>Job Linker</span>
   </a>

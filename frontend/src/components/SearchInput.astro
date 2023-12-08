@@ -1,13 +1,16 @@
 ---
+import { Image } from 'astro:assets';
+import SearchIcon from '../assets/img/icons/search-lg.svg';
+
 const {
-    placeholder="Search a title or description..."
+placeholder="Search a title or description..."
 } = Astro.props;
 ---
 
 <div class="searchbar">
     <label tabindex="-1" class="input">
-        <img src="/public/static/icons/search-lg.svg" alt="" role="img">
-        <input id="search" type="text" placeholder={placeholder}>
+        <Image src={ SearchIcon } alt="" role="img" />
+        <input id="search" type="text" placeholder={placeholder} />
     </label>
     <button class="button--primary" id="button-search">Search</button>
 </div>
