@@ -9,7 +9,7 @@ def delete_duplicated(jobposts):
     for jobpost in jobposts:
         jobpost.delete()
 
-def join_duplicated_companies(apps, schema_editor):
+def join_duplicated_companies(apps, _):
     JobPost = apps.get_model('jobpost', 'JobPost')
     origin_urls = JobPost.objects.order_by().values('origin_url').distinct()
 

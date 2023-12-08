@@ -156,8 +156,9 @@ p {
   position: relative;
   img:not(.fallback) {
     opacity: 0;
-    position: absolute;
     z-index: 1;
+    position: absolute;
+    transition: opacity 300ms ease;
 
     &.loaded {
       opacity: 1;
