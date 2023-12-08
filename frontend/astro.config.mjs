@@ -23,10 +23,11 @@ const postprocess = {
 
 // https://astro.build/config
 export default defineConfig({
+  outDir: '../dist/',
   vite: {
-    plugins: [ postprocess ]
+    plugins: [ postprocess ],
   },
   build: {
-    assets: 'static'
+    assets: 'static',
   }
 });
