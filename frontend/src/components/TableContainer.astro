@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import SearchIcon from '../assets/img/icons/search-lg.svg';
 import TableFooter from "./TableFooter.astro";
 ---
 <div class="table">
@@ -6,7 +8,7 @@ import TableFooter from "./TableFooter.astro";
     (% for object in object_list %)<slot />(% endfor %)
   (% else %)
     <div class="no-results">
-      <img src="/public/static/icons/search-lg.svg">
+      <Image src={SearchIcon} alt="" />
       No results found...
     </div>
   (% endif %)
