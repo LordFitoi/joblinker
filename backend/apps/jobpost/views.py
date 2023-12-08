@@ -36,9 +36,13 @@ class CompanyListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
+        queryset = queryset.exclude(
+            Q(description__isnull=True)
+            | Q(description__exact="")
+            | Q(jobpost__isnull=True)
+        )
 
-        search_query = self.request.GET.get("search")
-        if search_query:
+        if search_query := self.request.GET.get("search"):
             queryset = queryset.filter(
                 Q(name__icontains=search_query)
                 | Q(description__icontains=search_query)
