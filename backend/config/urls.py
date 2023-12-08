@@ -49,6 +49,11 @@ urlpatterns = [
         TemplateView.as_view(template_name="privacy/index.html"),
         name="privacy",
     ),
+    path(
+        "faq/",
+        TemplateView.as_view(template_name="faq/index.html"),
+        name="privacy",
+    ),
     path("static-files/", show_static_files),
     path(f"{settings.MEDIA_URL[1:]}<str:media_name>", serve_media),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}),
