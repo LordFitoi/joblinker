@@ -1,6 +1,6 @@
 from typing import Any, Dict
 from django.views.generic import ListView
-from django.contrib.postgres.search import SearchVector
+from django.db.models import Q
 from .models import Company, JobPost
 
 
@@ -8,14 +8,17 @@ class JobpostListView(ListView):
     template_name = "index.html"
     model = JobPost
     paginate_by = 10
-    search_fields = ("title", "description", "origin_url", "job_type")
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
 
         if search_query := self.request.GET.get("search"):
-            search_vector = queryset.annotate(search=SearchVector(*self.search_fields))
-            queryset = search_vector.filter(search=search_query)
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) |
+                Q(description__icontains=search_query) |
+                Q(origin_url__icontains=search_query) |
+                Q(job_type__icontains=search_query)
+            )
 
         return queryset
 
@@ -30,14 +33,18 @@ class CompanyListView(ListView):
     template_name = "companies/index.html"
     model = Company
     paginate_by = 10
-    search_fields = ("description", "name", "website", "origin_url")
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
 
-        if search_query := self.request.GET.get("search"):
-            search_vector = queryset.annotate(search=SearchVector(*self.search_fields))
-            queryset = search_vector.filter(search=search_query)
+        search_query = self.request.GET.get("search")
+        if search_query:
+            queryset = queryset.filter(
+                Q(name__icontains=search_query) |
+                Q(description__icontains=search_query) |
+                Q(origin_url__icontains=search_query) |
+                Q(website__icontains=search_query)
+            )
 
         return queryset
 
