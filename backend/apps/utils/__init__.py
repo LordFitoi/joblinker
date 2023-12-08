@@ -40,16 +40,17 @@ def get_robots_txt(_):
 
 
 def get_directory_tree(path):
-    tree = {"files":[]}
+    tree = {"files": []}
 
     for file in os.listdir(path):
         if os.path.isfile(os.path.join(path, file)):
             tree["files"].append(file)
-   
+
         elif os.path.isdir(os.path.join(path, file)):
             tree[file] = get_directory_tree(os.path.join(path, file))
 
     return tree
+
 
 @user_passes_test(lambda u: u.is_staff)
 def show_static_files(_):
