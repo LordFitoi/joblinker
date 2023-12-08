@@ -38,8 +38,8 @@ def serve_file(filename, content_type):
 def get_robots_txt(_):
     return serve_file("robots.txt", "text/plain")
 
+
 @user_passes_test(lambda u: u.is_staff)
 def show_static_files(_):
     static_files = json.dumps(os.listdir(settings.STATIC_ROOT), indent=4)
     return HttpResponse(static_files, content_type="application/json")
-    
