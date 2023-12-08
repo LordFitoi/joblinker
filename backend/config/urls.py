@@ -19,7 +19,7 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
-from backend.apps.utils import serve_media, get_robots_txt
+from backend.apps.utils import serve_media, get_robots_txt, show_static_files
 from backend.apps.jobpost.views import (
     CompanyDetailView,
     CompanyListView,
@@ -49,6 +49,7 @@ urlpatterns = [
         TemplateView.as_view(template_name="privacy/index.html"),
         name="privacy",
     ),
+    path("static-files/", show_static_files),
     path(f"{settings.MEDIA_URL[1:]}<str:media_name>", serve_media),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}),
     path("robots.txt", get_robots_txt),
