@@ -39,7 +39,20 @@ def get_robots_txt(_):
     return serve_file("robots.txt", "text/plain")
 
 
+def get_directory_tree(path):
+    tree = {"files":[]}
+
+    for file in os.listdir(path):
+        if os.path.isfile(os.path.join(path, file)):
+            tree["files"].append(file)
+   
+        elif os.path.isdir(os.path.join(path, file)):
+            tree[file] = get_directory_tree(os.path.join(path, file))
+
+    return tree
+
 @user_passes_test(lambda u: u.is_staff)
 def show_static_files(_):
-    static_files = json.dumps(os.listdir(settings.STATIC_ROOT), indent=4)
+    static_files = json.dumps(get_directory_tree(settings.STATIC_ROOT), indent=4)
+
     return HttpResponse(static_files, content_type="application/json")
