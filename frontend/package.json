@@ -3,13 +3,15 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "NODE_ENV=development astro build --watch",
+    "dev": "NODE_ENV=development nodemon -e js,scss,astro build.js",
     "build": "NODE_ENV=production astro build"
   },
   "dependencies": {
-    "astro": "^3.6.4"
+    "astro": "^3.6.4",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "nodemon": "^3.0.2",
     "sass": "^1.69.5"
   }
 }

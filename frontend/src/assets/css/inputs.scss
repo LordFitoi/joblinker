@@ -12,8 +12,6 @@
 
     .error--label {
         font-size: var(--font-size-small);
-        margin-left: 8px;
-        margin-right: 8px;
         color: var(--color-error-600);
     }
 }
@@ -47,6 +45,7 @@
     input[type="url"],
     input[type="text"],
     input[type="date"],
+    input[type="password"],
     input[type="datetime-local"],
     input[type="time"],
     input[type="number"],

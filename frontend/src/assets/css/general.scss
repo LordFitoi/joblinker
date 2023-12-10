@@ -2,7 +2,6 @@
     font-size: var(--general-font-xs-1);
     color: var(--color-gray-500);
     text-decoration: var(--text-decoration-none);
-    font-weight: var(--font-weight-300);
 }
 
 a:hover {
@@ -41,6 +40,7 @@ p {
     input[type=url],
     input[type=text],
     input[type=date],
+    input[type=password],
     input[type=datetime-local],
     input[type=time],
     input[type=number],

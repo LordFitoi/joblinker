@@ -54,6 +54,10 @@ urlpatterns = [
         TemplateView.as_view(template_name="faq/index.html"),
         name="privacy",
     ),
+    # path('accounts/', include('allauth.urls')),
+    path("accounts/", include("backend.apps.user.urls")),
+    path("accounts/", include("allauth.urls")),
+    # MISC. URLS
     path("static-files/", show_static_files),
     path(f"{settings.MEDIA_URL[1:]}<str:media_name>", serve_media),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}),

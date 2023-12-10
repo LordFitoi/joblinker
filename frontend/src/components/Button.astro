@@ -1,8 +1,8 @@
 ---
-const { type = "primary", href = "#", state="" } = Astro.props;
+const { type = "primary", href = "#", state="", id } = Astro.props;
 ---
 
-<a class={`button ${type}`} href={href} role="button" data-state={state}>
+<a class={`button ${type}`} href={href} role="button" data-state={state} id={id}>
   <slot />
 </a>
 <script>
@@ -15,7 +15,6 @@ const { type = "primary", href = "#", state="" } = Astro.props;
       }
     }
   })
-
 </script>
 
 <style lang="scss">

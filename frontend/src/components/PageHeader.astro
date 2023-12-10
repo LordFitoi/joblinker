@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import LogoImage from '../assets/img/logo.png';
 ---
-
 <header class="container" id="header">
   <a class="logo" href="/">
     <Image
@@ -17,6 +16,12 @@ import LogoImage from '../assets/img/logo.png';
   <div class="links">
     <a href="/">Jobs</a>
     <a href="/companies">Companies</a>
+
+    (% if request.user.is_authenticated %)
+      HELLO
+    (% else %)
+      <a href="/accounts/signup">Sign Up</a>
+    (% endif %)
   </div>
 </header>
 <style lang="scss">

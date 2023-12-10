@@ -52,7 +52,12 @@ INSTALLED_APPS = [
     "corsheaders",
     "django_filters",
     "django_extensions",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.linkedin_oauth2",
     # Local apps
+    "backend.apps.user",
     "backend.apps.jobpost",
     "backend.apps.crawler",
 ]
@@ -65,7 +70,9 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.common.BrokenLinkEmailsMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
@@ -122,6 +129,24 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+
+ACCOUNT_ALLOW_REGISTRATION = True
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+# ACCOUNT_ADAPTER = "feline.users.adapters.AccountAdapter"
+# SOCIALACCOUNT_ADAPTER = "feline.users.adapters.SocialAccountAdapter"
+LOGIN_REDIRECT_URL = "/"
+# Email backend
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_TIMEOUT = 5
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -181,3 +206,19 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
     "http://127.0.0.1:3000",
 ]
+
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    "linkedin": {
+        "SCOPE": ["r_basicprofile", "r_emailaddress"],
+        "PROFILE_FIELDS": [
+            "id",
+            "first-name",
+            "last-name",
+            "email-address",
+            "picture-url",
+            "public-profile-url",
+        ],
+    }
+}
