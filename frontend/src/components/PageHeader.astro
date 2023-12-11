@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import LogoImage from '../assets/img/logo.png';
 import LogInIcon from '../assets/img/icons/log-in-02.svg'
-import MainMenu from './MainMenu.astro';
+import UserDropdown from './UserDropdown.astro';
 ---
 <header class="container" id="header">
   <a class="logo" href="/">
@@ -20,7 +20,7 @@ import MainMenu from './MainMenu.astro';
     <a href="/companies">Companies</a>
 
     (% if request.user.is_authenticated %)
-      <MainMenu></MainMenu>
+      <UserDropdown />
     (% else %)
       <a class="login--button" href="(% url 'account_login' %)">
         <img src={LogInIcon.src} alt="">
