@@ -9,10 +9,18 @@ from backend.config.settings import *  # noqa
 
 DEBUG = False
 
+# MAILTRAP
+# ------------------------------------------------------------------------------
+EMAIL_BACKEND = "backend.apps.utils.backends.EmailBackend"
+MAILTRAP_API_TOKEN = os.environ.get("MAILTRAP_API_TOKEN")
+MAILTRAP_EMAIL = os.environ.get("MAILTRAP_EMAIL", "mailtrap@joblinker.site")
+MAILTRAP_NAME = "Joblinker Site"
+
 # DATABASE
 # ------------------------------------------------------------------------------
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 DATABASES["default"]["CONN_MAX_AGE"] = os.environ.get("CONN_MAX_AGE", 60)
+
 
 # SECURITY
 # ------------------------------------------------------------------------------

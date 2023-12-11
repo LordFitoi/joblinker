@@ -74,3 +74,4 @@ w3lib==2.1.1
 whitenoise==6.4.0
 zope.interface==6.0
 django-allauth==0.58.2
+mailtrap==2.0.1
