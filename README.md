@@ -1,12 +1,13 @@
 <h1 align="center">Joblinker</h1>
 
 ## Used Technologies
-- PostgreSQL
-- Python / Django
-- Node.js / Nuxt
-- Cloudflare Proxy
-- Sentry
-- Railway.app
+- PostgreSQL (DataBase)
+- Python / Django (Backend)
+- Node.js / Astro (Frontend)
+- Cloudflare (Proxy)
+- Sentry (Debug Tool)
+- Railway.app (Host)
+- Mailtrap.io (SMTP)
 
 ## Backend Setup
 
@@ -29,8 +30,6 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-To access the backend server enter here [`localhost:8000`](http://localhost:8000)
-
 > Note: Backend uses the frontend statics generated with the command `npm run generate`
 
 ## Frontend Setup
@@ -41,7 +40,26 @@ npm install
 npm run dev
 ```
 
-Then access to Nuxt development server in [`localhost:3000`](http://localhost:3000)
+Then access to Nuxt development server in [`localhost:8000`](http://localhost:8000)
+
+
+## Frontend Development (Astro with Django)
+
+The actual frontend use Astro.js to make the static pages, because astro use {} in it syntax itself, we added a preprocessor that allow you to use (()) and (%%) as an alternative to {{}} and {%%} django tags.
+
+With this change you can fully use django template rendering in the astro pages and components.
+
+If you made a new page, keep in mind the output name will be the path from the root page directory to the current page, but it will transform the current name file into a directory and inside of it, will be an `index.html` which is the current page file.
+
+
+Example:
+```
+What Astro.js sees
+companies/details.astro
+
+What Django sees
+companies/details/index.html
+```
 
 ## Scrapper Crawling
 
