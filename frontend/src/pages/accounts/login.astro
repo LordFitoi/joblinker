@@ -16,6 +16,7 @@ import Layout from "../../layouts/Layout.astro";
                         </label>
                         <span class="error--label">
                             (( form.login.errors | first ))
+                            (( form.non_field_errors | first ))
                         </span>
                     </div>
                     <div class="input--container">
