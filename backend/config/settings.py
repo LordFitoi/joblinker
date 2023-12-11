@@ -147,7 +147,7 @@ LOGIN_REDIRECT_URL = "/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_TIMEOUT = 5
-
+ACCOUNT_LOGOUT_ON_GET = True
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 

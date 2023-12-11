@@ -1,19 +1,17 @@
-from allauth.account.views import SignupView, LoginView, ConfirmEmailView
+from allauth.account.views import SignupView, LoginView, ConfirmEmailView, EmailVerificationSentView
 
 
 class AccountSignupView(SignupView):
     template_name = "accounts/signup/index.html"
 
 
-account_signup = AccountSignupView.as_view()
-
-
 class AccountLoginView(LoginView):
     template_name = "accounts/login/index.html"
 
 
-account_login = AccountLoginView.as_view()
-
-
 class AccountConfirmEmail(ConfirmEmailView):
-    pass
+    template_name = "accounts/confirm-email/index.html"
+
+
+class AccountEmailVerificationSentView(EmailVerificationSentView):
+    template_name = "accounts/verification-sent/index.html"

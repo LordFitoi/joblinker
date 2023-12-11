@@ -1,9 +1,18 @@
 from django.urls import path, re_path
-from allauth.account import views as auth
 from . import views
 
 urlpatterns = [
-    path("signup/", view=views.account_signup, name="account_signup"),
-    path("login/", view=views.account_login, name="account_login"),
+    path("signup/", views.AccountSignupView.as_view(), name="account_signup"),
+    path("login/", views.AccountLoginView.as_view(), name="account_login"),
+    re_path(
+        r"^confirm-email/(?P<key>[-:\w]+)/$",
+        views.AccountConfirmEmail.as_view(),
+        name="account_confirm_email"
+    ),
+    re_path(
+        r"^confirm-email/",
+        views.AccountEmailVerificationSentView.as_view(),
+        name="account_email_verification_sent"
+    ),
     # path("logout/", views.logout, name="account_logout"),
 ]

@@ -16,6 +16,13 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
+details > summary {
+    list-style: none;
+}
+details > summary::-webkit-details-marker {
+    display: none;
+}
+
 h1 { font-size: var(--general-font-xl-2); }
 h2 { font-size: var(--general-font-lg); }
 h3 { font-size: var(--general-font-md); }

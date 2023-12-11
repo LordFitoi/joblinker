@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import LogoImage from '../assets/img/logo.png';
+import LogInIcon from '../assets/img/icons/log-in-02.svg'
+import MainMenu from './MainMenu.astro';
 ---
 <header class="container" id="header">
   <a class="logo" href="/">
@@ -13,16 +15,18 @@ import LogoImage from '../assets/img/logo.png';
     />
     <span>Job Linker</span>
   </a>
-  <div class="links">
+  <nav class="links">
     <a href="/">Jobs</a>
     <a href="/companies">Companies</a>
 
     (% if request.user.is_authenticated %)
-      HELLO
+      <MainMenu></MainMenu>
     (% else %)
-      <a href="/accounts/signup">Sign Up</a>
+      <a class="login--button" href="(% url 'account_login' %)">
+        <img src={LogInIcon.src} alt="">
+      </a>
     (% endif %)
-  </div>
+  </nav>
 </header>
 <style lang="scss">
   header {
@@ -70,13 +74,31 @@ import LogoImage from '../assets/img/logo.png';
       a {
         font-weight: 300;
         color: var(--color-gray-500);
-
+        transition: transform 300ms ease;
+        
         span {
           font-size: var(--general-font-xs-1);
         }
 
+        &:hover {
+          transform: scale(1.1);            
+        }
+
         &:nth-child(1) {
           margin-right: auto;
+        }
+
+
+        &.login--button {
+          display: flex;
+          width: 32px;
+          height: 32px;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            filter: var(--filter-gray-500);
+          }
         }
       }
 

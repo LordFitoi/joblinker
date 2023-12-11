@@ -2,12 +2,12 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 <Layout>
-    <main>
+    <main class="bg-white">
         <div class="container">
             (% url 'account_login' as action_url %)
             <form action="(( action_url ))" method="post">
                 (% csrf_token %)
-                <div class="login">
+                <div class="login box">
                     <h1>Sign In</h1>
                     <div class="input--container">
                         <strong>Username</strong>
@@ -27,7 +27,8 @@ import Layout from "../../layouts/Layout.astro";
                             (( form.password.errors | first ))
                         </span>
                     </div>
-                    <button class="button--primary" type="submit">Login</button>
+                    <button class="button--primary" type="submit">Log In</button>
+                    <small>New to the site? <a href="(% url 'account_signup' %)">Click here</a> to sign up and explore more!</small>
                 </div>
             </form>
         </div>
@@ -35,25 +36,16 @@ import Layout from "../../layouts/Layout.astro";
 </Layout>
 
 <style lang="scss">
-    .login {
-        position: relative;
+    main {
         display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        background-color: var(--color-base-white);
-        border: 1px solid var(--color-gray-200);
-        border-radius: 8px;
-        box-shadow:
-        0px 1px 3px rgba(16, 24, 40, 0.1),
-        0px 1px 2px rgba(16, 24, 40, 0.06);
-        overflow: hidden;
-        margin: var(--general-spacing-xl-1) auto;
+        align-items: center;
+    }
+    .login {
+        margin: 0 auto;
         min-height: 300px;
         max-width: 400px;
         box-shadow: none;
-        border-color: var(--color-gray-300);
         padding: var(--general-spacing-md);
-
 
         h1 {
             margin-bottom: var(--general-spacing-lg);
@@ -61,6 +53,17 @@ import Layout from "../../layouts/Layout.astro";
 
         .input--container {
             margin-bottom: var(--general-spacing-md);
+        }
+
+        small {
+            margin-top: var(--general-spacing-md);
+            font-size: var(--general-font-xs-2);
+            
+            a {
+                font-size: var(--general-font-xs-2);
+                color: var(--color-primary-500);
+                text-decoration: underline;
+            }
         }
     }
 </style>

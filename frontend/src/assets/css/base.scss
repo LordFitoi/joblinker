@@ -40,6 +40,7 @@
   --filter-primary-700: invert(16%) sepia(86%) saturate(6019%) hue-rotate(216deg) brightness(98%) contrast(82%);
   --filter-gray-300: invert(83%) sepia(4%) saturate(346%) hue-rotate(178deg) brightness(101%) contrast(96%);
   --filter-gray-500: brightness(0) saturate(100%) invert(44%) sepia(24%) saturate(350%) hue-rotate(182deg) brightness(92%) contrast(87%);
+  --filter-gray-700: invert(22%) sepia(34%) saturate(533%) hue-rotate(179deg) brightness(89%) contrast(86%);
   --filter-success-700: brightness(0) saturate(100%) invert(29%) sepia(73%) saturate(921%) hue-rotate(116deg) brightness(98%) contrast(98%);
   --filter-error-700: invert(25%) sepia(85%) saturate(2579%) hue-rotate(349deg) brightness(71%) contrast(100%);
 
@@ -78,7 +79,7 @@ body {
   display: flex;
   line-height: 1.5em;
   flex-direction: column;
-  color: var(--color-gray-900);
+  color: var(--color-gray-700);
   background-color: var(--color-gray-50);
 }
 
@@ -174,6 +175,7 @@ p {
   background-color: white;
   padding-bottom: 64px;
   padding-top: 64px;
+  height: 100%;
 }
 
 .description {

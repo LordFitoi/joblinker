@@ -1,0 +1,76 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+<Layout>
+    <main class="bg-white"> 
+        <div class="container">
+            <div class="verification-sent">
+                <h1>Verify Your Email Address</h1>
+                <p>Please click the link in the email we sent to confirm your email address.</p>
+    
+                <div class="box">
+                    <div class="header">
+                        <h2>Email Verification</h2>
+                    </div>
+                    <div class="middle">
+                        <p>If you didn't receive the email, or need us to send it again, please click the button below.</p>
+                        <a href="(% url 'account_email' %)" class="button--primary">Log In to Resend Verification Email</a>
+                    </div>
+                    <div class="footer">
+                        <a href="(% url 'account_login' %)">Back to Sign In</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+<style lang="scss">
+    main {
+        display: flex;
+        align-items: center;
+    }
+    .verification-sent {
+        max-width: 350px;
+        margin: 0 auto;
+
+        h1 {
+            font-size: var(--general-font-xl-1);
+            text-align: center;
+        }
+        > p {
+            margin-bottom: var(--general-spacing-lg);
+            text-align: center;
+        }
+
+        .box {
+            .header {
+                padding: 16px;
+                h2 {
+                    color: var(--color-gray-700);
+                    font-size: var(--general-font-lg);
+                    margin: 0;
+                }
+            }
+            .middle {
+                padding: 24px 16px;
+
+                .button--primary {
+                    width: 100%;
+                    margin-top: 16px;
+                }
+            }
+            .footer {
+                display: flex;
+                border-top: 1px solid var(--color-gray-200);
+                justify-content: end;
+                padding: 12px 16px;
+
+                a {
+                    color: var(--color-gray-700);
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+</style>

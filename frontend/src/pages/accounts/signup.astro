@@ -3,12 +3,12 @@ import Layout from '../../layouts/Layout.astro';
 ---
 (% load allauth i18n socialaccount %)
 <Layout>
-    <main>
+    <main class="bg-white">
         <div class="container">
             (% url 'account_signup' as action_url %)
             <form action="(( action_url ))" method="post">
                 (% csrf_token %)
-                <div class="signup">
+                <div class="signup box">
                     <h1>Sign Up</h1>
                     <div class="input--container">
                         <strong>Username</strong>
@@ -47,6 +47,7 @@ import Layout from '../../layouts/Layout.astro';
                         </span>
                     </div>
                     <button class="button--primary" type="submit">Create Account</button>
+                    <small>Have an account? <a href="(% url 'account_login' %)">Click here</a> to log in and explore more!</small>
                 </div>
 
             </form>
@@ -54,23 +55,15 @@ import Layout from '../../layouts/Layout.astro';
     </main>
 </Layout>
 <style lang="scss">
-    .signup {
-        position: relative;
+    main {
         display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        background-color: var(--color-base-white);
-        border: 1px solid var(--color-gray-200);
-        border-radius: 8px;
-        box-shadow:
-        0px 1px 3px rgba(16, 24, 40, 0.1),
-        0px 1px 2px rgba(16, 24, 40, 0.06);
-        overflow: hidden;
-        margin: var(--general-spacing-xl-1) auto;
+        align-items: center;
+    }
+    .signup {
+        margin: 0 auto;
         min-height: 400px;
         max-width: 400px;
         box-shadow: none;
-        border-color: var(--color-gray-300);
         padding: var(--general-spacing-md);
 
 
@@ -80,6 +73,17 @@ import Layout from '../../layouts/Layout.astro';
 
         .input--container {
             margin-bottom: var(--general-spacing-md);
+        }
+
+        small {
+            margin-top: var(--general-spacing-md);
+            font-size: var(--general-font-xs-2);
+            
+            a {
+                font-size: var(--general-font-xs-2);
+                color: var(--color-primary-500);
+                text-decoration: underline;
+            }
         }
     }
 </style>
