@@ -1,4 +1,9 @@
-from allauth.account.views import SignupView, LoginView, ConfirmEmailView, EmailVerificationSentView
+from allauth.account.views import (
+    SignupView,
+    LoginView,
+    ConfirmEmailView,
+    EmailVerificationSentView,
+)
 
 
 class AccountSignupView(SignupView):
