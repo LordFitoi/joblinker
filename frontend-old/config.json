@@ -1,7 +1,0 @@
-{
-    "outputDir": "static/",
-    "env": {
-        "CDN_URL": "CDN_URL",
-        "GTAG": "G-EMXW68LYRK"
-    }
-}
