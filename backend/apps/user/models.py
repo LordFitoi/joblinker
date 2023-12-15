@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.dispatch import receiver
 from backend.apps.utils.models import AbstractBaseModel
 
+
 class Profile(AbstractBaseModel):
     user = models.OneToOneField("auth.User", on_delete=models.CASCADE)
     skills = models.ManyToManyField("jobpost.Category", blank=True)

@@ -13,9 +13,8 @@ class JobpostListView(ListView):
     paginate_by = 20
     search_fields = ("title", "description", "origin_url", "job_type")
 
-
     def sorted_by_skills(self, queryset, user):
-        query = Count('categories', filter=Q(categories__in=user.profile.skills.all()))
+        query = Count("categories", filter=Q(categories__in=user.profile.skills.all()))
         return queryset.annotate(common_skills=query).order_by("-common_skills")
 
     def get_date_limit(self):
