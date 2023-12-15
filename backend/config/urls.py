@@ -54,8 +54,8 @@ urlpatterns = [
         TemplateView.as_view(template_name="faq/index.html"),
         name="privacy",
     ),
-    # path('accounts/', include('allauth.urls')),
-    path("accounts/", include("backend.apps.user.urls")),
+    path("users/", include("backend.apps.user.urls")),
+    path("accounts/", include("backend.apps.user.auth_urls")),
     path("accounts/", include("allauth.urls")),
     # MISC. URLS
     path("static-files/", show_static_files),

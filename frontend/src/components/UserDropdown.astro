@@ -23,6 +23,10 @@ import LogOutIcon from '../assets/img/icons/log-out-01.svg';
                 </div>
             </li>
             <li>
+                <a href="/users/((request.user.username))/">
+                    <img src={ UserIcon.src } alt="">
+                    Profile
+                </a>
                 <a href="(% url 'account_logout' %)">
                     <img src={ LogOutIcon.src } alt="">
                     Log out
@@ -73,19 +77,20 @@ import LogOutIcon from '../assets/img/icons/log-out-01.svg';
             z-index: 10;
 
             li a {
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
+                display: grid;
+                grid-template-columns: 24px 1fr;
                 align-self: stretch;
                 white-space: nowrap;
                 padding: 10px 16px;
                 width: 100%;
                 align-items: center;
-                gap: 12px;
+                gap: 8px;
                 transition: transform 300ms ease;
                 color: var(--color-gray-700);
 
                 img {
+                    width: 20px;
+                    height: 20px;
                     filter: var(--filter-gray-700);
                 }
 
