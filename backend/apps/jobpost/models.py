@@ -1,5 +1,5 @@
 from django.db import models
-from backend.apps.utils import AbstractBaseModel
+from backend.apps.utils.models import AbstractBaseModel
 from django_extensions.db.models import AutoSlugField
 
 
@@ -13,7 +13,7 @@ class WebsiteOrigin(AbstractBaseModel):
         ordering = ["name", "-created_at"]
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Category(AbstractBaseModel):
@@ -23,14 +23,14 @@ class Category(AbstractBaseModel):
         ordering = ["name", "-created_at"]
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Location(AbstractBaseModel):
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Company(AbstractBaseModel):
@@ -51,7 +51,7 @@ class Company(AbstractBaseModel):
         ordering = ["name", "-created_at"]
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class JobPost(AbstractBaseModel):

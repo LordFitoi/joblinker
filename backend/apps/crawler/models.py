@@ -1,5 +1,5 @@
 from django.db import models
-from backend.apps.utils import AbstractBaseModel
+from backend.apps.utils.models import AbstractBaseModel
 
 
 class CrawlerRecord(AbstractBaseModel):
