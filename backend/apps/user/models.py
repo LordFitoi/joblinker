@@ -4,7 +4,6 @@ from django.urls import reverse
 from django.dispatch import receiver
 from backend.apps.utils.models import AbstractBaseModel
 
-
 class Profile(AbstractBaseModel):
     user = models.OneToOneField("auth.User", on_delete=models.CASCADE)
     skills = models.ManyToManyField("jobpost.Category", blank=True)
@@ -13,7 +12,6 @@ class Profile(AbstractBaseModel):
 
     class Meta:
         verbose_name_plural = "profiles"
-
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.user.username})

@@ -1,6 +1,6 @@
 from django.db import models
-from backend.apps.utils.models import AbstractBaseModel
 from django_extensions.db.models import AutoSlugField
+from backend.apps.utils.models import AbstractBaseModel
 
 
 class WebsiteOrigin(AbstractBaseModel):
@@ -100,3 +100,4 @@ class JobPost(AbstractBaseModel):
 
     def __str__(self):
         return f"{self.title} - {self.company.name}"
+

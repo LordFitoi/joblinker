@@ -1,24 +1,36 @@
 from typing import Any, Dict
 from django.views.generic import ListView
-from django.db.models import Q
+from datetime import date, datetime
+from dateutil.relativedelta import relativedelta
+from django.contrib.postgres.search import SearchVector
+from django.db.models import Count, Q
 from .models import Company, JobPost
 
 
 class JobpostListView(ListView):
     template_name = "index.html"
     model = JobPost
-    paginate_by = 10
+    paginate_by = 20
+    search_fields = ("title", "description", "origin_url", "job_type")
+
+
+    def sorted_by_skills(self, queryset, user):
+        query = Count('categories', filter=Q(categories__in=user.profile.skills.all()))
+        return queryset.annotate(common_skills=query).order_by("-common_skills")
+
+    def get_date_limit(self):
+        midnight_date = datetime.combine(date.today(), datetime.min.time())
+        return midnight_date + relativedelta(months=-3)
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
+        queryset = queryset.filter(created_at__gte=self.get_date_limit())
 
         if search_query := self.request.GET.get("search"):
-            queryset = queryset.filter(
-                Q(title__icontains=search_query)
-                | Q(description__icontains=search_query)
-                | Q(origin_url__icontains=search_query)
-                | Q(job_type__icontains=search_query)
-            )
+            queryset = queryset.annotate(search=SearchVector(*self.search_fields))
+            queryset = queryset.filter(search=search_query)
+
+        queryset = self.sorted_by_skills(queryset, self.request.user)
 
         return queryset
 
@@ -32,7 +44,8 @@ class JobpostListView(ListView):
 class CompanyListView(ListView):
     template_name = "companies/index.html"
     model = Company
-    paginate_by = 10
+    paginate_by = 20
+    search_fields = ("name", "description", "origin_url", "website")
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
@@ -43,12 +56,8 @@ class CompanyListView(ListView):
         )
 
         if search_query := self.request.GET.get("search"):
-            queryset = queryset.filter(
-                Q(name__icontains=search_query)
-                | Q(description__icontains=search_query)
-                | Q(origin_url__icontains=search_query)
-                | Q(website__icontains=search_query)
-            )
+            queryset = queryset.annotate(search=SearchVector(*self.search_fields))
+            queryset = queryset.filter(search=search_query)
 
         return queryset
 
