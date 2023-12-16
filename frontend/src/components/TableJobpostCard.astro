@@ -23,7 +23,7 @@ import Badge from "./Badge.astro";
         (% if object.common_skills %)
           <Badge type="recommended">Recommended</Badge>
         (% endif %)
-        
+
         (% for category in object.categories.all %)
           <Badge>(( category.name ))</Badge>
         (% endfor %)
