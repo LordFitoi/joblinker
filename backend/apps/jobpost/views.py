@@ -29,7 +29,6 @@ class JobpostListView(ListView):
             queryset = queryset.annotate(search=SearchVector(*self.search_fields))
             queryset = queryset.filter(search=search_query)
 
-
         if self.request.user.is_authenticated:
             queryset = self.sorted_by_skills(queryset, self.request.user)
 
