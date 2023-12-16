@@ -25,7 +25,7 @@ import Badge from "./Badge.astro";
         (% endif %)
 
         (% for category in object.categories.all %)
-          <Badge>(( category.name ))</Badge>
+          <Badge type="(% if category in request.user.profile.skills.all %)recommended(% endif %)">(( category.name ))</Badge>
         (% endfor %)
       </div>
     (% endif %)
