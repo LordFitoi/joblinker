@@ -14,7 +14,7 @@ import Badge from "./Badge.astro";
       <cite>(( object.origin_url ))</cite>
     </div>
   </div>
-  <div>
+  <div class="inner">
     <h2>(( object.title ))</h2>
     <p>(( object.description | striptags | truncatechars:200 ))</p>
 
@@ -25,6 +25,7 @@ import Badge from "./Badge.astro";
         (% endfor %)
       </div>
     (% endif %)
+    <span class="date">(( object.created_at | date:"d F, Y" ))</span>
   </div>
 </a>
 
@@ -67,6 +68,16 @@ import Badge from "./Badge.astro";
           overflow: hidden;
           font-weight: 500;
         }
+      }
+    }
+
+    .inner {
+      display: flex;
+      flex-direction: column;
+
+      .date {
+        margin-top: var(--general-spacing-sm);
+        margin-left: auto;
       }
     }
 
