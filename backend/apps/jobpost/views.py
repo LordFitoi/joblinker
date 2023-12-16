@@ -21,7 +21,7 @@ class JobpostListView(ListView):
 
     def get_date_limit(self):
         midnight_date = datetime.combine(date.today(), datetime.min.time())
-        return midnight_date + relativedelta(months=-3)
+        return midnight_date + relativedelta(months=-1)
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
