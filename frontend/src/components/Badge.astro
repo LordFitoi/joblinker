@@ -1,7 +1,7 @@
 ---
-
+const { type } = Astro.props;
 ---
-<div class="badge"><slot /></div>
+<div class={`badge ${type}`}><slot /></div>
 <style lang="scss">
   .badge {
     width: max-content;
@@ -21,6 +21,11 @@
       height: 12px;
 
       filter: var(--filter-primary-700);
+    }
+
+    &.recommended {
+      background-color: var(--color-violet-50);
+      color: var(--color-violet-700);
     }
 
     &.success {
