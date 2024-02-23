@@ -9,7 +9,7 @@ class HimalayasAdapter(BaseAdapter):
             "title": "//h1/text()",
             "description": "//div[@class='border-b border-gray-200 pb-8 md:pb-12']//article",
             "company_link": "//section//a[contains(@href, '/companies/')]/@href",
-            "categories": "//h3[contains(text(), 'Job categories')]/..//span/text()",
+            "categories": "//h3[contains(text(), 'Skills')]/..//span/text()",
         },
         "company": {
             "name": "//h1/text()",
